@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <color name="window_bg">#ffeef1f3</color>
+    <color name="transparent">#00000000</color>
+    <color name="grey">#ff7e7e7e</color>
+    <color name="grey_2">#999999</color>
+    <color name="write">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="qianhei">#c8000000</color>
+    <color name="trans_grey">#66000000</color>
+    <color name="green">#ff00d55a</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#ffdc0926</color>
+    <color name="qianhong">#cc2d43</color>
+    <color name="naibai">#f6eaec</color>
+    <color name="qianhui">#eee</color>
+    <color name="tablelinecolor">#5d844f</color>
+    <color name="ecglinecolor">#99373c</color>
+
+</resources>

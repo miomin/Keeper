@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">Keeper</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="search">请输入搜索内容</string>
+    <string name="order_by_shouyilv">按收益率排序</string>
+    <string name="order_by_fengxian">按风险排序</string>
+    <string name="meiyuan">美元(USD)</string>
+    <string name="bizhong">币种</string>
+    <string name="yuceshouyilv">预测收益率</string>
+    <string name="fengxian">风险</string>
+    <string name="tab_one">消息中心</string>
+    <string name="tab_two">个人中心</string>
+    <string name="tab_three">系统设置</string>
+    <string name="dangqianzichan">当前资产</string>
+    <string name="touzizonge">投资总额</string>
+    <string name="zhanghuyuer">账户余额</string>
+    <string name="zhanghushouyi">账户收益</string>
+    <string name="touzizongeyuan">投资总额(元)</string>
+    <string name="zhanghuyueryuan">账户余额(元)</string>
+    <string name="zhanghushouyiyuan">账户收益(元)</string>
+    <string name="chiyoubizhong">持有币种</string>
+    <string name="descri_chiyoubizhong">查看您持有的币种</string>
+    <string name="jiaoyijilu">交易记录</string>
+    <string name="descri_jiaoyijilu">查看买入/卖出记录</string>
+    <string name="chongzhi">充值</string>
+    <string name="tixian">提现</string>
+    <string name="jinrishouyi">"今日收益(元)"</string>
+    <string name="zhifuguanli">支付管理</string>
+    <string name="xitongshezhi">系统设置</string>
+    <string name="anquanzhongxin">安全中心</string>
+    <string name="bangzhuzhongxin">帮助中心</string>
+    <string name="guanyuwomen">关于我们</string>
+    <string name="zhuxiaodenglu">注销登录</string>
+    <string name="bangdingshouji">绑定手机</string>
+    <string name="tuichudenglu">退出登录</string>
+    <string name="title_activity_chiyou">ChiyouActivity</string>
+
+    <string name="xindianjiance">心电监测</string>
+    <string name="jiankangdangan">健康档案</string>
+    <string name="fuzhengenzong">复诊跟踪</string>
+    <string name="yijianjijiu">一键急救</string>
+
+    <string name="xindianjiankangbaogao">心电监测健康报告</string>
+    <string name="jiankangbaogao">健康报告</string>
+    <string name="pingjunxinlv">平均心率</string>
+
+    <string name="desc">backgroundimage</string>
+    <string name="not_connected">没有连接到设备</string>
+    <string name="bt_not_enabled_leaving">蓝牙没有打开，退出程序中</string>
+    <string name="title_connecting">正在连接...</string>
+    <string name="title_connected_to">已连接到</string>
+    <string name="title_not_connected">未连接</string>
+    <string name="scanning">查找设备</string>
+    <string name="unable_connect">无法连接设备</string>
+    <string name="lost_connection">连接丢失</string>
+    <string name="select_device">选择需要连接的设备</string>
+    <string name="none_paired">没有已配对设备</string>
+    <string name="none_found">没有发现设备</string>
+    <string name="title_paired_devices">已配对设备</string>
+    <string name="title_other_devices">其他可用设备</string>
+    <string name="button_scan">查找设备</string>
+    <string name="bluetooth_search">搜索蓝牙</string>
+    <string name="send_hint">发送区</string>
+    <string name="connect">连接设备</string>
+    <string name="disconnect">断开连接</string>
+    <string name="not_support">该设备不支持蓝牙，强制退出</string>
+    <string name="not_open">蓝牙没有打开，程序退出</string>
+    <string name="exit_title">提示</string>
+    <string name="exit_message">是否退出程序？</string>
+    <string name="exit_ok">确定</string>
+    <string name="exit_no">取消</string>
+    <string name="kaishijilu">开始记录</string>
+    <string name="chazhaojilu">查找记录</string>
+
+    <string name="shifouxiongmen">是否胸闷</string>
+    <string name="shifouxinhuang">是否心慌</string>
+    <string name="shifouhuxikunnan">是否感觉呼吸困难</string>
+    <string name="shifoutouyun">是否头晕</string>
+    <string name="shifouquanshenfali">是否全身乏力</string>
+    <string name="shuijiaoshishifoubiemen">睡觉时是否憋闷</string>
+    <string name="bingqingzishu">病情自述</string>
+    <string name="qingwanchengbingqingzishu">请您先完成以下病情自述问卷的填写，完成后才能进行心电图检测</string>
+
+    <string name="tijiao">提交</string>
+    <string name="xingming">姓名</string>
+    <string name="sex">性别</string>
+    <string name="birthday">生日</string>
+    <string name="height">身高</string>
+    <string name="weight">体重</string>
+    <string name="gerenxinxi">个人信息</string>
+    <string name="checkjiankangdangan">查看健康档案</string>
+
+</resources>
