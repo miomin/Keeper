@@ -9,6 +9,7 @@ public class BirthdayBean {
 
     private int year;
     private int month;
+
     private int day;
 
     public BirthdayBean(int year, int month, int day) {
