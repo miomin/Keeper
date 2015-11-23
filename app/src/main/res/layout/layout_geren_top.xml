@@ -134,6 +134,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:onClick="openTreatmentFollowupActivityForPatient"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
@@ -159,7 +160,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="bottom"
-                    android:text="@string/fuzhengenzong"
+                    android:text="@string/treatment_followup"
                     android:textColor="@color/black"
                     android:textSize="12sp" />
 
@@ -168,7 +169,7 @@
                     android:layout_height="0dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:text="出院后复诊跟踪"
+                    android:text="出院后跟踪治疗"
                     android:textColor="@color/grey"
                     android:textSize="10sp" />
             </LinearLayout>

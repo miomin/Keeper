@@ -143,6 +143,7 @@
         <activity
             android:name=".dialog.AboutUsDialog"
             android:theme="@style/MyDialogStyle" />
+        <activity android:name=".patient.activity.TreatmentFollowupActivityForPatient" />
 
     </application>
 

@@ -38,7 +38,7 @@
 
     <string name="xindianjiance">心电监测</string>
     <string name="jiankangdangan">健康档案</string>
-    <string name="fuzhengenzong">复诊跟踪</string>
+    <string name="treatment_followup">诊后随访</string>
     <string name="yijianjijiu">一键急救</string>
 
     <string name="xindianjiankangbaogao">心电监测健康报告</string>

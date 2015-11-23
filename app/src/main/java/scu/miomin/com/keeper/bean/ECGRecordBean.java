@@ -5,23 +5,23 @@ package scu.miomin.com.keeper.bean;
  */
 public class ECGRecordBean {
 
-    private DateBean date;
+    private String date;
     private boolean isAtPhone;
     private String ecgUrl;
     private HealthyDescribeByMyselfBean healthyDescribeByMyself;
 
-    public ECGRecordBean(DateBean date, String ecgUrl, HealthyDescribeByMyselfBean healthyDescribeByMyself, boolean isAtPhone) {
+    public ECGRecordBean(String date, String ecgUrl, HealthyDescribeByMyselfBean healthyDescribeByMyself, boolean isAtPhone) {
         this.date = date;
         this.ecgUrl = ecgUrl;
         this.healthyDescribeByMyself = healthyDescribeByMyself;
         this.isAtPhone = isAtPhone;
     }
 
-    public DateBean getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(DateBean date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

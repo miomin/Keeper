@@ -384,8 +384,6 @@ public class MainKeeperForPatient extends BaseActivity {
                         new MyLocationBean(0, 0)), ProfessionalEnum.FUZHURENYISHI,
                 "擅长心脑血管病及糖尿病的治疗，有丰富的临床经验", false);
         remenDoctorAdapter.add(doctorBean);
-
-
     }
 
 
@@ -548,6 +546,10 @@ public class MainKeeperForPatient extends BaseActivity {
 
     public void openECGActivity(View view) {
         ECGActivity.actionStart(this);
+    }
+
+    public void openTreatmentFollowupActivityForPatient(View view) {
+        TreatmentFollowupActivityForPatient.actionStart(this);
     }
 
     @Override

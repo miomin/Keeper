@@ -10,11 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import scu.miomin.com.keeper.R;
-import scu.miomin.com.keeper.bean.ConversationBean;
 import scu.miomin.com.keeper.bean.ECGRecordBean;
-import scu.miomin.com.keeper.bean.HealthyDescribeByMyselfBean;
-import scu.miomin.com.keeper.resource.MyLoader;
-import scu.miomin.com.keeper.resource.MyUrl;
 
 /**
  * 描述:对话列表适配器 创建日期:2015/11/10
@@ -84,7 +80,7 @@ public class ECGRecordAdapterForPatient extends BaseAdapter {
         ECGRecordBean ecgRecord = listECGRecord.get(position);
 
 
-        holder.tvDate.setText(ecgRecord.getDate().getStringUtilMinute());
+        holder.tvDate.setText(ecgRecord.getDate());
 
         if (ecgRecord.isAtPhone())
             holder.ivState.setImageResource(R.drawable.socialize_pocket);
