@@ -1,6 +1,5 @@
 package scu.miomin.com.keeper.patient.activity;
 
-import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -19,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.charts.PieChart;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.netease.nimlib.sdk.NIMClient;
@@ -65,10 +63,6 @@ import scu.miomin.com.keeper.patient.controller.PatientController;
  * @author 莫绪旻
  */
 public class MainKeeperForPatient extends BaseActivity {
-
-    // 饼图
-    private PieChart mChart;
-    private Typeface tf;
 
     // 第一个界面的控件
     private PullToRefreshListView lvConversation;
@@ -549,7 +543,7 @@ public class MainKeeperForPatient extends BaseActivity {
     }
 
     public void openTreatmentFollowupActivityForPatient(View view) {
-        TreatmentFollowupActivityForPatient.actionStart(this);
+        TreatmentFollowupListActivityForPatient.actionStart(this);
     }
 
     @Override
