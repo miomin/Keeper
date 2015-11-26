@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -15,30 +16,31 @@ import scu.miomin.com.keeper.Enum.AdministrativeEnum;
 import scu.miomin.com.keeper.Enum.ProfessionalEnum;
 import scu.miomin.com.keeper.Enum.SexEnum;
 import scu.miomin.com.keeper.R;
+import scu.miomin.com.keeper.activity.TreatmentFolloeupActivity;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
 import scu.miomin.com.keeper.bean.BirthdayBean;
 import scu.miomin.com.keeper.bean.DoctorBean;
 import scu.miomin.com.keeper.bean.HospitalBean;
 import scu.miomin.com.keeper.bean.MyLocationBean;
 import scu.miomin.com.keeper.bean.PatientBean;
-import scu.miomin.com.keeper.bean.TreatmentFollowupForPatientBean;
-import scu.miomin.com.keeper.patient.adapter.TreatmentFollowupAdapterForPatient;
+import scu.miomin.com.keeper.bean.TreatmentBean;
+import scu.miomin.com.keeper.patient.adapter.TreatmentListAdapterForPatient;
 
 /**
  * 描述:病人端诊后随访界面 创建日期:2015/11/22
  *
  * @author 莫绪旻
  */
-public class TreatmentFollowupListActivityForPatient extends BaseActivity {
+public class TreatmentListActivityForPatient extends BaseActivity {
 
-    private PullToRefreshListView lvTreatmentFollowup;
+    private PullToRefreshListView lvTreatmentFollowupList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_treatment_list_followup_patient);
+        setContentView(R.layout.activity_treatment_list_patient);
 
         initView();
         initAdapter();
@@ -46,23 +48,23 @@ public class TreatmentFollowupListActivityForPatient extends BaseActivity {
     }
 
     public static void actionStart(Context context) {
-        Intent intent = new Intent(context, TreatmentFollowupListActivityForPatient.class);
+        Intent intent = new Intent(context, TreatmentListActivityForPatient.class);
         context.startActivity(intent);
     }
 
     private void initView() {
-        lvTreatmentFollowup = (PullToRefreshListView) findViewById(R.id.lvTreatmentFollowup);
+        lvTreatmentFollowupList = (PullToRefreshListView) findViewById(R.id.lvTreatment);
     }
 
     private void initAdapter() {
         // 创建适配器对象
-        TreatmentFollowupAdapterForPatient treatmentFollowupAdapterForPatient = new TreatmentFollowupAdapterForPatient(this);
+        TreatmentListAdapterForPatient treatmentFollowupAdapterForPatient = new TreatmentListAdapterForPatient(this);
         // 将ListView与适配器关联
-        lvTreatmentFollowup.setAdapter(treatmentFollowupAdapterForPatient);
+        lvTreatmentFollowupList.setAdapter(treatmentFollowupAdapterForPatient);
 
-        TreatmentFollowupForPatientBean treatmentFollowupForPatientBean;
+        TreatmentBean treatmentFollowupForPatientBean;
 
-        treatmentFollowupForPatientBean = new TreatmentFollowupForPatientBean("2015-11-10",
+        treatmentFollowupForPatientBean = new TreatmentBean("2015-11-10",
                 new DoctorBean("2013141463002", "123456", "莫医生", SexEnum.MAN,
                         new BirthdayBean(1966, 1, 1), null, AdministrativeEnum.NEIKE,
                         new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
@@ -73,7 +75,7 @@ public class TreatmentFollowupListActivityForPatient extends BaseActivity {
                 "心律不齐，脉搏紊乱，生活作息不规律");
         treatmentFollowupAdapterForPatient.add(treatmentFollowupForPatientBean);
 
-        treatmentFollowupForPatientBean = new TreatmentFollowupForPatientBean("2015-11-10",
+        treatmentFollowupForPatientBean = new TreatmentBean("2015-11-10",
                 new DoctorBean("2013141463040", "123456", "王鹏", SexEnum.MAN,
                         new BirthdayBean(1987, 4, 19), null, AdministrativeEnum.NEIKE,
                         new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
@@ -84,7 +86,7 @@ public class TreatmentFollowupListActivityForPatient extends BaseActivity {
                 "心律不齐，脉搏紊乱，生活作息不规律");
         treatmentFollowupAdapterForPatient.add(treatmentFollowupForPatientBean);
 
-        treatmentFollowupForPatientBean = new TreatmentFollowupForPatientBean("2015-11-10",
+        treatmentFollowupForPatientBean = new TreatmentBean("2015-11-10",
                 new DoctorBean("2013141463002", "123456", "莫医生", SexEnum.MAN,
                         new BirthdayBean(1966, 1, 1), null, AdministrativeEnum.NEIKE,
                         new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
@@ -95,7 +97,7 @@ public class TreatmentFollowupListActivityForPatient extends BaseActivity {
                 "心律不齐，脉搏紊乱，生活作息不规律");
         treatmentFollowupAdapterForPatient.add(treatmentFollowupForPatientBean);
 
-        treatmentFollowupForPatientBean = new TreatmentFollowupForPatientBean("2015-11-10",
+        treatmentFollowupForPatientBean = new TreatmentBean("2015-11-10",
                 new DoctorBean("2013141463002", "123456", "莫医生", SexEnum.MAN,
                         new BirthdayBean(1966, 1, 1), null, AdministrativeEnum.NEIKE,
                         new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
@@ -106,7 +108,7 @@ public class TreatmentFollowupListActivityForPatient extends BaseActivity {
                 "心律不齐，脉搏紊乱，生活作息不规律");
         treatmentFollowupAdapterForPatient.add(treatmentFollowupForPatientBean);
 
-        treatmentFollowupForPatientBean = new TreatmentFollowupForPatientBean("2015-11-10",
+        treatmentFollowupForPatientBean = new TreatmentBean("2015-11-10",
                 new DoctorBean("2013141463040", "123456", "王鹏", SexEnum.MAN,
                         new BirthdayBean(1987, 4, 19), null, AdministrativeEnum.NEIKE,
                         new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
@@ -117,7 +119,7 @@ public class TreatmentFollowupListActivityForPatient extends BaseActivity {
                 "心律不齐，脉搏紊乱，生活作息不规律");
         treatmentFollowupAdapterForPatient.add(treatmentFollowupForPatientBean);
 
-        treatmentFollowupForPatientBean = new TreatmentFollowupForPatientBean("2015-11-10",
+        treatmentFollowupForPatientBean = new TreatmentBean("2015-11-10",
                 new DoctorBean("2013141463001", "123456", "陈钊", SexEnum.MAN,
                         new BirthdayBean(1995, 1, 1), null, AdministrativeEnum.ERKE,
                         new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
@@ -128,7 +130,7 @@ public class TreatmentFollowupListActivityForPatient extends BaseActivity {
                 "心律不齐，脉搏紊乱，生活作息不规律");
         treatmentFollowupAdapterForPatient.add(treatmentFollowupForPatientBean);
 
-        treatmentFollowupForPatientBean = new TreatmentFollowupForPatientBean("2015-11-10",
+        treatmentFollowupForPatientBean = new TreatmentBean("2015-11-10",
                 new DoctorBean("2013141463001", "123456", "陈钊", SexEnum.MAN,
                         new BirthdayBean(1995, 1, 1), null, AdministrativeEnum.ERKE,
                         new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
@@ -142,7 +144,7 @@ public class TreatmentFollowupListActivityForPatient extends BaseActivity {
 
     private void setListener() {
         // 设置下拉刷新监听器
-        lvTreatmentFollowup.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+        lvTreatmentFollowupList.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 new AsyncTask<Void, Void, Void>() {
@@ -159,9 +161,16 @@ public class TreatmentFollowupListActivityForPatient extends BaseActivity {
 
                     // 修改UI
                     protected void onPostExecute(Void result) {
-                        lvTreatmentFollowup.onRefreshComplete();
+                        lvTreatmentFollowupList.onRefreshComplete();
                     }
                 }.execute();
+            }
+        });
+
+        lvTreatmentFollowupList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TreatmentFolloeupActivity.actionStart(TreatmentListActivityForPatient.this);
             }
         });
     }

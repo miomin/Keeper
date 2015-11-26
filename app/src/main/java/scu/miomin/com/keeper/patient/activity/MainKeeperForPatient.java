@@ -543,7 +543,7 @@ public class MainKeeperForPatient extends BaseActivity {
     }
 
     public void openTreatmentFollowupActivityForPatient(View view) {
-        TreatmentFollowupListActivityForPatient.actionStart(this);
+        TreatmentListActivityForPatient.actionStart(this);
     }
 
     @Override

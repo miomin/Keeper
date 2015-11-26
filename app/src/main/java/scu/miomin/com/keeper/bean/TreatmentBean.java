@@ -5,16 +5,16 @@ package scu.miomin.com.keeper.bean;
  *
  * @author 莫绪旻
  */
-public class TreatmentFollowupForPatientBean {
+public class TreatmentBean {
 
     private PatientBean patientBean;
     private DoctorBean doctorBean;
     private String date;
     private String treatmentReason;
 
-    public TreatmentFollowupForPatientBean(String date, DoctorBean doctorBean,
-                                           PatientBean patientBean,
-                                           String treatmentReason) {
+    public TreatmentBean(String date, DoctorBean doctorBean,
+                         PatientBean patientBean,
+                         String treatmentReason) {
         this.date = date;
         this.doctorBean = doctorBean;
         this.patientBean = patientBean;
@@ -55,7 +55,7 @@ public class TreatmentFollowupForPatientBean {
 
     @Override
     public String toString() {
-        return "TreatmentFollowupForPatientBean{" +
+        return "TreatmentBean{" +
                 "date='" + date + '\'' +
                 ", patientBean=" + patientBean +
                 ", doctorBean=" + doctorBean +

@@ -37,7 +37,7 @@
     </LinearLayout>
 
     <com.handmark.pulltorefresh.library.PullToRefreshListView
-        android:id="@+id/lvTreatmentFollowup"
+        android:id="@+id/lvTreatment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="#fff4f7f9"

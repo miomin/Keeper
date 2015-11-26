@@ -9,27 +9,27 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import scu.miomin.com.keeper.R;
-import scu.miomin.com.keeper.bean.TreatmentFollowupForPatientBean;
+import scu.miomin.com.keeper.bean.TreatmentBean;
 
 /**
  * 描述:病人端诊后随访列表的适配器 创建日期:2015/11/22
  *
  * @author 莫绪旻
  */
-public class TreatmentFollowupAdapterForPatient extends BaseAdapter {
+public class TreatmentListAdapterForPatient extends BaseAdapter {
 
-    private ArrayList<TreatmentFollowupForPatientBean> listTreatmentFollowerForPatient;
+    private ArrayList<TreatmentBean> listTreatmentFollowerForPatient;
     private Context context;
 
     // 构造器
-    public TreatmentFollowupAdapterForPatient(Context context) {
+    public TreatmentListAdapterForPatient(Context context) {
         super();
-        this.listTreatmentFollowerForPatient = new ArrayList<TreatmentFollowupForPatientBean>();
+        this.listTreatmentFollowerForPatient = new ArrayList<TreatmentBean>();
         this.context = context;
         notifyDataSetChanged();
     }
 
-    public void add(TreatmentFollowupForPatientBean treatmentFollowupForPatientBean) {
+    public void add(TreatmentBean treatmentFollowupForPatientBean) {
         listTreatmentFollowerForPatient.add(treatmentFollowupForPatientBean);
         notifyDataSetChanged();
     }
@@ -57,7 +57,7 @@ public class TreatmentFollowupAdapterForPatient extends BaseAdapter {
 
         if (convertView == null) {
             // 拿到ListViewItem的布局（一行，需要单独定义一个），转换为View类型的对象
-            convertView = View.inflate(context, R.layout.item_treatment_followup_patient, null);
+            convertView = View.inflate(context, R.layout.item_treatment_list_patient, null);
             holder = new viewHolder();
             holder.tvHospital = (TextView) convertView
                     .findViewById(R.id.tvHospital);
@@ -73,7 +73,7 @@ public class TreatmentFollowupAdapterForPatient extends BaseAdapter {
         }
 
         // 更新保留的控件中的数据
-        TreatmentFollowupForPatientBean treatmentFollowupForPatientBean =
+        TreatmentBean treatmentFollowupForPatientBean =
                 listTreatmentFollowerForPatient.get(position);
 
         if (treatmentFollowupForPatientBean == null)
