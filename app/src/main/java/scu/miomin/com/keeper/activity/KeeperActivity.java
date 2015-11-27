@@ -5,9 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import scu.miomin.com.keeper.basedialog.BaseDialog;
-import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
+import scu.miomin.com.keeper.basedialog.BaseDialog;
 
 /**
  * 描述:主界面 创建日期:2015/10/21
@@ -23,7 +22,7 @@ public class KeeperActivity extends BaseActivity {
     }
 
     public void opendialog(View view) {
-        BaseDialog.actionStartActivity(1, this, "1", "2", "3", "4");
+        BaseDialog.actionStartActivity(1, -1, this, "1", "2", "3", "4");
     }
 
     @Override

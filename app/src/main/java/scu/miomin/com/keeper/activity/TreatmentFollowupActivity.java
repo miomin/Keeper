@@ -25,7 +25,7 @@ import scu.miomin.com.keeper.bean.TreatmentFollowupBean;
  *
  * @author 莫绪旻
  */
-public class TreatmentFolloeupActivity extends BaseActivity {
+public class TreatmentFollowupActivity extends BaseActivity {
 
     private PullToRefreshListView lvTreatmentFollowup;
 
@@ -51,22 +51,16 @@ public class TreatmentFolloeupActivity extends BaseActivity {
 
         TreatmentFollowupBean treatmentFollowupBean;
 
-        treatmentFollowupBean = new TreatmentFollowupBean("2015-10-11");
+        treatmentFollowupBean = new TreatmentFollowupBean("2015-11-24");
         treatmentFollowupAdapter.add(treatmentFollowupBean);
 
-        treatmentFollowupBean = new TreatmentFollowupBean("2015-10-12");
+        treatmentFollowupBean = new TreatmentFollowupBean("2015-11-24");
         treatmentFollowupAdapter.add(treatmentFollowupBean);
 
-        treatmentFollowupBean = new TreatmentFollowupBean("2015-10-15");
+        treatmentFollowupBean = new TreatmentFollowupBean("2015-11-26");
         treatmentFollowupAdapter.add(treatmentFollowupBean);
 
-        treatmentFollowupBean = new TreatmentFollowupBean("2015-10-21");
-        treatmentFollowupAdapter.add(treatmentFollowupBean);
-
-        treatmentFollowupBean = new TreatmentFollowupBean("2015-10-28");
-        treatmentFollowupAdapter.add(treatmentFollowupBean);
-
-        treatmentFollowupBean = new TreatmentFollowupBean("2015-11-07");
+        treatmentFollowupBean = new TreatmentFollowupBean("2015-11-27");
         treatmentFollowupAdapter.add(treatmentFollowupBean);
     }
 
@@ -79,6 +73,8 @@ public class TreatmentFolloeupActivity extends BaseActivity {
 
                 if (position == 1)
                     return;
+
+                FollowupActivity.actionStart(TreatmentFollowupActivity.this);
             }
         });
 
@@ -109,12 +105,16 @@ public class TreatmentFolloeupActivity extends BaseActivity {
     }
 
     public static void actionStart(Context context) {
-        Intent intent = new Intent(context, TreatmentFolloeupActivity.class);
+        Intent intent = new Intent(context, TreatmentFollowupActivity.class);
         context.startActivity(intent);
     }
 
 
     public void back(View view) {
         finish();
+    }
+
+    public void openAddTreatmentActivity(View view) {
+        AddFollowupActivity.actionStart(this);
     }
 }

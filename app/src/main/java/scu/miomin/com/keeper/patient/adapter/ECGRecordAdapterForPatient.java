@@ -1,5 +1,6 @@
 package scu.miomin.com.keeper.patient.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import scu.miomin.com.keeper.R;
+import scu.miomin.com.keeper.basedialog.BaseDialog;
 import scu.miomin.com.keeper.bean.ECGRecordBean;
 
 /**
@@ -27,6 +29,11 @@ public class ECGRecordAdapterForPatient extends BaseAdapter {
         super();
         this.listECGRecord = new ArrayList<ECGRecordBean>();
         this.context = context;
+        notifyDataSetChanged();
+    }
+
+    public void pushSucceed(int position) {
+        listECGRecord.get(position).setIsAtPhone(true);
         notifyDataSetChanged();
     }
 
@@ -60,7 +67,7 @@ public class ECGRecordAdapterForPatient extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         // 保留一个item的控件
         viewHolder holder = null;
@@ -75,6 +82,15 @@ public class ECGRecordAdapterForPatient extends BaseAdapter {
         } else {
             holder = (viewHolder) convertView.getTag();
         }
+
+        holder.ivState.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BaseDialog.actionStartActivity(1, position, (Activity) context,
+                        "提示", "是否要将本次心电监测数据上传到云端？上传后可供医生查看",
+                        "否", "是");
+            }
+        });
 
         // 更新保留的控件中的数据
         ECGRecordBean ecgRecord = listECGRecord.get(position);

@@ -106,10 +106,10 @@ public class ConversationAdapter extends BaseAdapter {
 
         switch (position) {
             case 0:
-                holder.ivHead.setImageResource(R.drawable.doctor1);
+                holder.ivHead.setImageResource(R.drawable.head);
                 break;
             case 1:
-                holder.ivHead.setImageResource(R.drawable.doctor4);
+                holder.ivHead.setImageResource(R.drawable.head1);
                 break;
             case 2:
                 holder.ivHead.setImageResource(R.drawable.doctor5);

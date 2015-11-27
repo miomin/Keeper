@@ -294,6 +294,5 @@ public class ChatActivity extends BaseActivity {
 
     public void checkUserinfo(View view) {
         DoctorCheckPatientActivity.actionStart(this);
-        DoctorCheckPatientActivity.actionStart(this);
     }
 }

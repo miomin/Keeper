@@ -24,12 +24,16 @@ import com.netease.nimlib.sdk.auth.AuthService;
 
 import java.util.ArrayList;
 
+import scu.miomin.com.keeper.Enum.SexEnum;
 import scu.miomin.com.keeper.R;
+import scu.miomin.com.keeper.activity.ChatActivity;
 import scu.miomin.com.keeper.activity.LoginActivity;
 import scu.miomin.com.keeper.adapter.ConversationAdapter;
 import scu.miomin.com.keeper.application.ActivityCollector;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
+import scu.miomin.com.keeper.bean.BirthdayBean;
 import scu.miomin.com.keeper.bean.ConversationBean;
+import scu.miomin.com.keeper.bean.PatientBean;
 import scu.miomin.com.keeper.controller.Controller;
 import scu.miomin.com.keeper.doctor.controller.DoctorController;
 import scu.miomin.com.keeper.patient.controller.PatientController;
@@ -75,6 +79,20 @@ public class MainKeeperForDoctor extends BaseActivity {
         initView3();
         // 设置第三个界面的监听器
         initListener3();
+        // 初始化好友列表
+        initFriendList();
+    }
+
+    // 初始化好友列表
+    private void initFriendList() {
+        PatientBean patientBean;
+
+        patientBean = new PatientBean("18084803926", "123456", "莫绪旻", SexEnum.MAN,
+                new BirthdayBean(1993, 8, 15), null, 171.0, 58.0);
+        Controller.addFriend(patientBean);
+
+
+        Controller.addFriend(Controller.getCurrentUser());
     }
 
     // 初始化控件
@@ -134,6 +152,14 @@ public class MainKeeperForDoctor extends BaseActivity {
     private void setListener1() {
         // 初始化好友列表的适配器
         initFriendAdapter();
+
+        lvConversation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ChatActivity.actionStart(MainKeeperForDoctor.this,
+                        "18084803926");
+            }
+        });
     }
 
     // 初始化好友列表的适配器
@@ -255,6 +281,10 @@ public class MainKeeperForDoctor extends BaseActivity {
         public void onPageScrollStateChanged(int arg0) {
 
         }
+    }
+
+    public void openTreatmentFollowupActivity(View view) {
+        TreatmentListActivityForDoctor.actionStart(this);
     }
 
     // 监听到返回键时，退出应用

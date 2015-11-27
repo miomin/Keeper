@@ -25,7 +25,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="6"
             android:gravity="center"
-            android:text="@string/treatment_followup"
+            android:text="就诊列表"
             android:textColor="@color/white"
             android:textSize="16sp" />
 

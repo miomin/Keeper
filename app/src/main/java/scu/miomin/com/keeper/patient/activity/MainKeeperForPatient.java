@@ -53,6 +53,7 @@ import scu.miomin.com.keeper.bean.HospitalBean;
 import scu.miomin.com.keeper.bean.MyLocationBean;
 import scu.miomin.com.keeper.controller.Controller;
 import scu.miomin.com.keeper.dialog.AboutUsDialog;
+import scu.miomin.com.keeper.doctor.activity.TreatmentListActivityForDoctor;
 import scu.miomin.com.keeper.doctor.controller.DoctorController;
 import scu.miomin.com.keeper.patient.adapter.RemenDoctorAdapter;
 import scu.miomin.com.keeper.patient.controller.PatientController;
@@ -150,6 +151,8 @@ public class MainKeeperForPatient extends BaseActivity {
                         new MyLocationBean(0, 0)), ProfessionalEnum.FUZHURENYISHI,
                 "擅长心脑血管病及糖尿病的治疗，有丰富的临床经验", false);
         Controller.addFriend(doctorBean);
+
+        Controller.addFriend(Controller.getCurrentUser());
     }
 
     // 初始化对话监听的观察者
@@ -166,7 +169,7 @@ public class MainKeeperForPatient extends BaseActivity {
                             String lastTime = sdf.format(new Date(time));
                             boolean isNewMsg = true;
                             String userphone = messages.get(i).getContactId();
-                            String username = messages.get(i).getFromAccount();
+                            String username = Controller.getFriendByID(userphone).getName();
 
                             ConversationBean conversation = new ConversationBean(lastMsg, lastTime,
                                     isNewMsg, userphone, username);
@@ -323,8 +326,12 @@ public class MainKeeperForPatient extends BaseActivity {
                             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/dd/MM HH:mm:ss");
                             String lastTime = sdf.format(new Date(time));
                             boolean isNewMsg = true;
+                            // 有问题要查API文档
+                            // 有问题要查API文档
+                            // 有问题要查API文档
+                            // 有问题要查API文档
                             String userphone = recents.get(i).getContactId();
-                            String username = recents.get(i).getFromAccount();
+                            String username = Controller.getFriendByID(userphone).getName();
 
                             ConversationBean conversation = new ConversationBean(lastMsg, lastTime,
                                     isNewMsg, userphone, username);
@@ -543,7 +550,7 @@ public class MainKeeperForPatient extends BaseActivity {
     }
 
     public void openTreatmentFollowupActivityForPatient(View view) {
-        TreatmentListActivityForPatient.actionStart(this);
+        TreatmentListActivityForDoctor.actionStart(this);
     }
 
     @Override

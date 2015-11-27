@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -20,10 +23,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import scu.miomin.com.keeper.Enum.UserTypeEnum;
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
 import scu.miomin.com.keeper.bean.ECGRecordBean;
 import scu.miomin.com.keeper.bean.HealthyDescribeByMyselfBean;
+import scu.miomin.com.keeper.controller.Controller;
+import scu.miomin.com.keeper.dialog.LoadDialog;
 import scu.miomin.com.keeper.ecgsave.SaveECGUtils;
 import scu.miomin.com.keeper.patient.adapter.ECGRecordAdapterForPatient;
 import scu.miomin.com.keeper.patient.controller.PatientController;
@@ -40,6 +46,9 @@ public class ECGRecordActivityForPatient extends BaseActivity {
     File[] files = null;
     private PullToRefreshListView lvecgrecord;
 
+    private static final int PUSHSUCCEED = 1;
+    private static final int PUSHFAILD = -1;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +62,26 @@ public class ECGRecordActivityForPatient extends BaseActivity {
         initView();
         // 设置监听器
         setListener();
-
     }
+
+    // 监听上传心电数据状态的handler
+    private Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            if (msg.what == PUSHSUCCEED) {
+                // 上传的项目的下标
+                int index = msg.arg1;
+
+                if (LoadDialog.instance != null) {
+                    LoadDialog.instance.finish();
+                    Toast.makeText(getApplicationContext(), "上传成功", Toast.LENGTH_SHORT).show();
+                }
+
+                if (index >= 0) {
+                    PatientController.getEcgRecordAdapterForPatient().pushSucceed(index);
+                }
+            }
+        }
+    };
 
     public static void actionStart(Context context) {
         Intent intent = new Intent(context, ECGRecordActivityForPatient.class);
@@ -109,13 +136,17 @@ public class ECGRecordActivityForPatient extends BaseActivity {
             int day = Integer.parseInt(dayStr);
             int hour = Integer.parseInt(hourStr);
             int minute = Integer.parseInt(minuteStr);
-            int second = Integer.parseInt(secondStr);
 
-            boolean isAtPhone;
-            if (i % 2 == 0)
+            boolean isAtPhone = false;
+
+            if (Controller.getCurrentUser().getUserType() == UserTypeEnum.PATIENT) {
+                if (i < 2)
+                    isAtPhone = false;
+                else
+                    isAtPhone = true;
+            } else if (Controller.getCurrentUser().getUserType() == UserTypeEnum.DOCTOR) {
                 isAtPhone = true;
-            else
-                isAtPhone = false;
+            }
 
             ecgRecord = new ECGRecordBean(year + "-" + month + "-" + day + " " + hour + ":" + minute,
                     files[i].getName(), new HealthyDescribeByMyselfBean(), isAtPhone);
@@ -182,5 +213,43 @@ public class ECGRecordActivityForPatient extends BaseActivity {
                 return super.onContextItemSelected(item);
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    int returnedChoose = data.getIntExtra("returnedChoose", -1);
+                    final int index = data.getIntExtra("index", -1);
+
+                    if (returnedChoose == 1) {
+
+                    } else if (returnedChoose == 2) {
+                        LoadDialog.actionStart(this);
+
+                        new Thread() {
+                            public void run() {
+                                try {
+                                    sleep(2000);
+                                    Message message;
+                                    message = Message.obtain();
+                                    message.what = PUSHSUCCEED;
+                                    message.arg1 = index;
+                                    handler.sendMessage(message);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }.start();
+
+                    } else {
+                        Toast.makeText(this, "返回值异常", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                break;
+            default:
+
+        }
     }
 }

@@ -56,6 +56,7 @@ public class TreatmentFollowupAdapter extends BaseAdapter {
                 convertView = View.inflate(context, R.layout.item_treatment_followup, null);
                 viewHolder = new ViewHolder();
                 viewHolder.tvDate = (TextView) convertView.findViewById(R.id.tvDate);
+                viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
@@ -64,11 +65,13 @@ public class TreatmentFollowupAdapter extends BaseAdapter {
             TreatmentFollowupBean treatmentFollowupBean = treatmentFollowupList.get(position - 1);
 
             viewHolder.tvDate.setText(treatmentFollowupBean.getDate());
+            viewHolder.tvTitle.setText("诊后第" + position + "次随访");
         }
         return convertView;
     }
 
     class ViewHolder {
         public TextView tvDate;
+        public TextView tvTitle;
     }
 }

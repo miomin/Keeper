@@ -114,9 +114,9 @@ public class MyBanner extends FrameLayout {
      */
     private void initData() {
         imagesResIds = new int[]{
-                R.drawable.bannerimage1,
-                R.drawable.bannerimage2,
-                R.drawable.bannerimage3,
+                R.drawable.banerimage1,
+                R.drawable.banerimage1,
+                R.drawable.banerimage1,
 
         };
         imageViewsList = new ArrayList<ImageView>();

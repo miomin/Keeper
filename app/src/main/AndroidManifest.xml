@@ -140,11 +140,14 @@
         <activity android:name=".activity.ChatActivity" />
         <activity android:name=".doctor.activity.DoctorCheckPatientActivity" />
         <activity android:name=".activity.SetRemindActivity" />
+
         <activity
             android:name=".dialog.AboutUsDialog"
             android:theme="@style/MyDialogStyle" />
-        <activity android:name=".patient.activity.TreatmentListActivityForPatient" />
-        <activity android:name=".activity.TreatmentFolloeupActivity" />
+        <activity android:name=".doctor.activity.TreatmentListActivityForDoctor" />
+        <activity android:name=".activity.TreatmentFollowupActivity" />
+        <activity android:name=".activity.FollowupActivity" />
+        <activity android:name=".activity.AddFollowupActivity" />
 
     </application>
 

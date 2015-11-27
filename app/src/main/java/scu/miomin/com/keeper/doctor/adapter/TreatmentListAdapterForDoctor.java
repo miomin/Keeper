@@ -1,4 +1,4 @@
-package scu.miomin.com.keeper.patient.adapter;
+package scu.miomin.com.keeper.doctor.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -16,13 +16,13 @@ import scu.miomin.com.keeper.bean.TreatmentBean;
  *
  * @author 莫绪旻
  */
-public class TreatmentListAdapterForPatient extends BaseAdapter {
+public class TreatmentListAdapterForDoctor extends BaseAdapter {
 
     private ArrayList<TreatmentBean> listTreatmentFollowerForPatient;
     private Context context;
 
     // 构造器
-    public TreatmentListAdapterForPatient(Context context) {
+    public TreatmentListAdapterForDoctor(Context context) {
         super();
         this.listTreatmentFollowerForPatient = new ArrayList<TreatmentBean>();
         this.context = context;
@@ -57,10 +57,8 @@ public class TreatmentListAdapterForPatient extends BaseAdapter {
 
         if (convertView == null) {
             // 拿到ListViewItem的布局（一行，需要单独定义一个），转换为View类型的对象
-            convertView = View.inflate(context, R.layout.item_treatment_list_patient, null);
+            convertView = View.inflate(context, R.layout.item_treatment_list_doctor, null);
             holder = new viewHolder();
-            holder.tvHospital = (TextView) convertView
-                    .findViewById(R.id.tvHospital);
             holder.tvName = (TextView) convertView
                     .findViewById(R.id.tvName);
             holder.tvTreatmentReason = (TextView) convertView
@@ -79,8 +77,7 @@ public class TreatmentListAdapterForPatient extends BaseAdapter {
         if (treatmentFollowupForPatientBean == null)
             return null;
 
-        holder.tvHospital.setText(treatmentFollowupForPatientBean.getDoctorBean().getHospitalBean().getName());
-        holder.tvName.setText(treatmentFollowupForPatientBean.getDoctorBean().getName());
+        holder.tvName.setText(treatmentFollowupForPatientBean.getPatientBean().getName());
         holder.tvTreatmentReason.setText(treatmentFollowupForPatientBean.getTreatmentReason());
         holder.tvTreatmentDate.setText(treatmentFollowupForPatientBean.getDate());
 
@@ -89,7 +86,6 @@ public class TreatmentListAdapterForPatient extends BaseAdapter {
     }
 
     class viewHolder {
-        TextView tvHospital;
         TextView tvName;
         TextView tvTreatmentReason;
         TextView tvTreatmentDate;
