@@ -124,10 +124,12 @@
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:text="就诊日期"
@@ -145,7 +147,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:paddingBottom="8dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
                     android:text="2015-11-24"
                     android:textColor="@color/qianhei"
@@ -163,10 +164,12 @@
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:text="就诊医院"
@@ -184,7 +187,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:paddingBottom="8dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
                     android:text="四川大学华西医院"
                     android:textColor="@color/qianhei"
@@ -202,10 +204,12 @@
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:text="就诊医生"
@@ -224,7 +228,6 @@
                     android:gravity="center_vertical"
                     android:lineSpacingExtra="2dp"
                     android:paddingBottom="8dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
                     android:text="王鹏"
                     android:textColor="@color/qianhei"
@@ -242,10 +245,12 @@
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:text="诊断科室"
@@ -264,7 +269,6 @@
                     android:gravity="center_vertical"
                     android:lineSpacingExtra="2dp"
                     android:paddingBottom="8dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
                     android:text="内科"
                     android:textColor="@color/qianhei"
@@ -282,10 +286,12 @@
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:text="基本病情"
@@ -304,7 +310,6 @@
                     android:gravity="center_vertical"
                     android:lineSpacingExtra="2dp"
                     android:paddingBottom="8dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="8dp"
                     android:text="经过诊断，确定病人为窦性心律不齐,表现为心悸、胸闷、不适。P波规律出现，且P波形态表明激动来自窦房结（即P波在Ⅰ、Ⅱ、aVF、V4～V6直立，在aVR倒置）。心率80次/分。"
                     android:textColor="@color/qianhei"

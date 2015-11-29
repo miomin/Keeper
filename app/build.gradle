@@ -34,4 +34,5 @@ dependencies {
     compile files('libs/AMap_Services_V2.4.0.jar')
     compile files('libs/AMap_3DMap_v2.6.0_20150914.jar')
     compile files('libs/AMap_Location_v2.0.0_20151117.jar')
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }

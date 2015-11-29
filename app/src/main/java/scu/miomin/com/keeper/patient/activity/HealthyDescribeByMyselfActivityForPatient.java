@@ -48,7 +48,7 @@ public class HealthyDescribeByMyselfActivityForPatient extends BaseActivity {
     }
 
     public void back(View view) {
-        finish();
+        super.onBackPressed();
     }
 
     public void openECGActivity(View view) {

@@ -1,7 +1,5 @@
 package scu.miomin.com.keeper.patient.activity;
 
-import java.util.Set;
-
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -20,6 +18,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.Set;
 
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
@@ -202,7 +202,7 @@ public class DeviceListActivity extends BaseActivity {
     };
 
     public void close(View view) {
-        finish();
+        super.onBackPressed();
     }
 
 }

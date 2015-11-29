@@ -13,10 +13,11 @@
 
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="25dp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1" />
+            android:layout_weight="1.2"
+            android:onClick="back"
+            android:src="@drawable/icon_back_white" />
 
         <TextView
             android:layout_width="0dp"
@@ -32,8 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1" />
+            android:layout_weight="1.2" />
     </LinearLayout>
 
     <RelativeLayout

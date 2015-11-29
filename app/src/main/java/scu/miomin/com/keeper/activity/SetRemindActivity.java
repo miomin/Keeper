@@ -108,7 +108,7 @@ public class SetRemindActivity extends Activity {
     }
 
     public void back(View v) {
-        finish();
+        super.onBackPressed();
     }
 
     @Override

@@ -23,7 +23,7 @@ public class DoctorCheckPatientActivity extends BaseActivity {
     }
 
     public void back(View view) {
-        finish();
+        super.onBackPressed();
     }
 
     public static void actionStart(Context context) {

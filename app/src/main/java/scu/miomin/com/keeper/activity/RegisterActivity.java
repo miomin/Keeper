@@ -179,7 +179,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_back:
-                finish();
+                super.onBackPressed();
                 break;
 
             case R.id.id_cancel:

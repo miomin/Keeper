@@ -4,8 +4,8 @@
     android:background="@drawable/btn_write_to_grey"
     android:descendantFocusability="blocksDescendants"
     android:paddingBottom="15dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
     android:paddingTop="15dp">
 
 
@@ -14,7 +14,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="8dp"
         android:gravity="center"
         android:text="诊后第1次随访"
         android:textColor="@color/black"

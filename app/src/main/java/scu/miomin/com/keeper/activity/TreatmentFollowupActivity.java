@@ -111,7 +111,7 @@ public class TreatmentFollowupActivity extends BaseActivity {
 
 
     public void back(View view) {
-        finish();
+        super.onBackPressed();
     }
 
     public void openAddTreatmentActivity(View view) {

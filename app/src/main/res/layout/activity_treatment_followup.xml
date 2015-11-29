@@ -14,6 +14,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:onClick="back"
             android:id="@+id/btn_back"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -38,7 +39,7 @@
             android:clickable="true"
             android:gravity="center"
             android:onClick="openAddTreatmentActivity"
-            android:text="随访"
+            android:text="添加"
             android:textColor="#ffffff" />
     </LinearLayout>
 

@@ -69,6 +69,9 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/debug" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dependency-cache" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dex" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/pre-dexed" />
@@ -84,13 +87,16 @@
     <orderEntry type="library" exported="" name="nim-sdk-1.6.0" level="project" />
     <orderEntry type="library" exported="" name="my_btlib" level="project" />
     <orderEntry type="library" exported="" name="cosinesdk" level="project" />
-    <orderEntry type="library" exported="" name="AMap_3DMap_v2.6.0_20150914" level="project" />
-    <orderEntry type="library" exported="" name="netty-4.0.23-for-yx.final" level="project" />
+    <orderEntry type="library" exported="" name="play-services-appindexing-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-22.2.0" level="project" />
+    <orderEntry type="library" exported="" name="AMap_Location_v2.0.0_20151117" level="project" />
+    <orderEntry type="library" exported="" name="AMap_3DMap_v2.6.0_20150914" level="project" />
+    <orderEntry type="library" exported="" name="play-services-basement-8.1.0" level="project" />
+    <orderEntry type="library" exported="" name="netty-4.0.23-for-yx.final" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.9.4" level="project" />
     <orderEntry type="library" exported="" name="AMap_Services_V2.4.0" level="project" />
     <orderEntry type="library" exported="" name="Android_Location_V1.3.2" level="project" />
-    <orderEntry type="library" exported="" name="AMap_Location_v2.0.0_20151117" level="project" />
     <orderEntry type="module" module-name="library" exported="" />
     <orderEntry type="module" module-name="PullToRefreshListFragment" exported="" />
     <orderEntry type="module" module-name="MPChartLib" exported="" />

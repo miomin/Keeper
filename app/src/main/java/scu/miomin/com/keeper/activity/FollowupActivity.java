@@ -29,6 +29,10 @@ public class FollowupActivity extends BaseActivity {
     }
 
     public void back(View view) {
-        finish();
+        super.onBackPressed();
+    }
+
+    public void checkFollowupLineChart(View view) {
+        LineChartActivity.actionStart(this);
     }
 }

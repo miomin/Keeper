@@ -176,6 +176,7 @@ public class TreatmentListActivityForDoctor extends BaseActivity {
     }
 
     public void back(View view) {
-        finish();
+        super.onBackPressed();
     }
+
 }

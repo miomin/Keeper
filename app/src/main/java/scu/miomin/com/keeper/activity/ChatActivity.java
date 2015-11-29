@@ -289,7 +289,7 @@ public class ChatActivity extends BaseActivity {
     }
 
     public void back(View view) {
-
+        super.onBackPressed();
     }
 
     public void checkUserinfo(View view) {

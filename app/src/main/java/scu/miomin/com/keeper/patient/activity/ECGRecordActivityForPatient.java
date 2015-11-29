@@ -252,4 +252,8 @@ public class ECGRecordActivityForPatient extends BaseActivity {
 
         }
     }
+
+    public void back(View view) {
+        super.onBackPressed();
+    }
 }

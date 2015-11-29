@@ -587,6 +587,6 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
     }
 
     public void back(View view) {
-        finish();
+        super.onBackPressed();
     }
 }

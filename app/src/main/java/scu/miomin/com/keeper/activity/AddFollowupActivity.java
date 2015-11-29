@@ -29,6 +29,6 @@ public class AddFollowupActivity extends BaseActivity {
     }
 
     public void back(View view) {
-        finish();
+        super.onBackPressed();
     }
 }

@@ -1,5 +1,12 @@
 package scu.miomin.com.keeper.patient.activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,12 +14,6 @@ import java.io.InputStreamReader;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Window;
 
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
@@ -110,6 +111,10 @@ public class ECGHistoryActivityForPatient extends BaseActivity {
         // TODO Auto-generated method stub
         super.onDestroy();
         isStop = false;
+    }
+
+    public void back(View view) {
+        super.onBackPressed();
     }
 
 }
