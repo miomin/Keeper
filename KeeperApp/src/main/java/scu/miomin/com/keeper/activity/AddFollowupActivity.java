@@ -34,7 +34,7 @@ public class AddFollowupActivity extends BaseActivity {
     }
 
     public void add(View view) {
-        ToastUtils.showToast(this, "添加成功");
+        ToastUtils.showToast(this, getResources().getString(R.string.addSucceed));
         super.onBackPressed();
     }
 }

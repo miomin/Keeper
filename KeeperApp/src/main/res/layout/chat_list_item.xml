@@ -55,6 +55,7 @@
     <RelativeLayout
         android:id="@+id/layout_my"
         android:layout_width="fill_parent"
+
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="5dp"

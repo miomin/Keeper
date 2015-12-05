@@ -71,7 +71,7 @@ public class ECGRecordActivityForPatient extends BaseActivity {
 
                 if (LoadDialog.instance != null) {
                     LoadDialog.instance.finish();
-                    Toast.makeText(getApplicationContext(), "上传成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.pullsucceed), Toast.LENGTH_SHORT).show();
                 }
 
                 if (index >= 0) {

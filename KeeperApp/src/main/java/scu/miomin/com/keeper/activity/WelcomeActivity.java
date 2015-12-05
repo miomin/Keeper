@@ -1,5 +1,6 @@
 package scu.miomin.com.keeper.activity;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import scu.miomin.com.keeper.resource.MyString;
 public class WelcomeActivity extends BaseActivity {
 
     private int welcome;
+    public static Activity instance;
     private static final int TIME = 2000;
     private static final int GO_HOME = 1000;
     private static final int GO_GUIDE = 1001;
@@ -39,6 +41,7 @@ public class WelcomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         init();
+        instance = this;
     }
 
     private void init() {

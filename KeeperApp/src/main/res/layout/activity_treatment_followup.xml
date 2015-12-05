@@ -1,10 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical"
-    tools:context="yjk.huaqibei.LoginActivity">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -14,12 +12,12 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:onClick="back"
             android:id="@+id/btn_back"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_weight="1.2"
+            android:onClick="back"
             android:src="@drawable/icon_back_white" />
 
         <TextView
@@ -27,7 +25,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="6"
             android:gravity="center"
-            android:text="诊后随访"
+            android:text="@string/treatment_followup"
             android:textColor="#ffffff"
             android:textSize="16sp" />
 
@@ -39,7 +37,7 @@
             android:clickable="true"
             android:gravity="center"
             android:onClick="openAddTreatmentActivity"
-            android:text="添加"
+            android:text="@string/add"
             android:textColor="#ffffff" />
     </LinearLayout>
 

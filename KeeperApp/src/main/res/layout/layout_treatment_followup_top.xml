@@ -43,7 +43,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="患者姓名：莫绪旻"
+                    android:text="@string/patientName"
+                    android:textColor="@color/qianhei"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="莫绪旻"
                     android:textColor="@color/qianhei"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -65,7 +73,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="患者性别：男"
+                    android:text="@string/patientSex"
+                    android:textColor="@color/qianhei"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="男"
                     android:textColor="@color/qianhei"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -87,7 +103,44 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="年龄：22    身高：171cm    体重：58kg"
+                    android:text="@string/patientAge"
+                    android:textColor="@color/qianhei"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22"
+                    android:textColor="@color/qianhei"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/patientHeight"
+                    android:textColor="@color/qianhei"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="171cm"
+                    android:textColor="@color/qianhei"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/patientWeight"
+                    android:textColor="@color/qianhei"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="58kg"
                     android:textColor="@color/qianhei"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -114,7 +167,7 @@
                 android:gravity="right"
                 android:paddingBottom="5dp"
                 android:paddingTop="20dp"
-                android:text="@string/treatmentinfo"
+                android:text="@string/treatmentDescribe"
                 android:textColor="#666666"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -132,7 +185,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:text="就诊日期"
+                android:text="@string/treatmentDate"
                 android:textColor="@color/qianhei"
                 android:textSize="12sp" />
 
@@ -172,7 +225,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:text="就诊医院"
+                android:text="@string/treatmentHospital"
                 android:textColor="@color/qianhei"
                 android:textSize="12sp" />
 
@@ -212,7 +265,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:text="就诊医生"
+                android:text="@string/treatmentDoctor"
                 android:textColor="@color/qianhei"
                 android:textSize="12sp" />
 
@@ -253,7 +306,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:text="诊断科室"
+                android:text="@string/treatmentAdministraive"
                 android:textColor="@color/qianhei"
                 android:textSize="12sp" />
 
@@ -294,7 +347,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:text="基本病情"
+                android:text="@string/illnessState"
                 android:textColor="@color/qianhei"
                 android:textSize="12sp" />
 
@@ -334,7 +387,7 @@
                 android:gravity="right"
                 android:paddingBottom="5dp"
                 android:paddingTop="20dp"
-                android:text="诊后随访"
+                android:text="@string/treatment_followup"
                 android:textColor="#666666"
                 android:textSize="13sp" />
         </LinearLayout>

@@ -27,7 +27,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="6"
             android:gravity="center"
-            android:text="随访详情"
+            android:text="@string/activity_followup"
             android:textColor="#ffffff"
             android:textSize="16sp" />
 
@@ -38,7 +38,7 @@
             android:background="@drawable/bg_trans_to_grey"
             android:clickable="true"
             android:gravity="center"
-            android:text="修改"
+            android:text="@string/modify"
             android:textColor="#ffffff" />
     </LinearLayout>
 
@@ -88,7 +88,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:gravity="center"
-            android:text="乳酸脱氢酶(iu/L)"
+            android:text="@string/rusuantuoqingmei"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -136,7 +136,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:gravity="center"
-            android:text="谷草转氨酶(iu/L)"
+            android:text="@string/gucaozhuananmei"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -184,7 +184,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:gravity="center"
-            android:text="谷丙转氨酶(iu/L)"
+            android:text="@string/gubingzhuananmei"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -232,7 +232,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:gravity="center"
-            android:text="磷酸肌酸激酶同工酶(iu/L)"
+            android:text="@string/lingsuanjisuanjimeitonggongmei"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -280,7 +280,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:gravity="center"
-            android:text="外周血白细胞总数"
+            android:text="@string/waizhouxuebaixibaozongshu"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -328,7 +328,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="8dp"
             android:gravity="center"
-            android:text="中性粒细胞比率"
+            android:text="@string/zhongxinglixibaobilv"
             android:textColor="@color/black"
             android:textSize="12sp" />
 

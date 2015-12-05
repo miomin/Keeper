@@ -260,7 +260,7 @@
                 android:background="@drawable/btn_login_bg"
                 android:gravity="center"
                 android:onClick="openECGActivity"
-                android:text="@string/tijiao"
+                android:text="@string/commit"
                 android:textColor="#ffffff" />
         </LinearLayout>
     </scu.miomin.com.keeper.myview.ReboundScrollView>

@@ -18,11 +18,11 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:onClick="back"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:layout_weight="1.2"
+                android:onClick="back"
                 android:src="@drawable/icon_back_white" />
 
             <TextView
@@ -37,14 +37,14 @@
                 android:textSize="16sp" />
 
             <Button
-                android:onClick="checkUserinfo"
                 android:id="@+id/btn_friendMsg"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
                 android:layout_weight="1.2"
                 android:background="@drawable/bg_trans_to_grey"
-                android:text="资料"
+                android:onClick="checkUserinfo"
+                android:text="@string/info"
                 android:textColor="@color/white"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -141,7 +141,7 @@
                     android:enabled="false"
                     android:gravity="center"
                     android:onClick="recordVoice"
-                    android:text="按住说话"
+                    android:text="@string/pressSay"
                     android:visibility="invisible" />
             </RelativeLayout>
 
@@ -159,7 +159,7 @@
                     android:enabled="false"
                     android:gravity="center"
                     android:onClick="sendText"
-                    android:text="SEND"
+                    android:text="@string/send"
                     android:textColor="#999999"
                     android:textSize="8sp"
                     android:textStyle="bold"
@@ -205,7 +205,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:clickable="false"
-                    android:text="图片"
+                    android:text="@string/image"
                     android:textColor="#666666" />
             </LinearLayout>
 
@@ -229,7 +229,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:clickable="false"
-                    android:text="拍照"
+                    android:text="@string/camera"
                     android:textColor="#666666" />
             </LinearLayout>
 
@@ -253,7 +253,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:clickable="false"
-                    android:text="位置"
+                    android:text="@string/location"
                     android:textColor="#666666" />
             </LinearLayout>
 
@@ -278,7 +278,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:clickable="false"
-                    android:text="健康档案"
+                    android:text="@string/healthyRecord"
                     android:textColor="#666666" />
             </LinearLayout>
         </LinearLayout>

@@ -35,7 +35,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="系统设置"
+                android:text="@string/tab_three"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -82,7 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:text="接收新消息通知"
+                    android:text="@string/receiveNewMsg"
                     android:textColor="#000000"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -119,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:text="如果关闭，当你收到新消息时，将不会显示通知提示。"
+                android:text="@string/receiveNewMsgDescribe"
                 android:textColor="#999999"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -144,7 +144,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:text="震动"
+                    android:text="@string/vibratorRemind"
                     android:textColor="#000000"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -187,7 +187,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:text="声音"
+                    android:text="@string/voiceRemind"
                     android:textColor="#000000"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -223,7 +223,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:text="当Keeper正在运行时，你可以设置是否需要消息提示音或震动"
+                android:text="@string/voiceRemindDescribe"
                 android:textColor="#999999"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -238,10 +238,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:text="清Keeper的缓存空间"
+                android:text="@string/clearCache"
                 android:textColor="@color/red"
                 android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

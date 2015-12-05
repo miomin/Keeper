@@ -8,7 +8,6 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -237,6 +236,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     public void getCode() {
         //get_Code_btn.setEnabled(false);
-        Toast.makeText(getApplicationContext(), "服务器连接异常", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), getResources().getString(R.string.serverconnecterror), Toast.LENGTH_LONG).show();
     }
 }

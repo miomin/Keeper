@@ -55,7 +55,7 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:text="@string/gerenxinxi"
+                    android:text="@string/patientinfo"
                     android:textColor="#666666"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -74,7 +74,7 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:text="@string/xingming"
+                    android:text="@string/name"
                     android:textColor="#666666"
                     android:textSize="14sp" />
 
@@ -262,7 +262,7 @@
                 android:background="@drawable/btn_login_bg"
                 android:gravity="center"
                 android:onClick="openECGRecordActivity"
-                android:text="@string/checkjiankangdangan"
+                android:text="@string/checkHealthyRecord"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
         </RelativeLayout>
@@ -300,7 +300,7 @@
             android:layout_gravity="center"
             android:layout_weight="1.2"
             android:background="@drawable/bg_trans_to_grey"
-            android:text="删除"
+            android:text="@string/delete"
             android:textColor="#ffffff"
             android:textSize="13sp" />
     </LinearLayout>

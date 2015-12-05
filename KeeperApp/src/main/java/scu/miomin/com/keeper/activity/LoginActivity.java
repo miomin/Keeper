@@ -254,7 +254,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         // 保存登录信息到SharedPerences
                         saveLoginInfo(loginInfo);
 
-                        Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.loginsucceed), Toast.LENGTH_LONG).show();
 
                         if (LoadDialog.instance != null)
                             LoadDialog.instance.finish();
@@ -262,7 +262,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
                     @Override
                     public void onFailed(int i) {
-                        Toast.makeText(getApplicationContext(), "登录失败" + " - " + i, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.loginfaild), Toast.LENGTH_LONG).show();
 
                         if (LoadDialog.instance != null)
                             LoadDialog.instance.finish();
@@ -270,7 +270,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
                     @Override
                     public void onException(Throwable throwable) {
-                        Toast.makeText(getApplicationContext(), "登录异常", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.loginfaild), Toast.LENGTH_LONG).show();
 
                         if (LoadDialog.instance != null)
                             LoadDialog.instance.finish();

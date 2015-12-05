@@ -134,7 +134,7 @@ public class DeviceListActivity extends BaseActivity {
             Log.d(TAG, "doDiscovery()");
 
         setProgressBarIndeterminateVisibility(true);
-        setTitle(R.string.scanning);
+        setTitle(R.string.connect);
 
         findViewById(R.id.title_new_devices).setVisibility(View.VISIBLE);
 

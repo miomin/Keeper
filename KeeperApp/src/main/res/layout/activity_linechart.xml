@@ -69,16 +69,31 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="10dp"
-                        android:text="数据走势图" />
+                        android:text="@string/dataTrendChart" />
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="8dp"
-                        android:text="平均值：218.57"
-                        android:textColor="#ff7f39"
-                        android:textSize="20sp" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="平均值："
+                            android:textColor="#ff7f39"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="218.57"
+                            android:textColor="#ff7f39"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+
 
                     <ImageView
                         android:layout_width="fill_parent"
@@ -127,7 +142,7 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:paddingLeft="15dp"
-                            android:text="检查项目"
+                            android:text="@string/inspectionItem"
                             android:textColor="#777777"
                             android:textSize="14sp" />
 
@@ -161,7 +176,7 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:paddingLeft="15dp"
-                            android:text="单位"
+                            android:text="@string/units"
                             android:textColor="#777777"
                             android:textSize="14sp" />
 
@@ -195,7 +210,7 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:paddingLeft="15dp"
-                            android:text="正常范围"
+                            android:text="@string/normalRange"
                             android:textColor="#777777"
                             android:textSize="14sp" />
 
@@ -229,7 +244,7 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:paddingLeft="15dp"
-                            android:text="历史最高"
+                            android:text="@string/maxhistory"
                             android:textColor="#777777"
                             android:textSize="14sp" />
 
@@ -263,7 +278,7 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:paddingLeft="15dp"
-                            android:text="历史最低"
+                            android:text="@string/minhistory"
                             android:textColor="#777777"
                             android:textSize="14sp" />
 
@@ -297,7 +312,7 @@
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:paddingLeft="15dp"
-                            android:text="最近一次"
+                            android:text="@string/lastdata"
                             android:textColor="#777777"
                             android:textSize="14sp" />
 

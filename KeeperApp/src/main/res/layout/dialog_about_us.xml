@@ -23,7 +23,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="6"
             android:gravity="center"
-            android:text="关于我们"
+            android:text="@string/aboutus"
             android:textColor="#000000"
             android:textSize="16sp" />
 
@@ -79,7 +79,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="1dp"
-                        android:text="Keeper"
+                        android:text="@string/app_name"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -89,7 +89,7 @@
                         android:layout_marginTop="3dp"
                         android:background="@drawable/btn_blue"
                         android:gravity="center"
-                        android:text="更新"
+                        android:text="@string/update"
                         android:textColor="#ffffff"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -114,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="关于Keeper"
+                    android:text="@string/aboutApp"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -123,10 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="10dp"
-                    android:text="心脏健康的社会关注度已经越来越高，人们身体素质在下降，对于没有医学基础的人来说，认知水平和表达水平上都具有局限性。心脏病具有一过性和突发性的特点，因此，症状消失后的心电图无法作为医生诊断依据，而现有的家庭式实时心电仪，功能单一，仅具备测量功能，无法满足患者就医的需要。
-针对这类现象，一款能够实时采集心电特征，数据智能分析，一键挂号复诊的心电系统Keeper应运而生，它因其便携性，易操作性，智能性，平台性的特点， 能够处理病情突发情况的特点，将为广大心脏病患者提供心健康服务，构筑心脏安全后盾！
-Keeper系统主要由硬件端心电采集器、手机端APP及网站构成，为用户贴心提供心电检测、健康分析，一键预约，危情速递，询医复诊、病友社区、电子病例库等服务，更好的保护患者的心脏，守卫人们健康！
-"
+                    android:text="@string/AppDescribe"
                     android:textColor="#666666"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -150,7 +147,7 @@ Keeper系统主要由硬件端心电采集器、手机端APP及网站构成，�
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="版本更新"
+                    android:text="@string/versionInfo"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -159,7 +156,7 @@ Keeper系统主要由硬件端心电采集器、手机端APP及网站构成，�
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="10dp"
-                    android:text="当前版本：1.3.0，适配Android5.0,更多细节优化等你发现！"
+                    android:text="@string/versionDescribe"
                     android:textColor="#666666"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -183,7 +180,7 @@ Keeper系统主要由硬件端心电采集器、手机端APP及网站构成，�
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="开发者"
+                    android:text="@string/contractUs"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -192,7 +189,7 @@ Keeper系统主要由硬件端心电采集器、手机端APP及网站构成，�
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="10dp"
-                    android:text="开发团队：四川大学软件学院Hammer\n最近更新：2015年11月16日\n联系我们：www.miomin.com/keeper"
+                    android:text="@string/contractUsDescribe"
                     android:textColor="#666666"
                     android:textSize="11sp" />
             </LinearLayout>

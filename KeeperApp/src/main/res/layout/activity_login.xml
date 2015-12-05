@@ -24,7 +24,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="6"
             android:gravity="center"
-            android:text="登录"
+            android:text="@string/login"
             android:textColor="#ffffff"
             android:textSize="16sp" />
 
@@ -36,7 +36,7 @@
             android:background="@drawable/bg_trans_to_grey"
             android:clickable="true"
             android:gravity="center"
-            android:text="注册"
+            android:text="@string/register"
             android:textColor="#ffffff" />
 
     </LinearLayout>
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="密码错误"
+            android:text="@string/passworderror"
             android:textColor="#f7461c"
             android:textSize="16sp" />
     </LinearLayout>
@@ -81,7 +81,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="账号"
+            android:text="@string/account"
             android:textSize="15sp" />
 
         <EditText
@@ -92,7 +92,7 @@
             android:layout_weight="8"
             android:background="#ffffff"
             android:gravity="center_vertical"
-            android:hint="手机号"
+            android:hint="@string/inputphonenumber"
             android:inputType="phone"
             android:singleLine="true"
             android:textSize="15sp" />
@@ -129,7 +129,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="密码"
+            android:text="@string/password"
             android:textSize="15sp" />
 
         <EditText
@@ -140,7 +140,7 @@
             android:layout_weight="5"
             android:background="#ffffff"
             android:gravity="center_vertical"
-            android:hint="请输入密码"
+            android:hint="@string/inputpassword"
             android:inputType="textPassword"
             android:singleLine="true"
             android:textSize="15sp" />
@@ -187,7 +187,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/btn_login_bg"
         android:gravity="center"
-        android:text="登录"
+        android:text="@string/login"
         android:textColor="#ffffff" />
 
     <TextView
@@ -197,7 +197,7 @@
         android:layout_gravity="right"
         android:layout_marginRight="15dp"
         android:layout_marginTop="15dp"
-        android:text="忘记密码？"
+        android:text="@string/forgetpassword"
         android:textColor="#4883d0"
         android:textSize="15sp" />
 </LinearLayout>

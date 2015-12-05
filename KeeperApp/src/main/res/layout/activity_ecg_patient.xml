@@ -34,7 +34,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="6"
                 android:gravity="center"
-                android:text="心电监测"
+                android:text="@string/ecgmonitor"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -88,7 +88,7 @@
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_login_bg"
-                android:text="开始记录"
+                android:text="@string/startRecord"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
@@ -99,7 +99,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_login_bg"
-                android:text="查找记录"
+                android:text="@string/chazhaojilu"
                 android:textColor="@color/white" />
 
             <Button
@@ -109,7 +109,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_login_bg"
-                android:text="连接设备"
+                android:text="@string/connect"
                 android:textColor="@color/white" />
 
         </LinearLayout>

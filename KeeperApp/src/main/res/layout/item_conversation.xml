@@ -9,6 +9,7 @@
     android:paddingRight="10dp"
     android:paddingTop="5dp">
 
+
     <scu.miomin.com.keeper.myview.XCRoundImageView
         android:id="@+id/ivHead"
         android:layout_width="45dp"

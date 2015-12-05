@@ -110,7 +110,7 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
                         // 连接中
                         case BluetoothService.STATE_CONNECTING:
                             btn_connect.setEnabled(false);
-                            btn_connect.setText("连接中...");
+                            btn_connect.setText(getResources().getString(R.string.title_connecting));
                             break;
                         // 未连接
                         case BluetoothService.STATE_LISTEN:
@@ -144,10 +144,6 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
                 case BluetoothService.MESSAGE_DEVICE_NAME:
                     mConnectedDeviceName = msg.getData().getString(
                             BluetoothService.DEVICE_NAME);
-
-                    ToastUtils.showToast(ECGActivity.this, "连接到"
-                            + mConnectedDeviceName);
-
                     break;
                 case BluetoothService.MESSAGE_TOAST:
 
@@ -329,7 +325,7 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
 
                 if (isRecord) {
 
-                    btn_record.setText("开始记录");
+                    btn_record.setText(getResources().getString(R.string.startRecord));
                     isRecord = false;
                     if (mc != null) {
                         mc.cancel();
@@ -342,13 +338,13 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
                     if (mBTService.getState() == BluetoothService.STATE_NONE
                             || mBTService.getState() == BluetoothService.STATE_LISTEN) {
 
-                        ToastUtils.showToast(this, "尚未连接设备");
+                        ToastUtils.showToast(this, getResources().getString(R.string.not_connected));
 
                     } else {
 
                         SaveECGUtils.setLogFileName(this);
 
-                        btn_record.setText("停止记录");
+                        btn_record.setText(getResources().getString(R.string.stopRecord));
 
                         if (mc == null) {
                             // 设置countDownInterval为100解决onTick不准确的问题
@@ -418,7 +414,6 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
                     dataCount1[i] = KeeperApplication.getInstance().getValue();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    System.out.println("运行异常");
                     return;
                 }
             }
@@ -564,7 +559,7 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
         public void onFinish() {
             // tv.setText("finish");
             isRun = false;
-            btn_record.setText("开始记录");
+            btn_record.setText(getResources().getString(R.string.startRecord));
             mc = null;
             isRecord = false;
 
@@ -577,7 +572,7 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
             if (millisInFuture / 1000 != millisUntilFinished / 1000) {
 
                 btn_record
-                        .setText("停止记录(" + (millisUntilFinished / 1000) + ")");
+                        .setText(getResources().getString(R.string.stopRecord) + "(" + (millisUntilFinished / 1000) + ")");
             }
 
         }

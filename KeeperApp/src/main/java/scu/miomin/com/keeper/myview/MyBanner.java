@@ -105,7 +105,6 @@ public class MyBanner extends FrameLayout {
      * 停止轮播图切换
      */
     public void stopPlay() {
-        Log.i("yjk", "结束轮播");
         handler.sendEmptyMessage(MSG_STOP);
     }
 

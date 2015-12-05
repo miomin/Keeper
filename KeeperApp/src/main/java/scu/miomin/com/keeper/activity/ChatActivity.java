@@ -8,7 +8,6 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -17,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.msg.MessageBuilder;
@@ -37,6 +35,7 @@ import scu.miomin.com.keeper.bean.ChatMessageBean;
 import scu.miomin.com.keeper.bean.Userbean;
 import scu.miomin.com.keeper.controller.Controller;
 import scu.miomin.com.keeper.doctor.activity.DoctorCheckPatientActivity;
+import scu.miomin.com.keeper.util.ToastUtils;
 
 public class ChatActivity extends BaseActivity {
 
@@ -77,7 +76,7 @@ public class ChatActivity extends BaseActivity {
         friendphone = getIntent().getStringExtra("phonenumber");
         ChatFriend = Controller.getFriendByID(friendphone);
         if (friendphone == null || ChatFriend == null) {
-            Toast.makeText(this, "信息加载失败", Toast.LENGTH_SHORT).show();
+            ToastUtils.showToast(this, getResources().getString(R.string.infoLoadFaild));
             finish();
             return;
         }

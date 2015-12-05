@@ -17,6 +17,7 @@
         android:layout_marginRight="5dp"
         android:src="@drawable/doc_service_volunteer" />
 
+
     <ImageView
         android:id="@+id/tvRemenyisheng"
         android:layout_width="25dp"

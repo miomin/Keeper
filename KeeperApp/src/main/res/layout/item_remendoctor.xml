@@ -25,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:background="@color/qianhong"
         android:padding="2dp"
-        android:text="热门医生"
+        android:text="@string/remendoctor"
         android:textColor="@color/white"
         android:textSize="8sp" />
 

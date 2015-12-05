@@ -57,7 +57,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="bottom"
-                    android:text="@string/xindianjiance"
+                    android:text="@string/ecgmonitor"
                     android:textColor="@color/black"
                     android:textSize="12sp" />
 
@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="top"
-                    android:text="连接设备后检测心电图"
+                    android:text="@string/ecgmonitorDescribe"
                     android:textColor="@color/grey"
                     android:textSize="10sp" />
 
@@ -106,7 +106,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="bottom"
-                    android:text="@string/jiankangdangan"
+                    android:text="@string/healthyRecord"
                     android:textColor="@color/black"
                     android:textSize="12sp" />
 
@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:gravity="top"
-                    android:text="记录历史心电测试记录"
+                    android:text="@string/healthyRecordDescribe"
                     android:textColor="@color/grey"
                     android:textSize="10sp" />
 
@@ -169,7 +169,7 @@
                     android:layout_height="0dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:text="出院后跟踪治疗"
+                    android:text="@string/treatment_followup_describe"
                     android:textColor="@color/grey"
                     android:textSize="10sp" />
             </LinearLayout>
@@ -208,7 +208,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="bottom"
-                    android:text="@string/yijianjijiu"
+                    android:text="@string/firstAid"
                     android:textColor="@color/black"
                     android:textSize="12sp" />
 
@@ -217,7 +217,7 @@
                     android:layout_height="0dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-                    android:text="紧急情况一键急救"
+                    android:text="@string/firstAidDescribe"
                     android:textColor="@color/grey"
                     android:textSize="10sp" />
             </LinearLayout>

@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        applicationId "scu.miomin.com.keeper"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile project(':MPChartLib')
+    compile project(':PullToRefreshLib')
+    compile project(':PullToRefreshListFragment')
+    compile project(':PullToRefreshViewPager')
+    compile project(':ToggleButtonLib')
+    compile files('libs/cosinesdk.jar')
+    compile files('libs/my_btlib.jar')
+    compile files('libs/netty-4.0.23-for-yx.final.jar')
+    compile files('libs/nim-sdk-1.6.0.jar')
+    compile files('libs/universal-image-loader-1.9.4.jar')
+    compile files('libs/Android_Location_V1.3.2.jar')
+    compile files('libs/AMap_Services_V2.4.0.jar')
+    compile files('libs/AMap_3DMap_v2.6.0_20150914.jar')
+    compile files('libs/AMap_Location_v2.0.0_20151117.jar')
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile project(':SwipeBackActivityLib')
+}
