@@ -247,7 +247,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                             DoctorBean doctorBean = new DoctorBean(loginInfo.getAccount(), loginInfo.getToken(),
                                     "王鹏", SexEnum.MAN, new BirthdayBean(1987, 1, 1), null, AdministrativeEnum.NEIKE,
                                     new HospitalBean("四川大学华西医院", "四川省", "成都市", "锦江区", new MyLocationBean(0, 0)),
-                                    ProfessionalEnum.FUZHURENYISHI, "擅长心脑血管病及糖尿病的治疗，有丰富的临床经验", false);
+                                    ProfessionalEnum.FUZHURENYISHI, "擅长心脑血管病及糖尿病的治疗，有丰富的临床经验");
                             Controller.setCurrentUser(doctorBean);
                         }
 

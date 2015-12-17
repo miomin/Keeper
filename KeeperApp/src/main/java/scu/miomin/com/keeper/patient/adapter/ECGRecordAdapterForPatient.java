@@ -33,7 +33,7 @@ public class ECGRecordAdapterForPatient extends BaseAdapter {
     }
 
     public void pushSucceed(int position) {
-        listECGRecord.get(position).setIsAtPhone(true);
+        listECGRecord.get(position).setisLocality(true);
         notifyDataSetChanged();
     }
 
@@ -98,7 +98,7 @@ public class ECGRecordAdapterForPatient extends BaseAdapter {
 
         holder.tvDate.setText(ecgRecord.getDate());
 
-        if (ecgRecord.isAtPhone())
+        if (ecgRecord.isLocality())
             holder.ivState.setImageResource(R.drawable.socialize_pocket);
         else
             holder.ivState.setImageResource(R.drawable.socialize_pocket_gray);

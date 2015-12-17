@@ -50,10 +50,10 @@ public class TreatmentFollowupAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
 
         if (position == 0) {
-            convertView = View.inflate(context, R.layout.layout_treatment_followup_top, null);
+            convertView = View.inflate(context, R.layout.layout_treatment_info_top, null);
         } else {
             if (convertView == null) {
-                convertView = View.inflate(context, R.layout.item_treatment_followup, null);
+                convertView = View.inflate(context, R.layout.item_treatment_info, null);
                 viewHolder = new ViewHolder();
                 viewHolder.tvDate = (TextView) convertView.findViewById(R.id.tvDate);
                 viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);

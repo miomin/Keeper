@@ -15,7 +15,7 @@ import scu.miomin.com.keeper.Enum.AdministrativeEnum;
 import scu.miomin.com.keeper.Enum.ProfessionalEnum;
 import scu.miomin.com.keeper.Enum.SexEnum;
 import scu.miomin.com.keeper.R;
-import scu.miomin.com.keeper.activity.TreatmentFollowupActivity;
+import scu.miomin.com.keeper.activity.TreatmentInfoActivity;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
 import scu.miomin.com.keeper.bean.BirthdayBean;
 import scu.miomin.com.keeper.bean.DoctorBean;
@@ -67,7 +67,7 @@ public class TreatmentListActivityForDoctor extends BaseActivity {
                         new BirthdayBean(1966, 1, 1), null, AdministrativeEnum.NEIKE,
                         new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
                                 new MyLocationBean(0, 0)), ProfessionalEnum.ZHURENYISHI,
-                        "广西中医协会常委，桂林医学院心内科专家，有丰富的心脏病临床治疗经验", true),
+                        "广西中医协会常委，桂林医学院心内科专家，有丰富的心脏病临床治疗经验"),
                 new PatientBean("18084803926", "123456", "莫绪旻", SexEnum.MAN,
                         new BirthdayBean(1993, 8, 15), null, 171, 57),
                 "心律不齐，脉搏紊乱，生活作息不规律");
@@ -78,7 +78,7 @@ public class TreatmentListActivityForDoctor extends BaseActivity {
                         new BirthdayBean(1987, 4, 19), null, AdministrativeEnum.NEIKE,
                         new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
                                 new MyLocationBean(0, 0)), ProfessionalEnum.ZHUZHIYISHI,
-                        "资深内科医生，临床经验丰富，擅长治疗冠心病、心律不齐", true),
+                        "资深内科医生，临床经验丰富，擅长治疗冠心病、心律不齐"),
                 new PatientBean("18084803926", "123456", "莫绪旻", SexEnum.MAN,
                         new BirthdayBean(1993, 8, 15), null, 171, 57),
                 "窦性心律不齐，熬夜导致");
@@ -89,7 +89,7 @@ public class TreatmentListActivityForDoctor extends BaseActivity {
                         new BirthdayBean(1966, 1, 1), null, AdministrativeEnum.NEIKE,
                         new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
                                 new MyLocationBean(0, 0)), ProfessionalEnum.ZHURENYISHI,
-                        "广西中医协会常委，桂林医学院心内科专家，有丰富的心脏病临床治疗经验", true),
+                        "广西中医协会常委，桂林医学院心内科专家，有丰富的心脏病临床治疗经验"),
                 new PatientBean("18000000000", "123456", "刘康龙", SexEnum.MAN,
                         new BirthdayBean(1996, 1, 15), null, 193, 87),
                 "偶发性早搏，历史遗留问题");
@@ -100,7 +100,7 @@ public class TreatmentListActivityForDoctor extends BaseActivity {
                         new BirthdayBean(1966, 1, 1), null, AdministrativeEnum.NEIKE,
                         new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
                                 new MyLocationBean(0, 0)), ProfessionalEnum.ZHURENYISHI,
-                        "广西中医协会常委，桂林医学院心内科专家，有丰富的心脏病临床治疗经验", true),
+                        "广西中医协会常委，桂林医学院心内科专家，有丰富的心脏病临床治疗经验"),
                 new PatientBean("18000000001", "123456", "应俊康", SexEnum.MAN,
                         new BirthdayBean(1995, 1, 15), null, 182, 77),
                 "心动过速，遗传病，剧烈运动后更为明显");
@@ -111,7 +111,7 @@ public class TreatmentListActivityForDoctor extends BaseActivity {
                         new BirthdayBean(1987, 4, 19), null, AdministrativeEnum.NEIKE,
                         new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
                                 new MyLocationBean(0, 0)), ProfessionalEnum.ZHUZHIYISHI,
-                        "资深内科医生，临床经验丰富，擅长治疗冠心病、心律不齐", true),
+                        "资深内科医生，临床经验丰富，擅长治疗冠心病、心律不齐"),
                 new PatientBean("18000000000", "123456", "刘康龙", SexEnum.MAN,
                         new BirthdayBean(1996, 1, 15), null, 193, 87),
                 "偶发性早搏，历史遗留问题");
@@ -122,7 +122,7 @@ public class TreatmentListActivityForDoctor extends BaseActivity {
                         new BirthdayBean(1995, 1, 1), null, AdministrativeEnum.ERKE,
                         new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
                                 new MyLocationBean(0, 0)), ProfessionalEnum.ZHUZHIYISHI,
-                        "儿科专家，擅长青少年心脏病的预防和治疗，四川大学华西医学院特聘教授", false),
+                        "儿科专家，擅长青少年心脏病的预防和治疗，四川大学华西医学院特聘教授"),
                 new PatientBean("18000000000", "123456", "刘康龙", SexEnum.MAN,
                         new BirthdayBean(1996, 1, 15), null, 193, 87),
                 "偶发性早搏，历史遗留问题");
@@ -133,7 +133,7 @@ public class TreatmentListActivityForDoctor extends BaseActivity {
                         new BirthdayBean(1995, 1, 1), null, AdministrativeEnum.ERKE,
                         new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
                                 new MyLocationBean(0, 0)), ProfessionalEnum.ZHUZHIYISHI,
-                        "儿科专家，擅长青少年心脏病的预防和治疗，四川大学华西医学院特聘教授", false),
+                        "儿科专家，擅长青少年心脏病的预防和治疗，四川大学华西医学院特聘教授"),
                 new PatientBean("18084803926", "123456", "莫绪旻", SexEnum.MAN,
                         new BirthdayBean(1993, 8, 15), null, 171, 57),
                 "心律不齐，脉搏紊乱，生活作息不规律");
@@ -168,7 +168,7 @@ public class TreatmentListActivityForDoctor extends BaseActivity {
         lvTreatmentFollowupList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TreatmentFollowupActivity.actionStart(TreatmentListActivityForDoctor.this);
+                TreatmentInfoActivity.actionStart(TreatmentListActivityForDoctor.this);
             }
         });
     }

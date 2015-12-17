@@ -24,14 +24,14 @@ import scu.miomin.com.keeper.bean.TreatmentFollowupBean;
  *
  * @author 莫绪旻
  */
-public class TreatmentFollowupActivity extends BaseActivity {
+public class TreatmentInfoActivity extends BaseActivity {
 
     private PullToRefreshListView lvTreatmentFollowup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_treatment_followup);
+        setContentView(R.layout.activity_treatment_info);
         initView();
         initAdapter();
         initListener();
@@ -72,7 +72,7 @@ public class TreatmentFollowupActivity extends BaseActivity {
                 if (position == 1)
                     return;
 
-                FollowupActivity.actionStart(TreatmentFollowupActivity.this);
+                FollowupInfoActivity.actionStart(TreatmentInfoActivity.this);
             }
         });
 
@@ -103,7 +103,7 @@ public class TreatmentFollowupActivity extends BaseActivity {
     }
 
     public static void actionStart(Context context) {
-        Intent intent = new Intent(context, TreatmentFollowupActivity.class);
+        Intent intent = new Intent(context, TreatmentInfoActivity.class);
         context.startActivity(intent);
     }
 

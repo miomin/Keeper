@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
@@ -20,7 +19,6 @@ public class AddFollowupActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_add_followup);
     }
 

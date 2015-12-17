@@ -6,7 +6,7 @@ package scu.miomin.com.keeper.resource;
  * @author 莫绪旻
  */
 public class MyUrl {
-    
+
     public static String url = "http://220.167.41.11:8000/";
     public static final String HEADURLPATH = url + "Secret/head/";
 }

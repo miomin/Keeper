@@ -11,7 +11,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -55,7 +54,6 @@ import scu.miomin.com.keeper.bean.HospitalBean;
 import scu.miomin.com.keeper.bean.MyLocationBean;
 import scu.miomin.com.keeper.controller.Controller;
 import scu.miomin.com.keeper.dialog.AboutUsDialog;
-import scu.miomin.com.keeper.doctor.activity.TreatmentListActivityForDoctor;
 import scu.miomin.com.keeper.doctor.controller.DoctorController;
 import scu.miomin.com.keeper.patient.adapter.RemenDoctorAdapter;
 import scu.miomin.com.keeper.patient.controller.PatientController;
@@ -133,28 +131,28 @@ public class MainKeeperForPatient extends BaseActivity {
                 new BirthdayBean(1987, 4, 19), null, AdministrativeEnum.NEIKE,
                 new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
                         new MyLocationBean(0, 0)), ProfessionalEnum.ZHUZHIYISHI,
-                "资深内科医生，临床经验丰富，擅长治疗冠心病、心律不齐", true);
+                "资深内科医生，临床经验丰富，擅长治疗冠心病、心律不齐");
         Controller.addFriend(doctorBean);
 
         doctorBean = new DoctorBean("2013141463002", "123456", "莫医生", SexEnum.MAN,
                 new BirthdayBean(1966, 1, 1), null, AdministrativeEnum.NEIKE,
                 new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
                         new MyLocationBean(0, 0)), ProfessionalEnum.ZHURENYISHI,
-                "广西中医协会常委，桂林医学院心内科专家，有丰富的心脏病临床治疗经验", true);
+                "广西中医协会常委，桂林医学院心内科专家，有丰富的心脏病临床治疗经验");
         Controller.addFriend(doctorBean);
 
         doctorBean = new DoctorBean("2013141463001", "123456", "陈钊", SexEnum.MAN,
                 new BirthdayBean(1995, 1, 1), null, AdministrativeEnum.ERKE,
                 new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
                         new MyLocationBean(0, 0)), ProfessionalEnum.ZHUZHIYISHI,
-                "儿科专家，擅长青少年心脏病的预防和治疗，四川大学华西医学院特聘教授", false);
+                "儿科专家，擅长青少年心脏病的预防和治疗，四川大学华西医学院特聘教授");
         Controller.addFriend(doctorBean);
 
         doctorBean = new DoctorBean("2013141463003", "123456", "陆广飞", SexEnum.WOMAN,
                 new BirthdayBean(1970, 1, 2), null, AdministrativeEnum.WAIKE,
                 new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
                         new MyLocationBean(0, 0)), ProfessionalEnum.FUZHURENYISHI,
-                "擅长心脑血管病及糖尿病的治疗，有丰富的临床经验", false);
+                "擅长心脑血管病及糖尿病的治疗，有丰富的临床经验");
         Controller.addFriend(doctorBean);
 
         Controller.addFriend(Controller.getCurrentUser());
@@ -367,28 +365,28 @@ public class MainKeeperForPatient extends BaseActivity {
                 new BirthdayBean(1987, 4, 19), null, AdministrativeEnum.NEIKE,
                 new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
                         new MyLocationBean(0, 0)), ProfessionalEnum.ZHUZHIYISHI,
-                "资深内科医生，临床经验丰富，擅长治疗冠心病、心律不齐", true);
+                "资深内科医生，临床经验丰富，擅长治疗冠心病、心律不齐");
         remenDoctorAdapter.add(doctorBean);
 
         doctorBean = new DoctorBean("2013141463002", "123456", "莫医生", SexEnum.MAN,
                 new BirthdayBean(1966, 1, 1), null, AdministrativeEnum.NEIKE,
                 new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
                         new MyLocationBean(0, 0)), ProfessionalEnum.ZHURENYISHI,
-                "广西中医协会常委，桂林医学院心内科专家，有丰富的心脏病临床治疗经验", true);
+                "广西中医协会常委，桂林医学院心内科专家，有丰富的心脏病临床治疗经验");
         remenDoctorAdapter.add(doctorBean);
 
         doctorBean = new DoctorBean("2013141463001", "123456", "陈钊", SexEnum.MAN,
                 new BirthdayBean(1995, 1, 1), null, AdministrativeEnum.ERKE,
                 new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
                         new MyLocationBean(0, 0)), ProfessionalEnum.ZHUZHIYISHI,
-                "儿科专家，擅长青少年心脏病的预防和治疗，四川大学华西医学院特聘教授", false);
+                "儿科专家，擅长青少年心脏病的预防和治疗，四川大学华西医学院特聘教授");
         remenDoctorAdapter.add(doctorBean);
 
         doctorBean = new DoctorBean("2013141463003", "123456", "陆广飞", SexEnum.WOMAN,
                 new BirthdayBean(1970, 1, 2), null, AdministrativeEnum.WAIKE,
                 new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
                         new MyLocationBean(0, 0)), ProfessionalEnum.FUZHURENYISHI,
-                "擅长心脑血管病及糖尿病的治疗，有丰富的临床经验", false);
+                "擅长心脑血管病及糖尿病的治疗，有丰富的临床经验");
         remenDoctorAdapter.add(doctorBean);
     }
 
@@ -555,7 +553,7 @@ public class MainKeeperForPatient extends BaseActivity {
     }
 
     public void openTreatmentFollowupActivityForPatient(View view) {
-        TreatmentListActivityForDoctor.actionStart(this);
+        TreatmentListActivityForPatient.actionStart(this);
     }
 
     public void firstAid(View view) {

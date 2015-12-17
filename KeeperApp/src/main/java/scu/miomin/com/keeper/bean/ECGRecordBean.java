@@ -6,15 +6,15 @@ package scu.miomin.com.keeper.bean;
 public class ECGRecordBean {
 
     private String date;
-    private boolean isAtPhone;
+    private boolean isLocality;
     private String ecgUrl;
     private HealthyDescribeByMyselfBean healthyDescribeByMyself;
 
-    public ECGRecordBean(String date, String ecgUrl, HealthyDescribeByMyselfBean healthyDescribeByMyself, boolean isAtPhone) {
+    public ECGRecordBean(String date, String ecgUrl, HealthyDescribeByMyselfBean healthyDescribeByMyself, boolean isLocality) {
         this.date = date;
         this.ecgUrl = ecgUrl;
         this.healthyDescribeByMyself = healthyDescribeByMyself;
-        this.isAtPhone = isAtPhone;
+        this.isLocality = isLocality;
     }
 
     public String getDate() {
@@ -41,11 +41,11 @@ public class ECGRecordBean {
         this.healthyDescribeByMyself = healthyDescribeByMyself;
     }
 
-    public boolean isAtPhone() {
-        return isAtPhone;
+    public boolean isLocality() {
+        return isLocality;
     }
 
-    public void setIsAtPhone(boolean isAtPhone) {
-        this.isAtPhone = isAtPhone;
+    public void setisLocality(boolean isAtPhone) {
+        this.isLocality = isLocality;
     }
 }

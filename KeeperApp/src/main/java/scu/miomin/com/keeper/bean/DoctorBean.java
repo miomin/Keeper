@@ -11,17 +11,15 @@ public class DoctorBean extends Userbean {
     String administrative;
     HospitalBean hospitalBean;
     String introduction;
-    boolean isRemenyisheng;
 
     public DoctorBean(String phonenumber, String password, String name, int sex,
                       BirthdayBean birthday, String headUrl, String administrative,
-                      HospitalBean hospitalBean, String professional, String introduction, boolean isRemenyisheng) {
+                      HospitalBean hospitalBean, String professional, String introduction) {
         super(phonenumber, password, name, sex, birthday, headUrl);
         this.administrative = administrative;
         this.hospitalBean = hospitalBean;
         this.professional = professional;
         this.introduction = introduction;
-        this.isRemenyisheng = isRemenyisheng;
     }
 
     public String getAdministrative() {
@@ -54,13 +52,5 @@ public class DoctorBean extends Userbean {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
-    }
-
-    public boolean isRemenyisheng() {
-        return isRemenyisheng;
-    }
-
-    public void setIsRemenyisheng(boolean isRemenyisheng) {
-        this.isRemenyisheng = isRemenyisheng;
     }
 }

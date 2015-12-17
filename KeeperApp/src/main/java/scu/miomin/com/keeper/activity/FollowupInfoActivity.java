@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
@@ -14,16 +13,16 @@ import scu.miomin.com.keeper.baseactivity.BaseActivity;
  *
  * @author 莫绪旻
  */
-public class FollowupActivity extends BaseActivity {
+public class FollowupInfoActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_followup);
+        setContentView(R.layout.activity_followup_info);
     }
 
     public static void actionStart(Context context) {
-        Intent intent = new Intent(context, FollowupActivity.class);
+        Intent intent = new Intent(context, FollowupInfoActivity.class);
         context.startActivity(intent);
     }
 
