@@ -5,11 +5,11 @@ package scu.miomin.com.keeper.bean;
  */
 public class HospitalBean {
 
-    String name;
-    String province;
-    String city;
-    String county;
-    MyLocationBean myLocationBean;
+    private String name;
+    private String province;
+    private String city;
+    private String county;
+    private MyLocationBean myLocationBean;
 
     public HospitalBean(String name, String province, String city, String county, MyLocationBean myLocationBean) {
         this.name = name;

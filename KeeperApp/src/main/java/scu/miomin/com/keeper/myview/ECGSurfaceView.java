@@ -1,16 +1,17 @@
 package scu.miomin.com.keeper.myview;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import scu.miomin.com.keeper.R;
 
@@ -21,6 +22,8 @@ import scu.miomin.com.keeper.R;
  */
 public class ECGSurfaceView extends SurfaceView implements
         SurfaceHolder.Callback {
+
+//    public static int HEIGHT = 600;
 
     public static final int POINT_DIS = 1; // 点距离
     public static final int LINE_WIDE = 3; // 线的厚度
@@ -82,6 +85,8 @@ public class ECGSurfaceView extends SurfaceView implements
         Canvas canvas = holder.lockCanvas();
         drawBg(canvas);
         holder.unlockCanvasAndPost(canvas);
+
+        Log.i("miomin", "" + getHeight());
     }
 
     // 画背景
@@ -113,7 +118,7 @@ public class ECGSurfaceView extends SurfaceView implements
         coordinateTrans(dataCount, counterAllPre);
 
         Rect rect = new Rect((counterAllPre - 1) * POINT_DIS, 0,
-                (counterAll + 33) * POINT_DIS, getHeight());
+                (counterAll + 33) * POINT_DIS, getWidth());
         Canvas canvas = getHolder().lockCanvas(rect);// 特别注意的地方
         drawBg(canvas);
         canvas.drawLine((counterAllPre - 1) * POINT_DIS, this.indexTemp,
@@ -163,7 +168,7 @@ public class ECGSurfaceView extends SurfaceView implements
             this.indexTemp = last;
             coordinateTrans(data, counterAllPre);
             Rect rect = new Rect((counterAllPre - 1) * POINT_DIS, 0,
-                    (counterAll + 33) * POINT_DIS, getHeight());
+                    (counterAll + 33) * POINT_DIS, getWidth());
             Canvas canvas = getHolder().lockCanvas(rect);// 特别注意的地方
             drawBg(canvas);
             canvas.drawLine((counterAllPre - 1) * POINT_DIS, this.indexTemp,
@@ -216,7 +221,7 @@ public class ECGSurfaceView extends SurfaceView implements
             this.indexTemp = last;
             coordinateTrans(data, counterAllPre);
             Rect rect = new Rect((counterAllPre - 1) * POINT_DIS, 0,
-                    (counterAll + 33) * POINT_DIS, getHeight());
+                    (counterAll + 33) * POINT_DIS, getWidth());
             Canvas canvas = getHolder().lockCanvas(rect);// 特别注意的地方
             drawBg(canvas);
             canvas.drawLine((counterAllPre - 1) * POINT_DIS, this.indexTemp,
@@ -243,10 +248,10 @@ public class ECGSurfaceView extends SurfaceView implements
     public void coordinateTrans(int[] dataCount, int counterAllPre) {
         dataDraw = new int[dataCount.length];
         for (int i = 0; i < dataDraw.length; i++) {
-            dataDraw[i] = getHeight() - (dataCount[i] * getHeight() / 4096);
+            dataDraw[i] = getWidth() - (dataCount[i] * getWidth() / 4096);
         }
 
-        this.indexTemp = getHeight() - (this.indexTemp * getHeight() / 4096);
+        this.indexTemp = getWidth() - (this.indexTemp * getWidth() / 4096);
         int j1 = -1;
         pts = new float[4 * (dataCount.length - 1)];
         for (int i = 0; i < pts.length; i++) {

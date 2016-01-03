@@ -7,12 +7,12 @@ public class ECGRecordBean {
 
     private String date;
     private boolean isLocality;
-    private String ecgUrl;
-    private HealthyDescribeByMyselfBean healthyDescribeByMyself;
+    private String fileName;
+    private HealthyDescribeByPatientBean healthyDescribeByMyself;
 
-    public ECGRecordBean(String date, String ecgUrl, HealthyDescribeByMyselfBean healthyDescribeByMyself, boolean isLocality) {
+    public ECGRecordBean(String date, String fileName, HealthyDescribeByPatientBean healthyDescribeByMyself, boolean isLocality) {
         this.date = date;
-        this.ecgUrl = ecgUrl;
+        this.fileName = fileName;
         this.healthyDescribeByMyself = healthyDescribeByMyself;
         this.isLocality = isLocality;
     }
@@ -25,19 +25,19 @@ public class ECGRecordBean {
         this.date = date;
     }
 
-    public String getEcgUrl() {
-        return ecgUrl;
+    public String getFilename() {
+        return fileName;
     }
 
-    public void setEcgUrl(String ecgUrl) {
-        this.ecgUrl = ecgUrl;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
-    public HealthyDescribeByMyselfBean getHealthyDescribeByMyself() {
+    public HealthyDescribeByPatientBean getHealthyDescribeByMyself() {
         return healthyDescribeByMyself;
     }
 
-    public void setHealthyDescribeByMyself(HealthyDescribeByMyselfBean healthyDescribeByMyself) {
+    public void setHealthyDescribeByMyself(HealthyDescribeByPatientBean healthyDescribeByMyself) {
         this.healthyDescribeByMyself = healthyDescribeByMyself;
     }
 
@@ -45,7 +45,7 @@ public class ECGRecordBean {
         return isLocality;
     }
 
-    public void setisLocality(boolean isAtPhone) {
+    public void setisLocality(boolean isLocality) {
         this.isLocality = isLocality;
     }
 }

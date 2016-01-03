@@ -223,7 +223,7 @@ public class ChatActivity extends BaseActivity {
         }
 
         IMMessage message = MessageBuilder.createTextMessage(
-                "18084803926", // 聊天对象的 ID，如果是单聊，为用户帐号，如果是群聊，为群组 ID
+                ChatFriend.getPhonenumber(), // 聊天对象的 ID，如果是单聊，为用户帐号，如果是群聊，为群组 ID
                 SessionTypeEnum.P2P, // 聊天类型，单聊或群组
                 textContent // 文本内容
         );

@@ -22,6 +22,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,17 +37,26 @@ import scu.miomin.com.keeper.activity.WelcomeActivity;
  */
 public class KeeperApplication extends Application {
 
-
+    private static Context context;
     public static KeeperApplication mInstance;
     private List<Integer> list; // 存储原始心电数据
+
+    public static int size = 1;
+    public static List<Integer> tempList = new ArrayList<Integer>(10);
 
     @SuppressLint("MissingSuperCall")
     @Override
     public void onCreate() {
+        context = getApplicationContext();
         initImageLoader(this);
         NIMClient.init(this, getLoginInfo(), options()); // SDK初始化（启动后台服务，若已经存在用户登录信息，SDK 将完成自动登录）
         mInstance = this;
         list = Collections.synchronizedList(new LinkedList<Integer>());// 初始化ArrayList
+    }
+
+    // 获取全局的context
+    public static Context getContext() {
+        return context;
     }
 
     // 如果返回值为 null，则全部使用默认参数。
@@ -126,7 +136,18 @@ public class KeeperApplication extends Application {
 
     public void addValue(int value) {
 
-        list.add(value);
+        tempList.add(value);
+
+        if (tempList.size() == size) {
+
+            int sum = 0;
+            for (int i = 0; i < tempList.size(); i++) {
+                sum += tempList.get(i);
+            }
+
+            list.add(sum / size);
+            tempList.clear();
+        }
     }
 
     public void clearValue() {

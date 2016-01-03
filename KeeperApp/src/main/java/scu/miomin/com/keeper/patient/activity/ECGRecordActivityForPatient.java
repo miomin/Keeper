@@ -26,7 +26,7 @@ import scu.miomin.com.keeper.Enum.UserTypeEnum;
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
 import scu.miomin.com.keeper.bean.ECGRecordBean;
-import scu.miomin.com.keeper.bean.HealthyDescribeByMyselfBean;
+import scu.miomin.com.keeper.bean.HealthyDescribeByPatientBean;
 import scu.miomin.com.keeper.controller.Controller;
 import scu.miomin.com.keeper.dialog.LoadDialog;
 import scu.miomin.com.keeper.ecgsave.SaveECGUtils;
@@ -147,7 +147,7 @@ public class ECGRecordActivityForPatient extends BaseActivity {
             }
 
             ecgRecord = new ECGRecordBean(year + "-" + month + "-" + day + " " + hour + ":" + minute,
-                    files[i].getName(), new HealthyDescribeByMyselfBean(), isAtPhone);
+                    files[i].getName(), new HealthyDescribeByPatientBean(false, false, false, false, false, false), isAtPhone);
             PatientController.getEcgRecordAdapterForPatient().add(ecgRecord);
         }
 

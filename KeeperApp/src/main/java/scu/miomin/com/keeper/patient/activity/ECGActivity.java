@@ -9,12 +9,13 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -34,6 +35,8 @@ import scu.miomin.com.keeper.util.ToastUtils;
  * @author 莫绪旻
  */
 public class ECGActivity extends BaseActivity implements OnClickListener {
+
+    private SeekBar xSeekBar;
 
     private final int count = 10;// 每次画图推的数目
     private final int time = 10;// time随着时间增大而增大则比较好
@@ -239,6 +242,25 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
 
         dataCount = new int[count];
 
+        xSeekBar = (SeekBar) findViewById(R.id.xSeekBar);
+
+        xSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                KeeperApplication.size = progress;
+                KeeperApplication.tempList = new ArrayList<Integer>(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     @Override
@@ -419,10 +441,6 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
             }
             counterAll += (maxnum - counterAllPre);
             // 画图
-            Log.v("draw", "PaintThread 1:" + indexTemp + ";"
-                    + dataCount1.length + ";" + counterAll + ";"
-                    + counterAllPre);
-
             ecg_view.realTimeDraw(indexTemp, dataCount, counterAll,
                     counterAllPre);
 
@@ -445,6 +463,7 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
 
             ecg_view.realTimeDraw(indexTemp, dataCount, counterAll,
                     counterAllPre);
+
             // 取得最后一个元素
             indexTemp = dataCount[(dataCount.length - 1)];
 
@@ -461,6 +480,7 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
                     flag = 1;
                 }
             }
+
         }
 
     }
@@ -540,7 +560,6 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
         counterAllPre = 0;
         indexTemp = 0;
         flag = 0;
-
     }
 
     /* 定义一个倒计时的内部类 */
@@ -574,9 +593,7 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
                 btn_record
                         .setText(getResources().getString(R.string.stopRecord) + "(" + (millisUntilFinished / 1000) + ")");
             }
-
         }
-
     }
 
     public void back(View view) {

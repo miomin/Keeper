@@ -1,5 +1,8 @@
 package scu.miomin.com.keeper.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 描述：就诊记录实体类 创建日期:2015/11/22
  *
@@ -11,6 +14,7 @@ public class TreatmentBean {
     private DoctorBean doctorBean;
     private String date;
     private String treatmentReason;
+    private List<TreatmentFollowupBean> treatmentFollowupList;
 
     public TreatmentBean(String date, DoctorBean doctorBean,
                          PatientBean patientBean,
@@ -19,6 +23,12 @@ public class TreatmentBean {
         this.doctorBean = doctorBean;
         this.patientBean = patientBean;
         this.treatmentReason = treatmentReason;
+        treatmentFollowupList = new ArrayList<TreatmentFollowupBean>();
+    }
+
+    // 添加一条诊后随访记录
+    public void addTreatmentFollowup(TreatmentFollowupBean treatmentFollowupBean) {
+        treatmentFollowupList.add(treatmentFollowupBean);
     }
 
     public String getDate() {
@@ -53,13 +63,13 @@ public class TreatmentBean {
         this.treatmentReason = treatmentReason;
     }
 
-    @Override
-    public String toString() {
-        return "TreatmentBean{" +
-                "date='" + date + '\'' +
-                ", patientBean=" + patientBean +
-                ", doctorBean=" + doctorBean +
-                ", treatmentReason='" + treatmentReason + '\'' +
-                '}';
+    public List<TreatmentFollowupBean> getTreatmentFollowupList() {
+        return treatmentFollowupList;
     }
+
+    public void setTreatmentFollowupList(List<TreatmentFollowupBean> treatmentFollowupList) {
+        this.treatmentFollowupList = treatmentFollowupList;
+    }
+
+
 }
