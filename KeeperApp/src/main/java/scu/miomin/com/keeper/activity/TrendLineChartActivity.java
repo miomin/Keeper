@@ -24,19 +24,19 @@ import java.util.ArrayList;
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
 
-public class LineChartActivity extends BaseActivity implements OnChartValueSelectedListener {
+public class TrendLineChartActivity extends BaseActivity implements OnChartValueSelectedListener {
 
     private LineChart mChart;
 
     public static void actionStart(Context context) {
-        Intent intent = new Intent(context, LineChartActivity.class);
+        Intent intent = new Intent(context, TrendLineChartActivity.class);
         context.startActivity(intent);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_linechart);
+        setContentView(R.layout.activity_trendlinechart);
 
         mChart = (LineChart) findViewById(R.id.chart1);
         mChart.setOnChartValueSelectedListener(this);
@@ -124,12 +124,12 @@ public class LineChartActivity extends BaseActivity implements OnChartValueSelec
         // create a dataset and give it a type
         LineDataSet set2 = new LineDataSet(yVals2, "乳酸脱氢酶");
         set2.setAxisDependency(AxisDependency.RIGHT);
-        set2.setColor(Color.RED);
-        set2.setCircleColor(Color.RED);
+        set2.setColor(getResources().getColor(R.color.zhuti));
+        set2.setCircleColor(getResources().getColor(R.color.zhuti));
         set2.setLineWidth(2f);
         set2.setCircleSize(3f);
         set2.setFillAlpha(65);
-        set2.setFillColor(Color.RED);
+        set2.setFillColor(getResources().getColor(R.color.zhuti));
         set2.setDrawCircleHole(false);
         set2.setHighLightColor(Color.rgb(244, 117, 117));
         set2.setDrawFilled(true);

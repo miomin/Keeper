@@ -1,5 +1,6 @@
 package scu.miomin.com.keeper.doctor.activity;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -9,7 +10,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -30,7 +30,6 @@ import scu.miomin.com.keeper.activity.ChatActivity;
 import scu.miomin.com.keeper.activity.LoginActivity;
 import scu.miomin.com.keeper.adapter.ConversationAdapter;
 import scu.miomin.com.keeper.application.ActivityCollector;
-import scu.miomin.com.keeper.baseactivity.BaseActivity;
 import scu.miomin.com.keeper.bean.BirthdayBean;
 import scu.miomin.com.keeper.bean.ConversationBean;
 import scu.miomin.com.keeper.bean.PatientBean;
@@ -43,7 +42,7 @@ import scu.miomin.com.keeper.patient.controller.PatientController;
  *
  * @author 莫绪旻
  */
-public class MainKeeperForDoctor extends BaseActivity {
+public class MainKeeperForDoctor extends Activity {
 
     // 第一个界面的控件
     private PullToRefreshListView lvConversation;
@@ -80,6 +79,7 @@ public class MainKeeperForDoctor extends BaseActivity {
         initListener3();
         // 初始化好友列表
         initFriendList();
+        ActivityCollector.addActivity(this);
     }
 
     // 初始化好友列表
@@ -305,5 +305,6 @@ public class MainKeeperForDoctor extends BaseActivity {
         super.onDestroy();
         PatientController.finish();
         DoctorController.finish();
+        ActivityCollector.removeActivity(this);
     }
 }

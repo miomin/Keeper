@@ -32,4 +32,9 @@ public class DoctorCheckPatientActivity extends BaseActivity {
     public void openECGRecordActivity(View view) {
         ECGRecordActivityForPatient.actionStart(this);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

@@ -1,5 +1,6 @@
 package scu.miomin.com.keeper.patient.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -44,7 +45,6 @@ import scu.miomin.com.keeper.activity.LoginActivity;
 import scu.miomin.com.keeper.activity.SetRemindActivity;
 import scu.miomin.com.keeper.adapter.ConversationAdapter;
 import scu.miomin.com.keeper.application.ActivityCollector;
-import scu.miomin.com.keeper.baseactivity.BaseActivity;
 import scu.miomin.com.keeper.basedialog.BaseDialog;
 import scu.miomin.com.keeper.bean.BirthdayBean;
 import scu.miomin.com.keeper.bean.ChatMessageBean;
@@ -64,7 +64,7 @@ import scu.miomin.com.keeper.util.ToastUtils;
  *
  * @author 莫绪旻
  */
-public class MainKeeperForPatient extends BaseActivity {
+public class MainKeeperForPatient extends Activity {
 
     // 第一个界面的控件
     private PullToRefreshListView lvConversation;
@@ -99,6 +99,7 @@ public class MainKeeperForPatient extends BaseActivity {
         // 启动activity时不自动弹出软键盘
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        ActivityCollector.addActivity(this);
         // 初始化viewPager
         initViewPager();
         // 初始化第一个界面的控件
@@ -594,5 +595,6 @@ public class MainKeeperForPatient extends BaseActivity {
         // 注销观察者对象
         NIMClient.getService(MsgServiceObserve.class)
                 .observeReceiveMessage(incomingMessageObserver, false);
+        ActivityCollector.removeActivity(this);
     }
 }

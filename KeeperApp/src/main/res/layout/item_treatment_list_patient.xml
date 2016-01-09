@@ -15,8 +15,7 @@
         android:layout_height="40dp"
         android:layout_centerVertical="true"
         android:layout_marginRight="5dp"
-        android:src="@drawable/doc_service_volunteer" />
-
+        android:src="@drawable/ic_discover_hospital" />
 
     <ImageView
         android:id="@+id/tvRemenyisheng"

@@ -31,6 +31,6 @@ public class FollowupInfoActivity extends BaseActivity {
     }
 
     public void checkFollowupLineChart(View view) {
-        LineChartActivity.actionStart(this);
+        TrendLineChartActivity.actionStart(this);
     }
 }

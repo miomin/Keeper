@@ -12,10 +12,8 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -35,8 +33,6 @@ import scu.miomin.com.keeper.util.ToastUtils;
  * @author 莫绪旻
  */
 public class ECGActivity extends BaseActivity implements OnClickListener {
-
-    private SeekBar xSeekBar;
 
     private final int count = 10;// 每次画图推的数目
     private final int time = 10;// time随着时间增大而增大则比较好
@@ -241,26 +237,6 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
         ecg_view = (ECGSurfaceView) findViewById(R.id.ecg_view);
 
         dataCount = new int[count];
-
-        xSeekBar = (SeekBar) findViewById(R.id.xSeekBar);
-
-        xSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                KeeperApplication.size = progress;
-                KeeperApplication.tempList = new ArrayList<Integer>(progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
     }
 
     @Override
@@ -278,7 +254,6 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
                 mBTService = new BluetoothService(this, mHandler);
             }
         }
-
     }
 
     @Override

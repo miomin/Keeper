@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="45dp"
-        android:background="@drawable/bg_top_tab_two"
+        android:background="@color/zhuti"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -82,14 +82,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="平均值："
-                            android:textColor="#ff7f39"
+                            android:textColor="@color/zhuti"
                             android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="218.57"
-                            android:textColor="#ff7f39"
+                            android:textColor="@color/zhuti"
                             android:textSize="20sp" />
 
                     </LinearLayout>

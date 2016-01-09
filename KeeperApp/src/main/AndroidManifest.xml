@@ -145,7 +145,7 @@
         <activity android:name=".activity.TreatmentInfoActivity" />
         <activity android:name=".activity.FollowupInfoActivity" />
         <activity android:name=".activity.AddFollowupActivity" />
-        <activity android:name=".activity.LineChartActivity" />
+        <activity android:name=".activity.TrendLineChartActivity" />
 
         <activity android:name=".patient.activity.TreatmentListActivityForPatient" />
     </application>
