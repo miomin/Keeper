@@ -15,7 +15,6 @@ import scu.miomin.com.keeper.Enum.AdministrativeEnum;
 import scu.miomin.com.keeper.Enum.ProfessionalEnum;
 import scu.miomin.com.keeper.Enum.SexEnum;
 import scu.miomin.com.keeper.R;
-import scu.miomin.com.keeper.activity.TreatmentInfoActivity;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
 import scu.miomin.com.keeper.bean.BirthdayBean;
 import scu.miomin.com.keeper.bean.DoctorBean;
@@ -168,7 +167,7 @@ public class TreatmentListActivityForDoctor extends BaseActivity {
         lvTreatmentFollowupList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TreatmentInfoActivity.actionStart(TreatmentListActivityForDoctor.this);
+//                TreatmentInfoActivityForPatient.actionStart(TreatmentListActivityForDoctor.this);
             }
         });
     }

@@ -39,7 +39,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginLeft="5dp"
-            android:src="@drawable/socialize_pocket" />
+            android:src="@drawable/socialize_pocket_gray" />
 
     </LinearLayout>
 </RelativeLayout>

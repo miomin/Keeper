@@ -1,15 +1,19 @@
 package scu.miomin.com.keeper.bean;
 
-/**
- * Created by miomin on 15/11/13.
- */
-public class HospitalBean {
+import java.io.Serializable;
 
-    private String name;
-    private String province;
-    private String city;
-    private String county;
-    private MyLocationBean myLocationBean;
+/**
+ * 描述:医院实体类 创建日期:2015/11/13
+ *
+ * @author 莫绪旻
+ */
+public class HospitalBean implements Serializable {
+
+    private String name; //医院名
+    private String province; //医院所在省
+    private String city; //医院所在城市
+    private String county; //医院所在县/区
+    private MyLocationBean myLocationBean; //医院位置
 
     public HospitalBean(String name, String province, String city, String county, MyLocationBean myLocationBean) {
         this.name = name;

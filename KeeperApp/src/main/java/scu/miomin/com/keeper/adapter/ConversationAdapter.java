@@ -11,7 +11,9 @@ import java.util.ArrayList;
 
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.bean.ConversationBean;
+import scu.miomin.com.keeper.resource.MyLoader;
 import scu.miomin.com.keeper.resource.MyUrl;
+import scu.miomin.com.keeper.resource.UserResource;
 
 /**
  * 描述:对话列表适配器 创建日期:2015/11/10
@@ -97,28 +99,13 @@ public class ConversationAdapter extends BaseAdapter {
         holder.ivHead.setTag(imageUrl);
 
         if (imageUrl.equals(holder.ivHead.getTag())) {
-//            MyLoader.loader.displayImage(imageUrl, holder.ivHead);
+            MyLoader.dispalyFromAssets(UserResource.getUserByID(conversation.getPhonenumber()).getHeadUrl(),
+                    holder.ivHead);
         }
 
         holder.tvName.setText(conversation.getUsername());
         holder.tvMsg.setText(conversation.getLastMsg());
         holder.tvDate.setText(conversation.getLastTime());
-
-        switch (position) {
-            case 0:
-                holder.ivHead.setImageResource(R.drawable.head);
-                break;
-            case 1:
-                holder.ivHead.setImageResource(R.drawable.head1);
-                break;
-            case 2:
-                holder.ivHead.setImageResource(R.drawable.doctor5);
-                break;
-            case 3:
-                holder.ivHead.setImageResource(R.drawable.doctor6);
-                break;
-        }
-
 
         if (conversation.isNewMsg())
             holder.point.setVisibility(View.VISIBLE);

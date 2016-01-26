@@ -150,9 +150,9 @@
 Keeper系统主要由硬件端心电采集器、手机端APP及网站构成，为用户贴心提供心电检测、健康分析，一键预约，危情速递，询医复诊、病友社区、电子病例库等服务，更好的保护患者的心脏，守卫人们健康！
 </string>
     <string name="versionInfo">版本信息</string>
-    <string name="versionDescribe">当前版本：1.3.0，适配Android5.0,更多细节优化等你发现！</string>
+    <string name="versionDescribe">当前版本：V1.3，适配Android6.0,更多细节优化等你发现！</string>
     <string name="contractUs">联系我们</string>
-    <string name="contractUsDescribe">开发团队：四川大学软件学院Hammer\n最近更新：2015年11月16日\n联系我们：www.miomin.com/keeper</string>
+    <string name="contractUsDescribe">项目所属：四川大学明远工作室\n最近更新：2016年1月23日\n联系我们：691292118@qq.com</string>
 
     <!-- activity_treatment_followup -->
     <string name="patientName">患者姓名：</string>

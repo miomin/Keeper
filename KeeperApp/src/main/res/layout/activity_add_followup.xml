@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="45dp"
-        android:background="@drawable/bg_top_tab_two"
+        android:background="@color/zhuti"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 

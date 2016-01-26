@@ -1,9 +1,13 @@
 package scu.miomin.com.keeper.bean;
 
+import java.io.Serializable;
+
 /**
- * Created by miomin on 15/11/11.
+ * 描述:病人病情自述的实体类，侧心电图前需要病人完成病情自述的填写，查看心电图记录时可以看到这些信息 创建日期:2015/11/11
+ *
+ * @author 莫绪旻
  */
-public class HealthyDescribeByPatientBean {
+public class HealthyDescribeByPatientBean implements Serializable {
 
     private boolean XIONGMEN;
     private boolean XINHUANG;

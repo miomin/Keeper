@@ -1,12 +1,16 @@
 package scu.miomin.com.keeper.bean;
 
-/**
- * Created by miomin on 15/11/13.
- */
-public class MyLocationBean {
+import java.io.Serializable;
 
-    float longitude;
-    float latitude;
+/**
+ * 描述:表示地图上一个位置的实体类 创建日期:2015/11/13
+ *
+ * @author 莫绪旻
+ */
+public class MyLocationBean implements Serializable {
+
+    float longitude; //经度
+    float latitude; //纬度
 
     public MyLocationBean(float longitude, float latitude) {
         this.latitude = latitude;

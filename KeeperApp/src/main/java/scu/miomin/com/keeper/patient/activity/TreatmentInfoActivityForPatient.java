@@ -1,4 +1,4 @@
-package scu.miomin.com.keeper.activity;
+package scu.miomin.com.keeper.patient.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,27 +12,30 @@ import android.widget.ListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-import java.util.ArrayList;
-
 import scu.miomin.com.keeper.R;
-import scu.miomin.com.keeper.adapter.TreatmentFollowupAdapter;
+import scu.miomin.com.keeper.activity.AddFollowupActivity;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
-import scu.miomin.com.keeper.bean.TreatmentFollowupBean;
+import scu.miomin.com.keeper.bean.TreatmentBean;
+import scu.miomin.com.keeper.patient.adapter.TreatmentFollowupAdapter;
+import scu.miomin.com.keeper.util.ToastUtils;
 
 /**
  * 描述:绘制心电图的界面 创建日期:2015/5/23
  *
  * @author 莫绪旻
  */
-public class TreatmentInfoActivity extends BaseActivity {
+public class TreatmentInfoActivityForPatient extends BaseActivity {
 
     private PullToRefreshListView lvTreatmentFollowup;
+
+    private TreatmentBean treatmentBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_info);
         initView();
+        initData();
         initAdapter();
         initListener();
     }
@@ -41,25 +44,22 @@ public class TreatmentInfoActivity extends BaseActivity {
         lvTreatmentFollowup = (PullToRefreshListView) findViewById(R.id.lvTreatmentFollowup);
     }
 
+    private void initData() {
+        Intent intent = getIntent();
+        treatmentBean = (TreatmentBean) intent.getSerializableExtra("treatmentBean");
+
+        if (treatmentBean == null) {
+            ToastUtils.showToast(this, "加载信息失败");
+            return;
+        }
+    }
+
     private void initAdapter() {
         // 创建适配器对象
-        TreatmentFollowupAdapter treatmentFollowupAdapter = new TreatmentFollowupAdapter(new ArrayList<TreatmentFollowupBean>(), this);
+        TreatmentFollowupAdapter treatmentFollowupAdapter = new TreatmentFollowupAdapter(treatmentBean.getTreatmentFollowupList(),
+                this, treatmentBean);
         // 将ListView与适配器关联
         lvTreatmentFollowup.setAdapter(treatmentFollowupAdapter);
-
-        TreatmentFollowupBean treatmentFollowupBean;
-
-        treatmentFollowupBean = new TreatmentFollowupBean("2015-11-24");
-        treatmentFollowupAdapter.add(treatmentFollowupBean);
-
-        treatmentFollowupBean = new TreatmentFollowupBean("2015-11-24");
-        treatmentFollowupAdapter.add(treatmentFollowupBean);
-
-        treatmentFollowupBean = new TreatmentFollowupBean("2015-11-26");
-        treatmentFollowupAdapter.add(treatmentFollowupBean);
-
-        treatmentFollowupBean = new TreatmentFollowupBean("2015-11-27");
-        treatmentFollowupAdapter.add(treatmentFollowupBean);
     }
 
     private void initListener() {
@@ -72,7 +72,9 @@ public class TreatmentInfoActivity extends BaseActivity {
                 if (position == 1)
                     return;
 
-                FollowupInfoActivity.actionStart(TreatmentInfoActivity.this);
+                FollowupInfoActivity.actionStart(TreatmentInfoActivityForPatient.this,
+                        treatmentBean.getTreatmentFollowupList().get(position - 2),
+                        treatmentBean.getTreatmentFollowupList());
             }
         });
 
@@ -99,14 +101,13 @@ public class TreatmentInfoActivity extends BaseActivity {
                 }.execute();
             }
         });
-
     }
 
-    public static void actionStart(Context context) {
-        Intent intent = new Intent(context, TreatmentInfoActivity.class);
+    public static void actionStart(Context context, TreatmentBean treatmentBean) {
+        Intent intent = new Intent(context, TreatmentInfoActivityForPatient.class);
+        intent.putExtra("treatmentBean", treatmentBean);
         context.startActivity(intent);
     }
-
 
     public void back(View view) {
         super.onBackPressed();

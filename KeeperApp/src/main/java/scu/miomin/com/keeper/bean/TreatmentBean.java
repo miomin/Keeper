@@ -1,20 +1,23 @@
 package scu.miomin.com.keeper.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * 描述：就诊记录实体类 创建日期:2015/11/22
+ * 描述：就诊记录实体类，一次就诊记录对应多个诊后随访
+ * 备注：病人+医生+日期决定一次就诊记录，在这次就诊之后，会延伸多次随访记录
+ * <p/>
+ * 创建日期:2015/11/22
  *
  * @author 莫绪旻
  */
-public class TreatmentBean {
+public class TreatmentBean implements Serializable {
 
-    private PatientBean patientBean;
-    private DoctorBean doctorBean;
-    private String date;
-    private String treatmentReason;
-    private List<TreatmentFollowupBean> treatmentFollowupList;
+    private PatientBean patientBean; //就诊病人
+    private DoctorBean doctorBean; //负责此次就诊的医生
+    private String date; //就诊的日期
+    private String treatmentReason; //诊断原因
+    private ArrayList<TreatmentFollowupBean> treatmentFollowupList; //该就诊的随访列表
 
     public TreatmentBean(String date, DoctorBean doctorBean,
                          PatientBean patientBean,
@@ -63,11 +66,11 @@ public class TreatmentBean {
         this.treatmentReason = treatmentReason;
     }
 
-    public List<TreatmentFollowupBean> getTreatmentFollowupList() {
+    public ArrayList<TreatmentFollowupBean> getTreatmentFollowupList() {
         return treatmentFollowupList;
     }
 
-    public void setTreatmentFollowupList(List<TreatmentFollowupBean> treatmentFollowupList) {
+    public void setTreatmentFollowupList(ArrayList<TreatmentFollowupBean> treatmentFollowupList) {
         this.treatmentFollowupList = treatmentFollowupList;
     }
 

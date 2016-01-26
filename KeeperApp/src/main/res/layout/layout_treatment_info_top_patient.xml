@@ -5,8 +5,11 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/layout_doctorinfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/btn_write_to_grey"
+        android:clickable="true"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingBottom="10dp"
@@ -15,9 +18,10 @@
         android:paddingTop="10dp">
 
         <scu.miomin.com.keeper.myview.XCRoundImageView
+            android:id="@+id/ivDoctorHead"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/head" />
+            android:src="@drawable/doctor1" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,24 +38,20 @@
                 android:paddingBottom="3dp"
                 android:paddingTop="3dp">
 
-                <!--<ImageView-->
-                <!--android:layout_width="10dp"-->
-                <!--android:layout_height="10dp"-->
-                <!--android:src="@drawable/pedometer_triangle_enable" />-->
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="@string/patientName"
+                    android:text="就诊医生："
                     android:textColor="@color/qianhei"
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/tvDoctorName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="莫绪旻"
+                    android:text="王鹏医生"
                     android:textColor="@color/qianhei"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -73,15 +73,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="@string/patientSex"
+                    android:text="就诊科室："
                     android:textColor="@color/qianhei"
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/tvAdministrative"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="男"
+                    android:text="心内科"
                     android:textColor="@color/qianhei"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -103,46 +104,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="@string/patientAge"
+                    android:text="医生职称："
                     android:textColor="@color/qianhei"
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/tvProfessional"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="22"
+                    android:layout_marginLeft="5dp"
+                    android:text="主任医师"
                     android:textColor="@color/qianhei"
                     android:textSize="12sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/patientHeight"
-                    android:textColor="@color/qianhei"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="171cm"
-                    android:textColor="@color/qianhei"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="@string/patientWeight"
-                    android:textColor="@color/qianhei"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="58kg"
-                    android:textColor="@color/qianhei"
-                    android:textSize="12sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -204,6 +178,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvTreatmentDate"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -244,6 +219,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvTreatmentHospital"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -273,24 +249,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:text="@string/treatmentDoctor"
+                android:text="@string/patientName"
                 android:textColor="@color/qianhei"
                 android:textSize="12sp" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvPatientName"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:lineSpacingExtra="2dp"
                     android:paddingBottom="8dp"
                     android:paddingTop="8dp"
-                    android:text="王鹏"
+                    android:text="莫绪旻"
                     android:textColor="@color/qianhei"
                     android:textSize="12sp" />
 
@@ -301,46 +277,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="@string/treatmentAdministraive"
-                android:textColor="@color/qianhei"
-                android:textSize="12sp" />
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:lineSpacingExtra="2dp"
-                    android:paddingBottom="8dp"
-                    android:paddingTop="8dp"
-                    android:text="内科"
-                    android:textColor="@color/qianhei"
-                    android:textSize="12sp" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/qianhui" />
-            </LinearLayout>
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -366,6 +302,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvTreatmentReason"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"

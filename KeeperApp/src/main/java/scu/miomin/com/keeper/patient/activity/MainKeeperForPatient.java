@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +23,6 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.Observer;
 import com.netease.nimlib.sdk.RequestCallbackWrapper;
-import com.netease.nimlib.sdk.auth.AuthService;
 import com.netease.nimlib.sdk.msg.MsgService;
 import com.netease.nimlib.sdk.msg.MsgServiceObserve;
 import com.netease.nimlib.sdk.msg.model.IMMessage;
@@ -35,28 +33,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import scu.miomin.com.keeper.Enum.AdministrativeEnum;
 import scu.miomin.com.keeper.Enum.ChatMsgTypeEnum;
-import scu.miomin.com.keeper.Enum.ProfessionalEnum;
-import scu.miomin.com.keeper.Enum.SexEnum;
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.activity.ChatActivity;
-import scu.miomin.com.keeper.activity.LoginActivity;
+import scu.miomin.com.keeper.activity.DoctorInfoActivity;
+import scu.miomin.com.keeper.activity.PatientInfoActivity;
 import scu.miomin.com.keeper.activity.SetRemindActivity;
 import scu.miomin.com.keeper.adapter.ConversationAdapter;
 import scu.miomin.com.keeper.application.ActivityCollector;
 import scu.miomin.com.keeper.basedialog.BaseDialog;
-import scu.miomin.com.keeper.bean.BirthdayBean;
 import scu.miomin.com.keeper.bean.ChatMessageBean;
 import scu.miomin.com.keeper.bean.ConversationBean;
 import scu.miomin.com.keeper.bean.DoctorBean;
-import scu.miomin.com.keeper.bean.HospitalBean;
-import scu.miomin.com.keeper.bean.MyLocationBean;
+import scu.miomin.com.keeper.bean.PatientBean;
 import scu.miomin.com.keeper.controller.Controller;
-import scu.miomin.com.keeper.dialog.AboutUsDialog;
 import scu.miomin.com.keeper.doctor.controller.DoctorController;
 import scu.miomin.com.keeper.patient.adapter.RemenDoctorAdapter;
 import scu.miomin.com.keeper.patient.controller.PatientController;
+import scu.miomin.com.keeper.resource.MyLoader;
+import scu.miomin.com.keeper.resource.UserResource;
 import scu.miomin.com.keeper.util.ToastUtils;
 
 /**
@@ -66,6 +61,9 @@ import scu.miomin.com.keeper.util.ToastUtils;
  */
 public class MainKeeperForPatient extends Activity {
 
+    // 热门医生
+    private ArrayList<DoctorBean> remendoctorArray = new ArrayList<DoctorBean>();
+
     // 第一个界面的控件
     private PullToRefreshListView lvConversation;
     // 第二个界面的控件
@@ -74,6 +72,7 @@ public class MainKeeperForPatient extends Activity {
     private TextView tvPhonenumber_top;
     private TextView tvPhonenumber;
     private TextView tvPatientname;
+    private ImageView bg_top_three;
 
     // 三个界面的viewpager
     private ViewPager mTabPager;
@@ -91,6 +90,8 @@ public class MainKeeperForPatient extends Activity {
 
     // 一键急救
     private static final int FIRSTAID = 1;
+    // 退出APP
+    private static final int QUITAPP = 2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -128,33 +129,31 @@ public class MainKeeperForPatient extends Activity {
     private void initFriendList() {
         DoctorBean doctorBean;
 
-        doctorBean = new DoctorBean("2013141463040", "123456", "王鹏", SexEnum.MAN,
-                new BirthdayBean(1987, 4, 19), null, AdministrativeEnum.NEIKE,
-                new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
-                        new MyLocationBean(0, 0)), ProfessionalEnum.ZHUZHIYISHI,
-                "资深内科医生，临床经验丰富，擅长治疗冠心病、心律不齐");
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463040");
         Controller.addFriend(doctorBean);
 
-        doctorBean = new DoctorBean("2013141463002", "123456", "莫医生", SexEnum.MAN,
-                new BirthdayBean(1966, 1, 1), null, AdministrativeEnum.NEIKE,
-                new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
-                        new MyLocationBean(0, 0)), ProfessionalEnum.ZHURENYISHI,
-                "广西中医协会常委，桂林医学院心内科专家，有丰富的心脏病临床治疗经验");
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463002");
         Controller.addFriend(doctorBean);
 
-        doctorBean = new DoctorBean("2013141463001", "123456", "陈钊", SexEnum.MAN,
-                new BirthdayBean(1995, 1, 1), null, AdministrativeEnum.ERKE,
-                new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
-                        new MyLocationBean(0, 0)), ProfessionalEnum.ZHUZHIYISHI,
-                "儿科专家，擅长青少年心脏病的预防和治疗，四川大学华西医学院特聘教授");
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463001");
         Controller.addFriend(doctorBean);
 
-        doctorBean = new DoctorBean("2013141463003", "123456", "陆广飞", SexEnum.WOMAN,
-                new BirthdayBean(1970, 1, 2), null, AdministrativeEnum.WAIKE,
-                new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
-                        new MyLocationBean(0, 0)), ProfessionalEnum.FUZHURENYISHI,
-                "擅长心脑血管病及糖尿病的治疗，有丰富的临床经验");
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463003");
         Controller.addFriend(doctorBean);
+
+        PatientBean patientBean;
+
+        patientBean = (PatientBean) UserResource.getUserByID("18000000000");
+        Controller.addFriend(patientBean);
+
+        patientBean = (PatientBean) UserResource.getUserByID("18000000001");
+        Controller.addFriend(patientBean);
+
+        patientBean = (PatientBean) UserResource.getUserByID("18084803926");
+        Controller.addFriend(patientBean);
+
+        patientBean = (PatientBean) UserResource.getUserByID("13558868295");
+        Controller.addFriend(patientBean);
 
         Controller.addFriend(Controller.getCurrentUser());
     }
@@ -198,7 +197,7 @@ public class MainKeeperForPatient extends Activity {
                             Date currentData = new Date(System.currentTimeMillis());
                             String time = format.format(currentData);
                             ChatMessageBean textMsg = new ChatMessageBean(messages.get(i).getSessionId(),
-                                    Controller.getCurrentUser().getPhonenumber(),
+                                    Controller.getCurrentUser().getAccount(),
                                     messages.get(i).getContent(), time, ChatMsgTypeEnum.RECIVE_MSG);
                             // 显示最后一行
                             if (ChatActivity.instance != null)
@@ -362,33 +361,21 @@ public class MainKeeperForPatient extends Activity {
 
         DoctorBean doctorBean;
 
-        doctorBean = new DoctorBean("2013141463040", "123456", "王鹏", SexEnum.MAN,
-                new BirthdayBean(1987, 4, 19), null, AdministrativeEnum.NEIKE,
-                new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
-                        new MyLocationBean(0, 0)), ProfessionalEnum.ZHUZHIYISHI,
-                "资深内科医生，临床经验丰富，擅长治疗冠心病、心律不齐");
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463040");
         remenDoctorAdapter.add(doctorBean);
+        remendoctorArray.add(doctorBean);
 
-        doctorBean = new DoctorBean("2013141463002", "123456", "莫医生", SexEnum.MAN,
-                new BirthdayBean(1966, 1, 1), null, AdministrativeEnum.NEIKE,
-                new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
-                        new MyLocationBean(0, 0)), ProfessionalEnum.ZHURENYISHI,
-                "广西中医协会常委，桂林医学院心内科专家，有丰富的心脏病临床治疗经验");
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463002");
         remenDoctorAdapter.add(doctorBean);
+        remendoctorArray.add(doctorBean);
 
-        doctorBean = new DoctorBean("2013141463001", "123456", "陈钊", SexEnum.MAN,
-                new BirthdayBean(1995, 1, 1), null, AdministrativeEnum.ERKE,
-                new HospitalBean("四川大学华西医院", "四川", "成都", "锦江区",
-                        new MyLocationBean(0, 0)), ProfessionalEnum.ZHUZHIYISHI,
-                "儿科专家，擅长青少年心脏病的预防和治疗，四川大学华西医学院特聘教授");
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463001");
         remenDoctorAdapter.add(doctorBean);
+        remendoctorArray.add(doctorBean);
 
-        doctorBean = new DoctorBean("2013141463003", "123456", "陆广飞", SexEnum.WOMAN,
-                new BirthdayBean(1970, 1, 2), null, AdministrativeEnum.WAIKE,
-                new HospitalBean("桂林医学院", "广西", "桂林", "叠彩区",
-                        new MyLocationBean(0, 0)), ProfessionalEnum.FUZHURENYISHI,
-                "擅长心脑血管病及糖尿病的治疗，有丰富的临床经验");
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463003");
         remenDoctorAdapter.add(doctorBean);
+        remendoctorArray.add(doctorBean);
     }
 
 
@@ -405,10 +392,10 @@ public class MainKeeperForPatient extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Log.i("miomin", "" + position);
-
                 if (position == 1)
                     return;
+
+                DoctorInfoActivity.actionStart(MainKeeperForPatient.this, remendoctorArray.get(position - 2));
             }
         });
 
@@ -444,9 +431,14 @@ public class MainKeeperForPatient extends Activity {
         tvPhonenumber_top = (TextView) view3.findViewById(R.id.tvUserphone_top);
         tvPhonenumber = (TextView) view3.findViewById(R.id.tvUserphone);
 
-        String phonenumber = Controller.getCurrentUser().getPhonenumber().substring(0, 3)
+        bg_top_three = (ImageView) view3.findViewById(R.id.bg_top_three);
+
+        // 显示背景
+        MyLoader.displayFromDrawable(R.drawable.tab_three_bg_top, bg_top_three);
+
+        String phonenumber = Controller.getCurrentUser().getAccount().substring(0, 3)
                 + "****"
-                + Controller.getCurrentUser().getPhonenumber().substring(7, 11);
+                + Controller.getCurrentUser().getAccount().substring(7, 11);
 
         tvPatientname.setText(Controller.getCurrentUser().getName());
         tvPhonenumber_top.setText(phonenumber);
@@ -531,11 +523,12 @@ public class MainKeeperForPatient extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            NIMClient.getService(AuthService.class).logout();
-            ActivityCollector.finishAll();
-            PatientController.finish();
-            DoctorController.finish();
-            LoginActivity.actionStart(this);
+//            NIMClient.getService(AuthService.class).logout();
+//            ActivityCollector.finishAll();
+//            PatientController.finish();
+//            DoctorController.finish();
+//            LoginActivity.actionStart(this);
+            BaseDialog.actionStartActivity(QUITAPP, -1, this, "提醒", "我还要给其它专家老师展示呢，所以请先不要退出啦~~", "否", "是");
             return true;
         }
         return super.onKeyDown(keyCode, event);
@@ -546,7 +539,7 @@ public class MainKeeperForPatient extends Activity {
     }
 
     public void openAboutUsDialog(View view) {
-        AboutUsDialog.actionStart(this);
+//        AboutUsDialog.actionStart(this);
     }
 
     public void openECGActivity(View view) {
@@ -559,6 +552,18 @@ public class MainKeeperForPatient extends Activity {
 
     public void firstAid(View view) {
         BaseDialog.actionStartActivity(FIRSTAID, -1, this, "警告", "是否进入急救状态，进入急救状态后，Keeper将把你的位置及个人档案共享给120急救中心和家人，请静待救援。", "否", "是");
+    }
+
+    public void openECGRecordActivity(View view) {
+        ECGRecordActivityForPatient.actionStart(this);
+    }
+
+    public void openMyInfoActivity(View view) {
+        PatientInfoActivity.actionStart(this);
+    }
+
+    public void quitAPP(View view) {
+        BaseDialog.actionStartActivity(QUITAPP, -1, this, "提醒", "我还要给其它专家老师展示呢，所以请先不要退出啦~~", "否", "是");
     }
 
     @Override
@@ -579,8 +584,10 @@ public class MainKeeperForPatient extends Activity {
                     }
                 }
                 break;
-            default:
+            case QUITAPP:
 
+                break;
+            default:
         }
     }
 

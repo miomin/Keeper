@@ -13,7 +13,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,16 +25,10 @@ import com.netease.nimlib.sdk.auth.AuthServiceObserver;
 import com.netease.nimlib.sdk.auth.LoginInfo;
 import com.netease.nimlib.sdk.auth.constant.LoginSyncStatus;
 
-import scu.miomin.com.keeper.Enum.AdministrativeEnum;
-import scu.miomin.com.keeper.Enum.ProfessionalEnum;
-import scu.miomin.com.keeper.Enum.SexEnum;
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.application.ActivityCollector;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
-import scu.miomin.com.keeper.bean.BirthdayBean;
 import scu.miomin.com.keeper.bean.DoctorBean;
-import scu.miomin.com.keeper.bean.HospitalBean;
-import scu.miomin.com.keeper.bean.MyLocationBean;
 import scu.miomin.com.keeper.bean.PatientBean;
 import scu.miomin.com.keeper.controller.Controller;
 import scu.miomin.com.keeper.dialog.LoadDialog;
@@ -43,6 +36,7 @@ import scu.miomin.com.keeper.doctor.activity.MainKeeperForDoctor;
 import scu.miomin.com.keeper.doctor.controller.DoctorController;
 import scu.miomin.com.keeper.patient.activity.MainKeeperForPatient;
 import scu.miomin.com.keeper.patient.controller.PatientController;
+import scu.miomin.com.keeper.resource.UserResource;
 
 /**
  * 描述:登录 创建日期:2015/7/23
@@ -51,7 +45,6 @@ import scu.miomin.com.keeper.patient.controller.PatientController;
  */
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
-    private ImageView btn_back;
     private TextView btn_register;
 
     private EditText id_edit;
@@ -59,14 +52,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private LinearLayout id_cancel;
     private LinearLayout pw_cancel;
-    private LinearLayout btn_eye;
 
     private Button login_btn;
 
-    private TextView erro_info;
-    private TextView forget_pw;
-
-    private LinearLayout erro_layout;
+//    private TextView forget_pw;
 
     public static void actionStart(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
@@ -96,8 +85,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private void initView() {
 
-        btn_back = (ImageView) findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(this);
 
         btn_register = (TextView) findViewById(R.id.btn_register);
         btn_register.setOnClickListener(this);
@@ -165,19 +152,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         pw_cancel = (LinearLayout) findViewById(R.id.pw_cancel);
         pw_cancel.setOnClickListener(this);
 
-        btn_eye = (LinearLayout) findViewById(R.id.btn_eye);
-        btn_eye.setOnClickListener(this);
-
         login_btn = (Button) findViewById(R.id.btn_login);
         login_btn.setOnClickListener(this);
 
         login_btn.setEnabled(false);
-        erro_info = (TextView) findViewById(R.id.erro_info);
 
-        forget_pw = (TextView) findViewById(R.id.forget_pw);
-        forget_pw.setOnClickListener(this);
-
-        erro_layout = (LinearLayout) findViewById(R.id.erro_layout);
+//        forget_pw = (TextView) findViewById(R.id.forget_pw);
+//        forget_pw.setOnClickListener(this);
     }
 
     private boolean isEye = false;
@@ -213,11 +194,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 if (!isEye) {
                     pw_edit.getInputType();
                     pw_edit.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    //btn_eye.setBackgroundResource(R.drawable.icon_eye_f);
                     isEye = true;
                 } else {
                     pw_edit.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    //btn_eye.setBackgroundResource(R.drawable.icon_eye_n);
                     isEye = false;
                 }
                 break;
@@ -239,15 +218,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
                         if (loginInfo.getAccount().length() == 11) {
                             startActivity(new Intent(LoginActivity.this, MainKeeperForPatient.class));
-                            PatientBean patientBean = new PatientBean(loginInfo.getAccount(), loginInfo.getToken(),
-                                    "莫绪旻", SexEnum.MAN, new BirthdayBean(1993, 8, 15), null, 171, 57);
+                            PatientBean patientBean = (PatientBean) UserResource.getUserByID(loginInfo.getAccount());
                             Controller.setCurrentUser(patientBean);
                         } else {
                             startActivity(new Intent(LoginActivity.this, MainKeeperForDoctor.class));
-                            DoctorBean doctorBean = new DoctorBean(loginInfo.getAccount(), loginInfo.getToken(),
-                                    "王鹏", SexEnum.MAN, new BirthdayBean(1987, 1, 1), null, AdministrativeEnum.NEIKE,
-                                    new HospitalBean("四川大学华西医院", "四川省", "成都市", "锦江区", new MyLocationBean(0, 0)),
-                                    ProfessionalEnum.FUZHURENYISHI, "擅长心脑血管病及糖尿病的治疗，有丰富的临床经验");
+                            DoctorBean doctorBean = (DoctorBean) UserResource.getUserByID(loginInfo.getAccount());
                             Controller.setCurrentUser(doctorBean);
                         }
 

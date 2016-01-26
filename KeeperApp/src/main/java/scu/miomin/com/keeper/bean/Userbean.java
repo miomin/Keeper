@@ -1,5 +1,7 @@
 package scu.miomin.com.keeper.bean;
 
+import java.io.Serializable;
+
 import scu.miomin.com.keeper.Enum.UserTypeEnum;
 
 /**
@@ -7,24 +9,18 @@ import scu.miomin.com.keeper.Enum.UserTypeEnum;
  *
  * @author 莫绪旻
  */
-public class Userbean {
-    // 注册时的手机号，唯一标识
-    private String phonenumber;
-    // 用户密码
-    private String password;
-    // 病人姓名
-    private String name;
-    // 病人性别
-    private int sex;
-    // 病人生日
-    private BirthdayBean birthday;
-    // 病人年龄
-    private int age;
-    // 头像url
-    private String headUrl;
+public class Userbean implements Serializable {
 
-    public Userbean(String phonenumber, String password, String name, int sex, BirthdayBean birthday, String headUrl) {
-        this.phonenumber = phonenumber;
+    private String account;// 注册时的手机号，唯一标识
+    private String password;// 用户密码
+    private String name;// 病人姓名
+    private int sex;// 病人性别
+    private BirthdayBean birthday;// 病人生日
+    private int age;// 病人年龄
+    private String headUrl;// 头像在服务端的url
+
+    public Userbean(String account, String password, String name, int sex, BirthdayBean birthday, String headUrl) {
+        this.account = account;
         this.password = password;
         this.name = name;
         this.sex = sex;
@@ -33,20 +29,24 @@ public class Userbean {
         this.headUrl = headUrl;
     }
 
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
     public String getHeadUrl() {
         return headUrl;
     }
 
     public void setHeadUrl(String headUrl) {
         this.headUrl = headUrl;
-    }
-
-    public String getPhonenumber() {
-        return phonenumber;
-    }
-
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
     }
 
     public String getPassword() {
@@ -87,7 +87,7 @@ public class Userbean {
     }
 
     public int getUserType() {
-        if (phonenumber.length() == 11)
+        if (account.length() == 11)
             return UserTypeEnum.PATIENT;
         else
             return UserTypeEnum.DOCTOR;
@@ -96,7 +96,7 @@ public class Userbean {
     @Override
     public String toString() {
         return "Userbean{" +
-                "phonenumber='" + phonenumber + '\'' +
+                "phonenumber='" + account + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", sex=" + sex +

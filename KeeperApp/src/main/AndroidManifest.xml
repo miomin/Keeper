@@ -49,12 +49,12 @@
     <!-- 接收 SDK 消息广播权限， 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
     <uses-permission android:name="scu.miomin.com.keeper.permission.RECEIVE_MSG" />
 
-
     <application
         android:name=".application.KeeperApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
 
         <!-- 高德地图 -->
@@ -135,17 +135,18 @@
         <activity android:name=".patient.activity.HealthyDescribeByMyselfActivityForPatient" />
         <activity android:name=".doctor.activity.MainKeeperForDoctor" />
         <activity android:name=".activity.ChatActivity" />
-        <activity android:name=".doctor.activity.DoctorCheckPatientActivity" />
+        <activity android:name=".activity.PatientInfoActivity" />
         <activity android:name=".activity.SetRemindActivity" />
 
         <activity
             android:name=".dialog.AboutUsDialog"
             android:theme="@style/MyDialogStyle" />
         <activity android:name=".doctor.activity.TreatmentListActivityForDoctor" />
-        <activity android:name=".activity.TreatmentInfoActivity" />
-        <activity android:name=".activity.FollowupInfoActivity" />
+        <activity android:name=".patient.activity.TreatmentInfoActivityForPatient" />
+        <activity android:name=".patient.activity.FollowupInfoActivity" />
         <activity android:name=".activity.AddFollowupActivity" />
         <activity android:name=".activity.TrendLineChartActivity" />
+        <activity android:name=".activity.DoctorInfoActivity" />
 
         <activity android:name=".patient.activity.TreatmentListActivityForPatient" />
     </application>

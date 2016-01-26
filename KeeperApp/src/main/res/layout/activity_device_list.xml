@@ -7,6 +7,39 @@
     tools:context=".GameinfoDialog">
 
     <LinearLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@color/zhuti"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_weight="1.2"
+            android:onClick="back"
+            android:src="@drawable/icon_back_white" />
+
+        <TextView
+            android:id="@+id/tv_friendName"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="6"
+            android:gravity="center"
+            android:text="连接设备"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_weight="1.2" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
@@ -23,10 +56,11 @@
                 android:id="@+id/title_paired_devices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#666"
+                android:background="#ffffff"
+                android:gravity="center"
                 android:paddingLeft="5dp"
                 android:text="@string/title_paired_devices"
-                android:textColor="#fff" />
+                android:textColor="@color/qianhei" />
 
             <ListView
                 android:id="@+id/paired_devices"
@@ -45,11 +79,11 @@
                 android:id="@+id/title_new_devices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#666"
-                
+                android:background="#ffffff"
+                android:gravity="center"
                 android:paddingLeft="5dp"
                 android:text="@string/title_other_devices"
-                android:textColor="#fff" />
+                android:textColor="@color/qianhei" />
 
             <ListView
                 android:id="@+id/new_devices"

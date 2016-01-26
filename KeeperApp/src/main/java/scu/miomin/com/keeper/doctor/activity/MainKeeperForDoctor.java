@@ -20,22 +20,33 @@ import android.widget.TextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.netease.nimlib.sdk.NIMClient;
+import com.netease.nimlib.sdk.Observer;
+import com.netease.nimlib.sdk.RequestCallbackWrapper;
 import com.netease.nimlib.sdk.auth.AuthService;
+import com.netease.nimlib.sdk.msg.MsgService;
+import com.netease.nimlib.sdk.msg.MsgServiceObserve;
+import com.netease.nimlib.sdk.msg.model.IMMessage;
+import com.netease.nimlib.sdk.msg.model.RecentContact;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-import scu.miomin.com.keeper.Enum.SexEnum;
+import scu.miomin.com.keeper.Enum.ChatMsgTypeEnum;
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.activity.ChatActivity;
 import scu.miomin.com.keeper.activity.LoginActivity;
 import scu.miomin.com.keeper.adapter.ConversationAdapter;
 import scu.miomin.com.keeper.application.ActivityCollector;
-import scu.miomin.com.keeper.bean.BirthdayBean;
+import scu.miomin.com.keeper.bean.ChatMessageBean;
 import scu.miomin.com.keeper.bean.ConversationBean;
+import scu.miomin.com.keeper.bean.DoctorBean;
 import scu.miomin.com.keeper.bean.PatientBean;
 import scu.miomin.com.keeper.controller.Controller;
 import scu.miomin.com.keeper.doctor.controller.DoctorController;
 import scu.miomin.com.keeper.patient.controller.PatientController;
+import scu.miomin.com.keeper.resource.UserResource;
 
 /**
  * 描述:主界面 创建日期:2015/7/23
@@ -60,6 +71,11 @@ public class MainKeeperForDoctor extends Activity {
     // 当前页卡编号
     private int currIndex = 0;
 
+    //  收发消息更新对话列表的观察者对象
+    Observer<List<RecentContact>> conversationObserver;
+    // 消息接受的观察者
+    Observer<List<IMMessage>> incomingMessageObserver = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +83,7 @@ public class MainKeeperForDoctor extends Activity {
         // 启动activity时不自动弹出软键盘
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        ActivityCollector.addActivity(this);
         // 初始化viewPager
         initViewPager();
         // 初始化第一个界面的控件
@@ -77,21 +94,101 @@ public class MainKeeperForDoctor extends Activity {
         initView3();
         // 设置第三个界面的监听器
         initListener3();
+        //  创建收发消息更新对话列表的观察者对象
+        initConversationObserver();
         // 初始化好友列表
         initFriendList();
-        ActivityCollector.addActivity(this);
+        // 初始化chat适配器
+        Controller.initChatAdapterList(this);
+        // 初始化接受消息的观察者对象
+        initMsgReciverObserver();
     }
 
     // 初始化好友列表
     private void initFriendList() {
+        DoctorBean doctorBean;
+
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463040");
+        Controller.addFriend(doctorBean);
+
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463002");
+        Controller.addFriend(doctorBean);
+
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463001");
+        Controller.addFriend(doctorBean);
+
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463003");
+        Controller.addFriend(doctorBean);
+
         PatientBean patientBean;
 
-        patientBean = new PatientBean("18084803926", "123456", "莫绪旻", SexEnum.MAN,
-                new BirthdayBean(1993, 8, 15), null, 171.0, 58.0);
+        patientBean = (PatientBean) UserResource.getUserByID("18000000000");
         Controller.addFriend(patientBean);
 
+        patientBean = (PatientBean) UserResource.getUserByID("18000000001");
+        Controller.addFriend(patientBean);
+
+        patientBean = (PatientBean) UserResource.getUserByID("18084803926");
+        Controller.addFriend(patientBean);
+
+        patientBean = (PatientBean) UserResource.getUserByID("13558868295");
+        Controller.addFriend(patientBean);
 
         Controller.addFriend(Controller.getCurrentUser());
+    }
+
+    // 初始化对话监听的观察者
+    private void initConversationObserver() {
+        conversationObserver =
+                new Observer<List<RecentContact>>() {
+                    @Override
+                    public void onEvent(List<RecentContact> messages) {
+                        // recents参数即为最近联系人列表（最近会话列表）
+                        for (int i = 0; i < messages.size(); i++) {
+                            String lastMsg = messages.get(i).getContent();
+                            long time = messages.get(i).getTime();
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/dd/MM HH:mm:ss");
+                            String lastTime = sdf.format(new Date(time));
+                            boolean isNewMsg = true;
+                            String userphone = messages.get(i).getContactId();
+                            String username = Controller.getFriendByID(userphone).getName();
+
+                            ConversationBean conversation = new ConversationBean(lastMsg, lastTime,
+                                    isNewMsg, userphone, username);
+                            Controller.getConversationAdapter().add(conversation);
+                        }
+                    }
+                };
+        //  注册观察者
+        NIMClient.getService(MsgServiceObserve.class)
+                .observeRecentContact(conversationObserver, true);
+    }
+
+    // 初始化消息接受的观察者
+    private void initMsgReciverObserver() {
+        incomingMessageObserver =
+                new Observer<List<IMMessage>>() {
+                    @Override
+                    public void onEvent(List<IMMessage> messages) {
+                        // 处理新收到的消息，为了上传处理方便，SDK 保证参数 messages 全部来自同一个聊天对象。
+                        for (int i = 0; i < messages.size(); i++) {
+                            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+                            Date currentData = new Date(System.currentTimeMillis());
+                            String time = format.format(currentData);
+                            ChatMessageBean textMsg = new ChatMessageBean(messages.get(i).getSessionId(),
+                                    Controller.getCurrentUser().getAccount(),
+                                    messages.get(i).getContent(), time, ChatMsgTypeEnum.RECIVE_MSG);
+                            // 显示最后一行
+                            if (ChatActivity.instance != null)
+                                ChatActivity.addMsg(messages.get(i).getSessionId(), textMsg);
+                            else
+                                Controller.getChatAdapter(messages.get(i).getSessionId()).addMsg(textMsg);
+                        }
+                    }
+                };
+        // 注册观察者对象
+        NIMClient.getService(MsgServiceObserve.class)
+                .observeReceiveMessage(incomingMessageObserver, true);
     }
 
     // 初始化控件
@@ -145,36 +242,23 @@ public class MainKeeperForDoctor extends Activity {
     // 初始化第一个界面的控件
     private void initView1() {
         lvConversation = (PullToRefreshListView) view1.findViewById(R.id.lvConversation);
+        // 初始化对话列表的适配器
+        initConversationAdapter();
     }
 
     // 设置第一个界面的监听器
     private void setListener1() {
-        // 初始化好友列表的适配器
-        initFriendAdapter();
+        initConversationListener();
+    }
 
+    private void initConversationListener() {
         lvConversation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ChatActivity.actionStart(MainKeeperForDoctor.this,
-                        "18084803926");
+                        Controller.getConversationAdapter().getConversation(position - 1).getPhonenumber());
             }
         });
-    }
-
-    // 初始化好友列表的适配器
-    private void initFriendAdapter() {
-        // 创建适配器对象
-        DoctorController.setConversationAdapter(new ConversationAdapter(MainKeeperForDoctor.this));
-        // 将ListView与适配器关联
-        lvConversation.setAdapter(DoctorController.getConversationAdapter());
-
-        ConversationBean conversation = new ConversationBean("谢谢医生关心", "2015/11/5",
-                true, "18000000001", "徐若川");
-        DoctorController.getConversationAdapter().add(conversation);
-
-        conversation = new ConversationBean("好的，一定按时吃药", "2015/11/3",
-                false, "18084803926", "莫绪旻");
-        DoctorController.getConversationAdapter().add(conversation);
 
         // 设置下拉刷新监听器
         lvConversation.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
@@ -199,15 +283,40 @@ public class MainKeeperForDoctor extends Activity {
                 }.execute();
             }
         });
-
-        lvConversation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //ChatActivity.actionStart(MainKeeperForDoctor.this);
-            }
-        });
     }
 
+    // 初始化对话列表的适配器
+    private void initConversationAdapter() {
+        // 创建适配器对象
+        Controller.setConversationAdapter(new ConversationAdapter(MainKeeperForDoctor.this));
+        // 将ListView与适配器关联
+        lvConversation.setAdapter(Controller.getConversationAdapter());
+
+        NIMClient.getService(MsgService.class).queryRecentContacts()
+                .setCallback(new RequestCallbackWrapper<List<RecentContact>>() {
+                    @Override
+                    public void onResult(int code, List<RecentContact> recents, Throwable exception) {
+                        // recents参数即为最近联系人列表（最近会话列表）
+                        for (int i = 0; i < recents.size(); i++) {
+                            String lastMsg = recents.get(i).getContent();
+                            long time = recents.get(i).getTime();
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/dd/MM HH:mm:ss");
+                            String lastTime = sdf.format(new Date(time));
+                            boolean isNewMsg = true;
+                            // 有问题要查API文档
+                            // 有问题要查API文档
+                            // 有问题要查API文档
+                            // 有问题要查API文档
+                            String userphone = recents.get(i).getContactId();
+                            String username = Controller.getFriendByID(userphone).getName();
+
+                            ConversationBean conversation = new ConversationBean(lastMsg, lastTime,
+                                    isNewMsg, userphone, username);
+                            Controller.getConversationAdapter().add(conversation);
+                        }
+                    }
+                });
+    }
 
     // 初始化第三个界面的控件
     private void initView3() {
@@ -216,9 +325,9 @@ public class MainKeeperForDoctor extends Activity {
         tvPhonenumber_top = (TextView) view3.findViewById(R.id.tvUserphone_top);
         tvPhonenumber = (TextView) view3.findViewById(R.id.tvUserphone);
 
-        String phonenumber = Controller.getCurrentUser().getPhonenumber().substring(0, 3)
+        String phonenumber = Controller.getCurrentUser().getAccount().substring(0, 3)
                 + "****"
-                + Controller.getCurrentUser().getPhonenumber().substring(9, 13);
+                + Controller.getCurrentUser().getAccount().substring(9, 13);
 
         tvPatientname.setText(Controller.getCurrentUser().getName());
         tvPhonenumber_top.setText(phonenumber);
@@ -305,6 +414,12 @@ public class MainKeeperForDoctor extends Activity {
         super.onDestroy();
         PatientController.finish();
         DoctorController.finish();
+        //  注销观察者
+        NIMClient.getService(MsgServiceObserve.class)
+                .observeRecentContact(conversationObserver, false);
+        // 注销观察者对象
+        NIMClient.getService(MsgServiceObserve.class)
+                .observeReceiveMessage(incomingMessageObserver, false);
         ActivityCollector.removeActivity(this);
     }
 }

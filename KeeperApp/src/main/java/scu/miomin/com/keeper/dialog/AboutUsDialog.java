@@ -26,7 +26,7 @@ public class AboutUsDialog extends Activity {
     }
 
     public static void actionStart(Context context) {
-        Intent intent = new Intent(context,AboutUsDialog.class);
+        Intent intent = new Intent(context, AboutUsDialog.class);
         context.startActivity(intent);
     }
 

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.bean.DoctorBean;
 import scu.miomin.com.keeper.myview.MyBanner;
+import scu.miomin.com.keeper.resource.MyLoader;
 
 /**
  * Created by miomin on 15/11/22.
@@ -79,20 +80,8 @@ public class RemenDoctorAdapter extends BaseAdapter {
             viewHolder.tvHospital.setText(doctorBean.getHospitalBean().getName());
             viewHolder.tvIntroduction.setText(doctorBean.getIntroduction());
 
-            switch (position) {
-                case 1:
-                    viewHolder.ivHead.setImageResource(R.drawable.doctor1);
-                    break;
-                case 2:
-                    viewHolder.ivHead.setImageResource(R.drawable.doctor4);
-                    break;
-                case 3:
-                    viewHolder.ivHead.setImageResource(R.drawable.doctor5);
-                    break;
-                case 4:
-                    viewHolder.ivHead.setImageResource(R.drawable.doctor6);
-                    break;
-            }
+            MyLoader.dispalyFromAssets(doctorBean.getHeadUrl(),
+                    viewHolder.ivHead);
         }
         return convertView;
     }

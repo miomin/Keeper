@@ -18,8 +18,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/doctor_head" />
+            android:layout_alignParentTop="true" />
 
         <TextView
             android:id="@+id/tv_friendsendtime"
@@ -66,8 +65,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/head" />
+            android:layout_alignParentTop="true" />
 
         <TextView
             android:id="@+id/tv_mysendtime"

@@ -4,141 +4,165 @@
     android:layout_height="match_parent"
     tools:context=".ECGActivity">
 
-    <scu.miomin.com.keeper.myview.ReboundScrollView
+    <RelativeLayout
+        android:id="@+id/layout_bottom"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="fill_parent"
+        android:background="@color/white">
+
+        <scu.miomin.com.keeper.myview.ECGSurfaceView
+            android:id="@+id/ecg_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="300dp" />
+
+        <ImageView
+            android:id="@+id/bg_top"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ecg_top_bg" />
 
         <LinearLayout
-            android:id="@+id/layout_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_alignParentBottom="true"
-            android:background="@color/white"
-            android:orientation="vertical">
+            android:id="@+id/rl_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/rl_layout"
-                android:layout_width="fill_parent"
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1.2"
+                android:onClick="back"
+                android:src="@drawable/icon_back_white" />
+
+            <TextView
+                android:id="@+id/tv_friendName"
+                android:layout_width="0dp"
                 android:layout_height="45dp"
-                android:background="@drawable/bg_top_tab_two"
-                android:orientation="horizontal">
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:text="@string/ecgmonitor"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1.2"
-                    android:onClick="back"
-                    android:src="@drawable/icon_back_white" />
+            <Button
+                android:id="@+id/btn_friendMsg"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_weight="1.2"
+                android:background="@drawable/bg_trans_to_grey"
+                android:onClick="checkUserinfo"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:visibility="invisible" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_friendName"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="6"
-                    android:gravity="center"
-                    android:text="@string/ecgmonitor"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/btn_friendMsg"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1.2"
-                    android:background="@drawable/bg_trans_to_grey"
-                    android:onClick="checkUserinfo"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            <scu.miomin.com.keeper.myview.ECGSurfaceView
-                android:id="@+id/ecg_view"
-                android:layout_width="match_parent"
-                android:layout_height="300dp" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="280dp"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_record"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="横向缩放"
-                    android:textColor="@color/black" />
-
-                <SeekBar
-                    android:id="@+id/xSeekBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:max="10"
-                    android:progress="1" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="130dp"
-                android:background="@color/white"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tvxinlv"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/xinlv"
-                    android:gravity="center"
-                    android:text=""
+                    android:text="@string/startRecord"
                     android:textColor="@color/white"
-                    android:textSize="28sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp">
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_record"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_login_bg"
-                    android:text="@string/startRecord"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/start_record" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="250dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_find"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chazhaojilu"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_find"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_login_bg"
-                    android:text="@string/chazhaojilu"
-                    android:textColor="@color/white" />
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/find_record" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="280dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_connect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/connect"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/btn_connect"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_login_bg"
-                    android:text="@string/connect"
-                    android:textColor="@color/white" />
-
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/connect" />
             </LinearLayout>
 
-        </LinearLayout>
-    </scu.miomin.com.keeper.myview.ReboundScrollView>
 
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="130dp"
+            android:layout_marginTop="100dp"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_xinlv"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tvxinlv"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="36sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 </RelativeLayout>

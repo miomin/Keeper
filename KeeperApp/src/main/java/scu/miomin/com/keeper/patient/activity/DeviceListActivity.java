@@ -196,7 +196,7 @@ public class DeviceListActivity extends BaseActivity {
         }
     };
 
-    public void close(View view) {
+    public void back(View view) {
         super.onBackPressed();
     }
 

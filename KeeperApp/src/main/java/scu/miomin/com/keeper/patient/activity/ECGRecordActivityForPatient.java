@@ -6,8 +6,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.ContextMenu;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,21 +15,20 @@ import android.widget.Toast;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import scu.miomin.com.keeper.Enum.UserTypeEnum;
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
+import scu.miomin.com.keeper.basedialog.BaseDialog;
 import scu.miomin.com.keeper.bean.ECGRecordBean;
 import scu.miomin.com.keeper.bean.HealthyDescribeByPatientBean;
 import scu.miomin.com.keeper.controller.Controller;
 import scu.miomin.com.keeper.dialog.LoadDialog;
-import scu.miomin.com.keeper.ecgsave.SaveECGUtils;
+import scu.miomin.com.keeper.ecgsave.ECGDirSaveUtil;
 import scu.miomin.com.keeper.patient.adapter.ECGRecordAdapterForPatient;
 import scu.miomin.com.keeper.patient.controller.PatientController;
+import scu.miomin.com.keeper.util.FileUploadUtil;
 
 
 /**
@@ -41,25 +38,30 @@ import scu.miomin.com.keeper.patient.controller.PatientController;
  */
 public class ECGRecordActivityForPatient extends BaseActivity {
 
-    private List<File> datas = new ArrayList<File>();
-    File[] files = null;
     private PullToRefreshListView lvecgrecord;
+
+    private ArrayList<String> ecgfileNameList;
 
     private static final int PUSHSUCCEED = 1;
     private static final int PUSHFAILD = -1;
+
+    private static String uploadFilename = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_healthyrecord_patient);
-
-        files = SaveECGUtils.getLogDir(this).listFiles();
-        Collections.addAll(datas, files);
-
+        // 初始化数据
+        initData();
         // 初始化控件
         initView();
         // 设置监听器
         setListener();
+    }
+
+    // 初始化数据
+    private void initData() {
+        ecgfileNameList = ECGDirSaveUtil.readRecordDir(this);
     }
 
     // 监听上传心电数据状态的handler
@@ -98,35 +100,32 @@ public class ECGRecordActivityForPatient extends BaseActivity {
 
         ECGRecordBean ecgRecord = null;
 
-        for (int i = 0; i < files.length; i++) {
+        for (int i = 0; i < ecgfileNameList.size(); i++) {
 
-            String filename = files[i].getName().substring(5, 19);
+            String temp1[] = ecgfileNameList.get(i).split("_");
 
-            String yearStr = filename.substring(0, 4);
+            String recordDate = temp1[2];
 
-            String monthStr = filename.substring(4, 6);
+            String yearStr = recordDate.substring(0, 4);
+
+            String monthStr = recordDate.substring(4, 6);
             if (monthStr.substring(0, 1).equals(0)) {
                 monthStr = monthStr.substring(1, 2);
             }
 
-            String dayStr = filename.substring(6, 8);
+            String dayStr = recordDate.substring(6, 8);
             if (dayStr.substring(0, 1).equals(0)) {
                 dayStr = dayStr.substring(1, 2);
             }
 
-            String hourStr = filename.substring(8, 10);
+            String hourStr = recordDate.substring(8, 10);
             if (hourStr.substring(0, 1).equals(0)) {
                 hourStr = hourStr.substring(1, 2);
             }
 
-            String minuteStr = filename.substring(10, 12);
+            String minuteStr = recordDate.substring(10, 12);
             if (minuteStr.substring(0, 1).equals(0)) {
                 minuteStr = minuteStr.substring(1, 2);
-            }
-
-            String secondStr = filename.substring(12, 14);
-            if (monthStr.substring(0, 1).equals(0)) {
-                secondStr = secondStr.substring(1, 2);
             }
 
             int year = Integer.parseInt(yearStr);
@@ -147,7 +146,7 @@ public class ECGRecordActivityForPatient extends BaseActivity {
             }
 
             ecgRecord = new ECGRecordBean(year + "-" + month + "-" + day + " " + hour + ":" + minute,
-                    files[i].getName(), new HealthyDescribeByPatientBean(false, false, false, false, false, false), isAtPhone);
+                    ecgfileNameList.get(i), new HealthyDescribeByPatientBean(false, false, false, false, false, false), isAtPhone);
             PatientController.getEcgRecordAdapterForPatient().add(ecgRecord);
         }
 
@@ -179,37 +178,42 @@ public class ECGRecordActivityForPatient extends BaseActivity {
         lvecgrecord.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ECGHistoryActivityForPatient.actionStart(ECGRecordActivityForPatient.this, datas.get(position - 1));
+                uploadFilename = ecgfileNameList.get(position - 1);
+                BaseDialog.actionStartActivity(1, position, ECGRecordActivityForPatient.this,
+                        "提示", "是否要将本次心电监测数据上传到云端？上传后可供医生查看",
+                        "否", "是");
+            }
+        });
+
+        lvecgrecord.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                openOptionsMenu();
+                return false;
             }
         });
     }
 
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v,
-                                    ContextMenu.ContextMenuInfo menuInfo) {
-        menu.add(0, Menu.FIRST, Menu.NONE, "删除");
-    }
-
-    @Override
     public boolean onContextItemSelected(MenuItem item) {
-        // 得到当前被选中的item信息
-        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item
-                .getMenuInfo();
-
-        switch (item.getItemId()) {
-            case Menu.FIRST:
-                File file = datas.get(menuInfo.position);
-                if (file.exists()) {
-                    file.delete();
-                }
-
-                datas.remove(file);
-                PatientController.getEcgRecordAdapterForPatient().delete(menuInfo.position);
-
-                break;
-            default:
-                return super.onContextItemSelected(item);
-        }
+//        // 得到当前被选中的item信息
+//        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item
+//                .getMenuInfo();
+//
+//        switch (item.getItemId()) {
+//            case Menu.FIRST:
+//                File file = datas.get(menuInfo.position);
+//                if (file.exists()) {
+//                    file.delete();
+//                }
+//
+//                datas.remove(file);
+//                PatientController.getEcgRecordAdapterForPatient().delete(menuInfo.position);
+//
+//                break;
+//            default:
+//                return super.onContextItemSelected(item);
+//        }
         return true;
     }
 
@@ -229,7 +233,13 @@ public class ECGRecordActivityForPatient extends BaseActivity {
                         new Thread() {
                             public void run() {
                                 try {
-                                    sleep(2000);
+                                    sleep(500);
+
+                                    if (uploadFilename == null) {
+                                        return;
+                                    }
+                                    FileUploadUtil.uploadFile(uploadFilename, "http://192.168.252.1:5000/upload",
+                                            ECGRecordActivityForPatient.this);
                                     Message message;
                                     message = Message.obtain();
                                     message.what = PUSHSUCCEED;
@@ -247,7 +257,6 @@ public class ECGRecordActivityForPatient extends BaseActivity {
                 }
                 break;
             default:
-
         }
     }
 

@@ -1,12 +1,14 @@
 package scu.miomin.com.keeper.bean;
 
 
+import java.io.Serializable;
+
 /**
- * 描述:对话列表实体类 创建日期:2015/11/10
+ * 描述:对话项实体类 创建日期:2015/11/10
  *
  * @author 莫绪旻
  */
-public class ConversationBean {
+public class ConversationBean implements Serializable {
 
     private String phonenumber;
     private String username;

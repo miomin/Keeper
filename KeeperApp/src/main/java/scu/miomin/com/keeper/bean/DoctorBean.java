@@ -1,16 +1,18 @@
 package scu.miomin.com.keeper.bean;
 
+import java.io.Serializable;
+
 /**
  * 描述:医生实体类 创建日期:2015/11/4
  *
  * @author 莫绪旻
  */
-public class DoctorBean extends Userbean {
+public class DoctorBean extends Userbean implements Serializable{
 
-    String professional;
-    String administrative;
-    HospitalBean hospitalBean;
-    String introduction;
+    String professional;  //医生职称，见枚举类ProfessionalEnum
+    String administrative; //医生所在科室，见枚举类AdministrativeEnum
+    HospitalBean hospitalBean; //医生所在医院
+    String introduction; //医生简介
 
     public DoctorBean(String phonenumber, String password, String name, int sex,
                       BirthdayBean birthday, String headUrl, String administrative,

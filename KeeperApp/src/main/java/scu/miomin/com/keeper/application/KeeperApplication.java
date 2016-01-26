@@ -29,6 +29,8 @@ import java.util.List;
 
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.activity.WelcomeActivity;
+import scu.miomin.com.keeper.ecgsave.ECGDirSaveUtil;
+import scu.miomin.com.keeper.resource.UserResource;
 
 /**
  * 描述:Application 创建日期:2015/11/4
@@ -52,6 +54,9 @@ public class KeeperApplication extends Application {
         NIMClient.init(this, getLoginInfo(), options()); // SDK初始化（启动后台服务，若已经存在用户登录信息，SDK 将完成自动登录）
         mInstance = this;
         list = Collections.synchronizedList(new LinkedList<Integer>());// 初始化ArrayList
+        // 创建心电图目录文件
+        ECGDirSaveUtil.creatDirFile(this);
+        UserResource.initData();
     }
 
     // 获取全局的context

@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -23,13 +24,22 @@ import java.util.ArrayList;
 
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
+import scu.miomin.com.keeper.util.ToastUtils;
 
 public class TrendLineChartActivity extends BaseActivity implements OnChartValueSelectedListener {
 
-    private LineChart mChart;
+    private LineChart trendLineChart;
 
-    public static void actionStart(Context context) {
+    private String titleStr;
+
+    private TextView tvTitle, tvTitleSub;
+
+    private ArrayList<Integer> datas;
+
+    public static void actionStart(Context context, String titleStr, ArrayList<Integer> datas) {
         Intent intent = new Intent(context, TrendLineChartActivity.class);
+        intent.putExtra("titleStr", titleStr);
+        intent.putExtra("datas", datas);
         context.startActivity(intent);
     }
 
@@ -38,49 +48,42 @@ public class TrendLineChartActivity extends BaseActivity implements OnChartValue
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trendlinechart);
 
-        mChart = (LineChart) findViewById(R.id.chart1);
-        mChart.setOnChartValueSelectedListener(this);
+        initView();
+
+        initData();
+
+        trendLineChart = (LineChart) findViewById(R.id.trendLineChart);
+        trendLineChart.setOnChartValueSelectedListener(this);
 
         // no description text
-        mChart.setDescription("");
-        mChart.setNoDataTextDescription("You need to provide data for the chart.");
+        trendLineChart.setDescription("");
+        trendLineChart.setNoDataTextDescription("You need to provide data for the chart.");
 
         // enable touch gestures
-        mChart.setTouchEnabled(true);
+        trendLineChart.setTouchEnabled(true);
 
-        mChart.setDragDecelerationFrictionCoef(0.9f);
+        trendLineChart.setDragDecelerationFrictionCoef(0.9f);
 
         // enable scaling and dragging
-        mChart.setDragEnabled(true);
-        mChart.setScaleEnabled(true);
-        mChart.setDrawGridBackground(false);
-        mChart.setHighlightPerDragEnabled(true);
+        trendLineChart.setDragEnabled(true);
+        trendLineChart.setScaleEnabled(true);
+        trendLineChart.setDrawGridBackground(false);
+        trendLineChart.setHighlightPerDragEnabled(true);
 
         // if disabled, scaling can be done on x- and y-axis separately
-        mChart.setPinchZoom(true);
+        trendLineChart.setPinchZoom(true);
 
         // set an alternative background color
-        mChart.setBackgroundResource(R.color.white);
+        trendLineChart.setBackgroundResource(R.color.white);
 
         // add data
-        setData(7);
+        setData();
 
-        mChart.animateY(3000);
+        trendLineChart.animateY(3000);
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
 
-        // get the legend (only possible after setting data)
-//        Legend l = mChart.getLegend();
-//
-//        l.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
-//        l.setForm(Legend.LegendForm.LINE);
-//        l.setTypeface(tf);
-//        l.setTextSize(11f);
-//        l.setTextColor(R.color.qianhei);
-//        l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
-//        l.setYOffset(11f);
-
-        XAxis xAxis = mChart.getXAxis();
+        XAxis xAxis = trendLineChart.getXAxis();
         xAxis.setTypeface(tf);
         xAxis.setTextSize(12f);
         xAxis.setTextColor(R.color.qianhei);
@@ -88,14 +91,14 @@ public class TrendLineChartActivity extends BaseActivity implements OnChartValue
         xAxis.setDrawAxisLine(false);
         xAxis.setSpaceBetweenLabels(1);
 
-        YAxis leftAxis = mChart.getAxisLeft();
+        YAxis leftAxis = trendLineChart.getAxisLeft();
         leftAxis.setTypeface(tf);
         leftAxis.setTextColor(Color.WHITE);
         leftAxis.setAxisMaxValue(350);
         leftAxis.setDrawGridLines(true);
         leftAxis.setStartAtZero(true);
 
-        YAxis rightAxis = mChart.getAxisRight();
+        YAxis rightAxis = trendLineChart.getAxisRight();
         rightAxis.setTypeface(tf);
         rightAxis.setTextColor(Color.WHITE);
         rightAxis.setAxisMaxValue(350);
@@ -103,26 +106,40 @@ public class TrendLineChartActivity extends BaseActivity implements OnChartValue
         leftAxis.setStartAtZero(true);
     }
 
+    private void initData() {
+        titleStr = getIntent().getStringExtra("titleStr");
+        datas = (ArrayList<Integer>) getIntent().getSerializableExtra("datas");
 
-    private void setData(int count) {
+        if (titleStr == null || datas == null) {
+            ToastUtils.showToast(this, "数据加载失败");
+            finish();
+            return;
+        }
+
+        tvTitle.setText(titleStr);
+        tvTitleSub.setText(titleStr);
+    }
+
+    private void initView() {
+        tvTitle = (TextView) findViewById(R.id.tvTitle);
+        tvTitleSub = (TextView) findViewById(R.id.tvTitleSub);
+    }
+
+
+    private void setData() {
 
         ArrayList<String> xVals = new ArrayList<String>();
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < datas.size(); i++) {
             xVals.add((i) + "");
         }
 
         ArrayList<Entry> yVals2 = new ArrayList<Entry>();
-
-        yVals2.add(new Entry(280, 0));
-        yVals2.add(new Entry(260, 1));
-        yVals2.add(new Entry(200, 2));
-        yVals2.add(new Entry(220, 3));
-        yVals2.add(new Entry(180, 4));
-        yVals2.add(new Entry(200, 5));
-        yVals2.add(new Entry(190, 6));
+        for (int i = 0; i < datas.size(); i++) {
+            yVals2.add(new Entry(datas.get(i), i));
+        }
 
         // create a dataset and give it a type
-        LineDataSet set2 = new LineDataSet(yVals2, "乳酸脱氢酶");
+        LineDataSet set2 = new LineDataSet(yVals2, titleStr);
         set2.setAxisDependency(AxisDependency.RIGHT);
         set2.setColor(getResources().getColor(R.color.zhuti));
         set2.setCircleColor(getResources().getColor(R.color.zhuti));
@@ -143,7 +160,7 @@ public class TrendLineChartActivity extends BaseActivity implements OnChartValue
         data.setValueTextSize(9f);
 
         // set data
-        mChart.setData(data);
+        trendLineChart.setData(data);
     }
 
     @Override

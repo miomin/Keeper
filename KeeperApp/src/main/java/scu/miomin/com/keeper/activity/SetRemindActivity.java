@@ -1,25 +1,24 @@
 package scu.miomin.com.keeper.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 
 import com.zcw.togglebutton.ToggleButton;
 import com.zcw.togglebutton.ToggleButton.OnToggleChanged;
 
 import scu.miomin.com.keeper.R;
+import scu.miomin.com.keeper.baseactivity.BaseActivity;
 
 /**
  * 描述:修改系统设置的界面 创建日期:2015/5/10
  *
  * @author 应均康
  */
-public class SetRemindActivity extends Activity {
+public class SetRemindActivity extends BaseActivity {
 
     private ToggleButton Btn_reciveMsg = null;
     private ToggleButton Btn_vibrate = null;

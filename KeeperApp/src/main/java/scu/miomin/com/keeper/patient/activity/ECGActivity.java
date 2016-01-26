@@ -12,8 +12,11 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -22,9 +25,11 @@ import cn.fly2think.btlib.BluetoothService;
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.application.KeeperApplication;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
-import scu.miomin.com.keeper.ecgsave.SaveECGManager;
-import scu.miomin.com.keeper.ecgsave.SaveECGUtils;
+import scu.miomin.com.keeper.controller.Controller;
+import scu.miomin.com.keeper.ecgsave.ECGDataSavaUtil;
+import scu.miomin.com.keeper.ecgsave.ECGDirSaveUtil;
 import scu.miomin.com.keeper.myview.ECGSurfaceView;
+import scu.miomin.com.keeper.resource.MyLoader;
 import scu.miomin.com.keeper.util.ToastUtils;
 
 /**
@@ -41,6 +46,9 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
     private static final int REQUEST_CONNECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
 
+    // 保存心电图记录的对象
+    ECGDataSavaUtil ecgDataSavaUtil = null;
+
     // 连接的蓝牙设备名
     private String mConnectedDeviceName = null;
 
@@ -54,7 +62,10 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
     private BluetoothService mBTService = null;
 
     private Button btn_connect, btn_record, btn_find;
+    private TextView tv_record, tv_find, tv_connect;
     private ECGSurfaceView ecg_view;
+    private ImageView bg_top;
+    private ImageView iv_xinlv;
 
     private int[] dataCount1;
     private int[] dataCount;// 存储要推的数据
@@ -101,7 +112,8 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
 
                             isConnect = true;
 
-                            btn_connect.setText(R.string.disconnect);
+                            tv_connect.setText(R.string.disconnect);
+                            btn_connect.setBackgroundResource(R.drawable.disconnect);
                             btn_connect.setEnabled(true);
                             // 连接成功后开始绘制心电图
                             startPaintTimer();
@@ -109,13 +121,14 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
                         // 连接中
                         case BluetoothService.STATE_CONNECTING:
                             btn_connect.setEnabled(false);
-                            btn_connect.setText(getResources().getString(R.string.title_connecting));
+                            tv_connect.setText(getResources().getString(R.string.title_connecting));
                             break;
                         // 未连接
                         case BluetoothService.STATE_LISTEN:
                         case BluetoothService.STATE_NONE:
                             btn_connect.setEnabled(true);
-                            btn_connect.setText(R.string.connect);
+                            tv_connect.setText(R.string.connect);
+                            btn_connect.setBackgroundResource(R.drawable.connect);
                             break;
                     }
                     break;
@@ -133,10 +146,9 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
                     KeeperApplication.getInstance().addValue(value);
 
                     if (isRecord) {
-
-                        SaveECGManager.getManager(getApplicationContext()).log(
-                                Integer.toString(value));
-
+                        // 心电数据写入record文件
+                        String strValue = Integer.toString(value);
+                        ecgDataSavaUtil.writeSingleDataToFile(strValue);
                     }
 
                     break;
@@ -154,15 +166,17 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
                             ToastUtils.showToast(getApplicationContext(),
                                     R.string.unable_connect);
 
-                            btn_connect.setText(R.string.connect);
+                            tv_connect.setText(R.string.connect);
                             btn_connect.setEnabled(true);
+                            btn_connect.setBackgroundResource(R.drawable.connect);
 
                             break;
 
                         // 连接断开
                         case BluetoothService.MESSAGE_LOST_CONNECTION:
 
-                            btn_connect.setText(R.string.connect);
+                            tv_connect.setText(R.string.connect);
+                            btn_connect.setBackgroundResource(R.drawable.connect);
 
                             isConnect = false;
                             KeeperApplication.getInstance().clearValue();
@@ -233,8 +247,17 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
         btn_record.setOnClickListener(this);
         btn_find = (Button) findViewById(R.id.btn_find);
         btn_find.setOnClickListener(this);
+        tv_record = (TextView) findViewById(R.id.tv_record);
+        tv_find = (TextView) findViewById(R.id.tv_find);
+        tv_connect = (TextView) findViewById(R.id.tv_connect);
 
         ecg_view = (ECGSurfaceView) findViewById(R.id.ecg_view);
+        bg_top = (ImageView) findViewById(R.id.bg_top);
+        iv_xinlv = (ImageView) findViewById(R.id.iv_xinlv);
+
+        // 加载背景
+        MyLoader.displayFromDrawable(R.drawable.ecg_top_bg, bg_top);
+        MyLoader.displayFromDrawable(R.drawable.xinlv, iv_xinlv);
 
         dataCount = new int[count];
     }
@@ -308,26 +331,34 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
 
                     if (mBTService != null)
                         mBTService.stop();
-                    btn_connect.setText(R.string.connect);
+                    tv_connect.setText(R.string.connect);
+                    btn_connect.setBackgroundResource(R.drawable.connect);
                 }
 
                 break;
 
             case R.id.btn_find:
 
-                ECGRecordActivityForPatient.actionStart(this);
+                if (isRecord || isConnect) {
+
+                } else {
+                    ECGRecordActivityForPatient.actionStart(this);
+                }
                 break;
 
             case R.id.btn_record:
 
                 if (isRecord) {
 
-                    btn_record.setText(getResources().getString(R.string.startRecord));
+                    tv_record.setText(getResources().getString(R.string.startRecord));
+                    btn_record.setBackgroundResource(R.drawable.start_record);
                     isRecord = false;
                     if (mc != null) {
                         mc.cancel();
                         mc = null;
                     }
+
+                    ecgDataSavaUtil = null;
 
                 } else {
 
@@ -339,9 +370,15 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
 
                     } else {
 
-                        SaveECGUtils.setLogFileName(this);
+                        tv_record.setText(getResources().getString(R.string.stopRecord));
+                        btn_record.setBackgroundResource(R.drawable.stop_record);
 
-                        btn_record.setText(getResources().getString(R.string.stopRecord));
+                        // 创建心电图文件
+                        SimpleDateFormat dataFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+                        String filename = "ecgdata_" + Controller.getCurrentUser().getAccount() + "_"
+                                + dataFormat.format(new Date(System.currentTimeMillis())) + ".txt";
+                        ECGDirSaveUtil.writeRecordToDir(filename, getApplication());
+                        ecgDataSavaUtil = new ECGDataSavaUtil(filename, getApplication());
 
                         if (mc == null) {
                             // 设置countDownInterval为100解决onTick不准确的问题
@@ -553,10 +590,10 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
         public void onFinish() {
             // tv.setText("finish");
             isRun = false;
-            btn_record.setText(getResources().getString(R.string.startRecord));
+            tv_record.setText(getResources().getString(R.string.startRecord));
+            btn_record.setBackgroundResource(R.drawable.start_record);
             mc = null;
             isRecord = false;
-
         }
 
         @Override
@@ -565,7 +602,7 @@ public class ECGActivity extends BaseActivity implements OnClickListener {
             isRun = true;
             if (millisInFuture / 1000 != millisUntilFinished / 1000) {
 
-                btn_record
+                tv_record
                         .setText(getResources().getString(R.string.stopRecord) + "(" + (millisUntilFinished / 1000) + ")");
             }
         }

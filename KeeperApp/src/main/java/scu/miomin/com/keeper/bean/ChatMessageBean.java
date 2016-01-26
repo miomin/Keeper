@@ -1,13 +1,15 @@
 package scu.miomin.com.keeper.bean;
 
+import java.io.Serializable;
+
 import scu.miomin.com.keeper.Enum.ChatMsgTypeEnum;
 
 /**
- * Created by 847912006 on 2015/11/12.
- * <p/>
- * 聊天内容的实体类
+ * 描述:聊天消息实体类 创建日期:2015/11/12
+ *
+ * @author 莫绪旻
  */
-public class ChatMessageBean {
+public class ChatMessageBean implements Serializable {
 
     private String senderID;
     private String reciverID;

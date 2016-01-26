@@ -4,12 +4,14 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.bean.TreatmentBean;
+import scu.miomin.com.keeper.resource.MyLoader;
 
 /**
  * 描述:病人端诊后随访列表的适配器 创建日期:2015/11/22
@@ -57,8 +59,10 @@ public class TreatmentListAdapterForDoctor extends BaseAdapter {
 
         if (convertView == null) {
             // 拿到ListViewItem的布局（一行，需要单独定义一个），转换为View类型的对象
-            convertView = View.inflate(context, R.layout.item_treatment_list_doctor, null);
+            convertView = View.inflate(context, R.layout.item_treatment_list_patient, null);
             holder = new viewHolder();
+            holder.ivHead = (ImageView) convertView.findViewById(R.id.ivHead);
+            holder.tvHospital = (TextView) convertView.findViewById(R.id.tvHospital);
             holder.tvName = (TextView) convertView
                     .findViewById(R.id.tvName);
             holder.tvTreatmentReason = (TextView) convertView
@@ -77,15 +81,20 @@ public class TreatmentListAdapterForDoctor extends BaseAdapter {
         if (treatmentFollowupForPatientBean == null)
             return null;
 
-        holder.tvName.setText(treatmentFollowupForPatientBean.getPatientBean().getName());
+        holder.tvHospital.setText(treatmentFollowupForPatientBean.getDoctorBean().getHospitalBean().getName());
+        holder.tvName.setText(treatmentFollowupForPatientBean.getDoctorBean().getName());
         holder.tvTreatmentReason.setText(treatmentFollowupForPatientBean.getTreatmentReason());
         holder.tvTreatmentDate.setText(treatmentFollowupForPatientBean.getDate());
+        MyLoader.dispalyFromAssets(treatmentFollowupForPatientBean.getPatientBean().getHeadUrl(),
+                holder.ivHead);
 
         // 将更新后的控件返回给Android系统
         return convertView;
     }
 
     class viewHolder {
+        ImageView ivHead;
+        TextView tvHospital;
         TextView tvName;
         TextView tvTreatmentReason;
         TextView tvTreatmentDate;

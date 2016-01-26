@@ -1,6 +1,5 @@
 package scu.miomin.com.keeper.patient.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import scu.miomin.com.keeper.R;
-import scu.miomin.com.keeper.basedialog.BaseDialog;
 import scu.miomin.com.keeper.bean.ECGRecordBean;
 
 /**
@@ -33,7 +31,7 @@ public class ECGRecordAdapterForPatient extends BaseAdapter {
     }
 
     public void pushSucceed(int position) {
-        listECGRecord.get(position).setisLocality(true);
+        listECGRecord.get(position - 1).setisLocality(true);
         notifyDataSetChanged();
     }
 
@@ -86,9 +84,7 @@ public class ECGRecordAdapterForPatient extends BaseAdapter {
         holder.ivState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BaseDialog.actionStartActivity(1, position, (Activity) context,
-                        "提示", "是否要将本次心电监测数据上传到云端？上传后可供医生查看",
-                        "否", "是");
+
             }
         });
 
@@ -97,12 +93,6 @@ public class ECGRecordAdapterForPatient extends BaseAdapter {
 
 
         holder.tvDate.setText(ecgRecord.getDate());
-
-        if (ecgRecord.isLocality())
-            holder.ivState.setImageResource(R.drawable.socialize_pocket);
-        else
-            holder.ivState.setImageResource(R.drawable.socialize_pocket_gray);
-        // 将更新后的控件返回给Android系统
         return convertView;
     }
 

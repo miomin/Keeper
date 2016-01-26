@@ -37,7 +37,6 @@
             android:clickable="true"
             android:gravity="center"
             android:onClick="openAddTreatmentActivity"
-            android:text="@string/add"
             android:textColor="#ffffff" />
     </LinearLayout>
 

@@ -1,11 +1,13 @@
 package scu.miomin.com.keeper.bean;
 
+import java.io.Serializable;
+
 /**
  * 描述:生日实体类 创建日期:2015/11/3
  *
  * @author 莫绪旻
  */
-public class BirthdayBean {
+public class BirthdayBean implements Serializable {
 
     private int year;
     private int month;

@@ -32,9 +32,10 @@ import scu.miomin.com.keeper.R;
 import scu.miomin.com.keeper.adapter.ChatListAdapter;
 import scu.miomin.com.keeper.baseactivity.BaseActivity;
 import scu.miomin.com.keeper.bean.ChatMessageBean;
+import scu.miomin.com.keeper.bean.DoctorBean;
 import scu.miomin.com.keeper.bean.Userbean;
 import scu.miomin.com.keeper.controller.Controller;
-import scu.miomin.com.keeper.doctor.activity.DoctorCheckPatientActivity;
+import scu.miomin.com.keeper.resource.UserResource;
 import scu.miomin.com.keeper.util.ToastUtils;
 
 public class ChatActivity extends BaseActivity {
@@ -74,7 +75,7 @@ public class ChatActivity extends BaseActivity {
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         friendphone = getIntent().getStringExtra("phonenumber");
-        ChatFriend = Controller.getFriendByID(friendphone);
+        ChatFriend = UserResource.getUserByID(friendphone);
         if (friendphone == null || ChatFriend == null) {
             ToastUtils.showToast(this, getResources().getString(R.string.infoLoadFaild));
             finish();
@@ -169,18 +170,18 @@ public class ChatActivity extends BaseActivity {
     //显示其他发送内容菜单
     public void showOtherMenu(View view) {
 
-        //关闭软键盘
-        hideSoftInputView();
-        //清除edit的焦点
-        edit_msg.clearFocus();
-        //将弹出其他菜单的按钮转变为显示输入文本框的按钮
-        btn_showEdit.setVisibility(View.VISIBLE);
-        btn_showEdit.setEnabled(true);
-        btn_showOtherMenu.setVisibility(View.INVISIBLE);
-        btn_showOtherMenu.setEnabled(false);
-
-        //显示其他菜单
-        layout_otherMenu.setVisibility(View.VISIBLE);
+//        //关闭软键盘
+//        hideSoftInputView();
+//        //清除edit的焦点
+//        edit_msg.clearFocus();
+//        //将弹出其他菜单的按钮转变为显示输入文本框的按钮
+//        btn_showEdit.setVisibility(View.VISIBLE);
+//        btn_showEdit.setEnabled(true);
+//        btn_showOtherMenu.setVisibility(View.INVISIBLE);
+//        btn_showOtherMenu.setEnabled(false);
+//
+//        //显示其他菜单
+//        layout_otherMenu.setVisibility(View.VISIBLE);
     }
 
     //显示输入文本框
@@ -214,7 +215,7 @@ public class ChatActivity extends BaseActivity {
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
             Date currentData = new Date(System.currentTimeMillis());
             String time = format.format(currentData);
-            ChatMessageBean textMsg = new ChatMessageBean(Controller.getCurrentUser().getPhonenumber(),
+            ChatMessageBean textMsg = new ChatMessageBean(Controller.getCurrentUser().getAccount(),
                     friendphone, textContent, time, ChatMsgTypeEnum.SEND_MSG);
             //把terxtMsg发送到服务器
             chatListAdapter.addMsg(textMsg);
@@ -223,7 +224,7 @@ public class ChatActivity extends BaseActivity {
         }
 
         IMMessage message = MessageBuilder.createTextMessage(
-                ChatFriend.getPhonenumber(), // 聊天对象的 ID，如果是单聊，为用户帐号，如果是群聊，为群组 ID
+                ChatFriend.getAccount(), // 聊天对象的 ID，如果是单聊，为用户帐号，如果是群聊，为群组 ID
                 SessionTypeEnum.P2P, // 聊天类型，单聊或群组
                 textContent // 文本内容
         );
@@ -246,21 +247,21 @@ public class ChatActivity extends BaseActivity {
         //清空输入文本框的焦点
         edit_msg.clearFocus();
 
-        //将显示其他菜单的按钮变换为显示输入文本框的按钮
-        btn_showOtherMenu.setVisibility(View.INVISIBLE);
-        btn_showOtherMenu.setEnabled(false);
-        btn_showEdit.setVisibility(View.VISIBLE);
-        btn_showEdit.setEnabled(true);
-
-        //隐藏输入文本框
-        edit_msg.setVisibility(View.GONE);
-
-        //收起其他菜单栏
-        layout_otherMenu.setVisibility(View.GONE);
-
-        //显示录音按键
-        btn_recordVoice.setVisibility(View.VISIBLE);
-        btn_recordVoice.setEnabled(true);
+//        //将显示其他菜单的按钮变换为显示输入文本框的按钮
+//        btn_showOtherMenu.setVisibility(View.INVISIBLE);
+//        btn_showOtherMenu.setEnabled(false);
+//        btn_showEdit.setVisibility(View.VISIBLE);
+//        btn_showEdit.setEnabled(true);
+//
+//        //隐藏输入文本框
+//        edit_msg.setVisibility(View.GONE);
+//
+//        //收起其他菜单栏
+//        layout_otherMenu.setVisibility(View.GONE);
+//
+//        //显示录音按键
+//        btn_recordVoice.setVisibility(View.VISIBLE);
+//        btn_recordVoice.setEnabled(true);
     }
 
     // 隐藏软键盘
@@ -291,6 +292,6 @@ public class ChatActivity extends BaseActivity {
     }
 
     public void checkUserinfo(View view) {
-        DoctorCheckPatientActivity.actionStart(this);
+        DoctorInfoActivity.actionStart(this, (DoctorBean) ChatFriend);
     }
 }

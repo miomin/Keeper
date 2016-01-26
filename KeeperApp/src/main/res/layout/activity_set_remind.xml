@@ -6,8 +6,8 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/bg_top_tab_two"
+        android:layout_height="45dp"
+        android:background="@color/zhuti"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -239,7 +239,7 @@
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:text="@string/clearCache"
-                android:textColor="@color/red"
+                android:textColor="@color/zhuti"
                 android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>

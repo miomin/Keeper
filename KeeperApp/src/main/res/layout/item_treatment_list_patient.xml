@@ -9,21 +9,24 @@
     android:paddingRight="10dp"
     android:paddingTop="10dp">
 
-    <ImageView
+    <scu.miomin.com.keeper.myview.XCRoundImageView
         android:id="@+id/ivHead"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_centerVertical="true"
         android:layout_marginRight="5dp"
         android:src="@drawable/ic_discover_hospital" />
 
-    <ImageView
-        android:id="@+id/tvRemenyisheng"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/icon_star_pressed" />
+        android:background="@color/zhuti"
+        android:padding="2dp"
+        android:text="最近就诊"
+        android:textColor="@color/white"
+        android:textSize="8sp" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -41,14 +44,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="主管医师："
+                android:text="负责医生"
                 android:textColor="@color/black"
-                android:textSize="11sp" />
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvHospital"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text="四川大学华西医院"
@@ -63,16 +68,6 @@
                 android:text="王鹏"
                 android:textColor="@color/black"
                 android:textSize="11sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:text="医生"
-                android:textColor="@color/black"
-                android:textSize="11sp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -85,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxHeight="27dp"
-                android:text="就诊原因："
+                android:text="诊断结果："
                 android:textColor="@color/black"
                 android:textSize="10sp" />
 

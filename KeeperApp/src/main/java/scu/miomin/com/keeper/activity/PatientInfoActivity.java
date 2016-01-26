@@ -1,4 +1,4 @@
-package scu.miomin.com.keeper.doctor.activity;
+package scu.miomin.com.keeper.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import scu.miomin.com.keeper.patient.activity.ECGRecordActivityForPatient;
 /**
  * Created by miomin on 15/11/13.
  */
-public class DoctorCheckPatientActivity extends BaseActivity {
+public class PatientInfoActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class DoctorCheckPatientActivity extends BaseActivity {
     }
 
     public static void actionStart(Context context) {
-        Intent intent = new Intent(context, DoctorCheckPatientActivity.class);
+        Intent intent = new Intent(context, PatientInfoActivity.class);
         context.startActivity(intent);
     }
 

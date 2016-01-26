@@ -7,4 +7,6 @@ package scu.miomin.com.keeper.resource;
  */
 public class MyString {
     public static final String WELCOME = "welcome";
+
+    public static String recordDirFileName = "ecg_record_dir.txt";
 }

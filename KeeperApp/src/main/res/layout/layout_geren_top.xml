@@ -44,7 +44,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/user_space_health_doc" />
+                android:src="@drawable/icon_ecg" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -86,6 +86,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn_write_to_grey"
             android:clickable="true"
+            android:onClick="openECGRecordActivity"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -93,7 +94,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/icon_jiankangdangan" />
+                android:src="@drawable/icon_healthy_record" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -147,7 +148,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/icon_fuzhen" />
+                android:src="@drawable/icon_followup" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -195,7 +196,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/icon_jijiu" />
+                android:src="@drawable/icon_first_aid" />
 
             <LinearLayout
                 android:layout_width="fill_parent"

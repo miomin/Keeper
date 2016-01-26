@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import scu.miomin.com.keeper.R;
+import scu.miomin.com.keeper.resource.MyLoader;
 
 
 /**
@@ -133,14 +134,14 @@ public class MyBanner extends FrameLayout {
 
         for (int imageID : imagesResIds) {
             ImageView view = new ImageView(context);
-            view.setImageResource(imageID);
+            MyLoader.displayFromDrawable(imageID, view);
             view.setScaleType(ScaleType.FIT_XY);
             imageViewsList.add(view);
 
             View dot = new View(context);
             dot.setBackgroundResource(R.drawable.bg_dots);
             LinearLayout.LayoutParams layoutParams =
-                    new LinearLayout.LayoutParams(15, 15);
+                    new LinearLayout.LayoutParams(20, 20);
             if (imageID == 0) {
                 dot.setEnabled(true);
             } else {
@@ -156,12 +157,9 @@ public class MyBanner extends FrameLayout {
 
         viewPager = (ViewPager) findViewById(R.id.vp_advertisement);
         viewPager.setFocusable(true);
-
         viewPager.setAdapter(new MyPagerAdapter());
         viewPager.setOnPageChangeListener(new MyPageChangeListener());
-
         viewPager.setCurrentItem(Integer.MAX_VALUE / 2 - ((Integer.MAX_VALUE / 2) % imagesResIds.length));
-
     }
 
     /**

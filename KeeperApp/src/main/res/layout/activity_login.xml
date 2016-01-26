@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="45dp"
-        android:background="@drawable/bg_top_tab_two"
+        android:background="@color/zhuti"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -106,8 +106,8 @@
             android:visibility="invisible">
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginRight="15dp"
                 android:background="@drawable/icon_cancel" />
         </LinearLayout>
@@ -154,26 +154,10 @@
             android:visibility="invisible">
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:background="@drawable/icon_cancel" />
 
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/btn_eye"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/icon_eye_n" />
         </LinearLayout>
 
     </LinearLayout>

@@ -1,11 +1,13 @@
 package scu.miomin.com.keeper.bean;
 
+import java.io.Serializable;
+
 /**
  * 描述:病人实体类 创建日期:2015/11/2
  *
  * @author 莫绪旻
  */
-public class PatientBean extends Userbean {
+public class PatientBean extends Userbean implements Serializable{
 
     // 病人身高
     private double pheight;

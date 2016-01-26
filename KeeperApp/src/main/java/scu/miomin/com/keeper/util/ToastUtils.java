@@ -83,7 +83,5 @@ public class ToastUtils {
             mToast.cancel();
             mToast = null;
         }
-
     }
-
 }

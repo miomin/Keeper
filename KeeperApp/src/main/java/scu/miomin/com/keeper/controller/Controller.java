@@ -27,7 +27,7 @@ public class Controller {
     public static Userbean getFriendByID(String phonenumber) {
         Userbean userbean = null;
         for (int i = 0; i < friendList.size(); i++) {
-            if (friendList.get(i).getPhonenumber().equals(phonenumber)) {
+            if (friendList.get(i).getAccount().equals(phonenumber)) {
                 userbean = friendList.get(i);
             }
         }
@@ -49,9 +49,9 @@ public class Controller {
 
     public static void initChatAdapterList(Context context) {
         for (int i = 0; i < friendList.size(); i++) {
-            chatAdapterMap.put(friendList.get(i).getPhonenumber(),
+            chatAdapterMap.put(friendList.get(i).getAccount(),
                     new ChatListAdapter(context, new ArrayList<ChatMessageBean>(),
-                            friendList.get(i).getPhonenumber()));
+                            friendList.get(i).getAccount()));
         }
     }
 

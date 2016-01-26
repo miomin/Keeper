@@ -39,7 +39,7 @@
             <Button
                 android:id="@+id/btn_friendMsg"
                 android:layout_width="0dp"
-                android:layout_height="35dp"
+                android:layout_height="fill_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1.2"
                 android:background="@drawable/bg_trans_to_grey"

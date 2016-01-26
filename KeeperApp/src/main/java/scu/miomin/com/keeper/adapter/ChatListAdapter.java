@@ -1,6 +1,7 @@
 package scu.miomin.com.keeper.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -12,7 +13,14 @@ import java.util.ArrayList;
 
 import scu.miomin.com.keeper.Enum.ChatMsgTypeEnum;
 import scu.miomin.com.keeper.R;
+import scu.miomin.com.keeper.activity.DoctorInfoActivity;
+import scu.miomin.com.keeper.activity.PatientInfoActivity;
 import scu.miomin.com.keeper.bean.ChatMessageBean;
+import scu.miomin.com.keeper.bean.DoctorBean;
+import scu.miomin.com.keeper.bean.Userbean;
+import scu.miomin.com.keeper.controller.Controller;
+import scu.miomin.com.keeper.resource.MyLoader;
+import scu.miomin.com.keeper.resource.UserResource;
 
 /**
  * Created by 847912006 on 2015/11/12.
@@ -22,12 +30,14 @@ public class ChatListAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<ChatMessageBean> chat_msg_list;
     private String userID;
+    private Userbean chatFriend;
 
     public ChatListAdapter(Context context, ArrayList<ChatMessageBean> chat_msg_list, String userID) {
 
         this.context = context;
         this.chat_msg_list = chat_msg_list;
         this.userID = userID;
+        chatFriend = UserResource.getUserByID(userID);
     }
 
     @Override
@@ -62,8 +72,6 @@ public class ChatListAdapter extends BaseAdapter {
             viewholder.iv_myhead = (ImageView) view.findViewById(R.id.iv_myhead);
             viewholder.tv_mysendtime = (TextView) view.findViewById(R.id.tv_mysendtime);
             viewholder.tv_mytext = (TextView) view.findViewById(R.id.tv_mytext);
-
-
             viewholder.layout_friend = (RelativeLayout) view.findViewById(R.id.layout_friend);
             viewholder.iv_friendhead = (ImageView) view.findViewById(R.id.iv_friendhead);
             viewholder.tv_friendsendtime = (TextView) view.findViewById(R.id.tv_friendsendtime);
@@ -73,14 +81,29 @@ public class ChatListAdapter extends BaseAdapter {
             viewholder = (ViewHolder) view.getTag();
         }
 
+        viewholder.iv_myhead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PatientInfoActivity.actionStart(context);
+            }
+        });
+
+        viewholder.iv_friendhead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DoctorInfoActivity.actionStart(context, (DoctorBean) chatFriend);
+            }
+        });
+
         ChatMessageBean msg = chat_msg_list.get(i);
 
         switch (msg.getMsgType()) {
             case ChatMsgTypeEnum.RECIVE_MSG:
                 viewholder.layout_friend.setVisibility(View.VISIBLE);
                 viewholder.layout_my.setVisibility(View.GONE);
-//                viewholder.iv_friendhead.setBackground();
                 viewholder.tv_friendsendtime.setText(msg.getTime());
+                Log.i("keeper", chatFriend.getHeadUrl());
+                MyLoader.dispalyFromAssets(chatFriend.getHeadUrl(), viewholder.iv_friendhead);
                 switch (msg.getContentType()) {
                     case ChatMsgTypeEnum.TEXT_MSG:
                         viewholder.tv_friendtext.setText(msg.getText());
@@ -98,8 +121,8 @@ public class ChatListAdapter extends BaseAdapter {
             case ChatMsgTypeEnum.SEND_MSG:
                 viewholder.layout_my.setVisibility(View.VISIBLE);
                 viewholder.layout_friend.setVisibility(View.GONE);
-//                viewholder.iv_friendhead.setBackground();
                 viewholder.tv_mysendtime.setText(msg.getTime());
+                MyLoader.dispalyFromAssets(Controller.getCurrentUser().getHeadUrl(), viewholder.iv_myhead);
                 switch (msg.getContentType()) {
                     case ChatMsgTypeEnum.TEXT_MSG:
                         viewholder.tv_mytext.setText(msg.getText());
@@ -119,22 +142,17 @@ public class ChatListAdapter extends BaseAdapter {
         return view;
     }
 
-
     public void addMsg(ChatMessageBean msg) {
         chat_msg_list.add(msg);
         this.notifyDataSetChanged();
     }
 
     private class ViewHolder {
-
         public RelativeLayout layout_my;
-
         public ImageView iv_myhead;
         public TextView tv_mysendtime;
         public TextView tv_mytext;
-
         public RelativeLayout layout_friend;
-
         public ImageView iv_friendhead;
         public TextView tv_friendsendtime;
         public TextView tv_friendtext;
