@@ -1,0 +1,166 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:context="yjk.huaqibei.LoginActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/full_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/logo_text" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="40dp"
+            android:background="#94c2e7"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/iv_account"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/icon_account" />
+
+            <EditText
+                android:id="@+id/id_edit"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_toRightOf="@id/iv_account"
+                android:background="@color/transparent"
+                android:gravity="center_vertical"
+                android:inputType="phone"
+                android:paddingRight="20dp"
+                android:singleLine="true"
+                android:textColor="#4f496d"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:id="@+id/id_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/icon_cancel" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="15dp"
+            android:background="#94c2e7"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/iv_password"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/icon_password" />
+
+            <EditText
+                android:id="@+id/pw_edit"
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_toRightOf="@id/iv_password"
+                android:background="@color/transparent"
+                android:gravity="center_vertical"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="#4f496d"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:id="@+id/pw_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/icon_cancel" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/btn_login_bg_2"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/transparent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#94c2e7"
+            android:text="注册"
+            android:textColor="#4f496d"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_weight="1"
+            android:background="#94c2e7"
+            android:text="登录"
+            android:textColor="#4f496d"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</RelativeLayout>
