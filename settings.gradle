@@ -1,1 +1,1 @@
-include ':app', ':MPChartLib', ':library', ':PullToRefreshListFragment', ':PullToRefreshViewPager', ':ToggleButtonLib'
+include ':KeeperApp', ':MPChartLib', ':PullToRefreshLib', ':PullToRefreshListFragment', ':PullToRefreshViewPager', ':ToggleButtonLib', ':SwipeBackActivityLib'
