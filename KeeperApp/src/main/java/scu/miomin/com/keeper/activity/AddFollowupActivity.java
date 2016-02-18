@@ -21,6 +21,7 @@ public class AddFollowupActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_followup);
 
+
     }
 
     public static void actionStart(Context context) {
