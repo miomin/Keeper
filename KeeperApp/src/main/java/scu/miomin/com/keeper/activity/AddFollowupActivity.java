@@ -22,8 +22,6 @@ public class AddFollowupActivity extends BaseActivity {
         setContentView(R.layout.activity_add_followup);
 
 
-
-
     }
 
     public static void actionStart(Context context) {
