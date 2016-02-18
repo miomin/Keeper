@@ -3,12 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Keeper.iml" filepath="$PROJECT_DIR$/Keeper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KeeperApp/KeeperApp.iml" filepath="$PROJECT_DIR$/KeeperApp/KeeperApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PullToRefreshLib/PullToRefreshLib.iml" filepath="$PROJECT_DIR$/PullToRefreshLib/PullToRefreshLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/PullToRefreshListFragment/PullToRefreshListFragment.iml" filepath="$PROJECT_DIR$/PullToRefreshListFragment/PullToRefreshListFragment.iml" />
       <module fileurl="file://$PROJECT_DIR$/PullToRefreshViewPager/PullToRefreshViewPager.iml" filepath="$PROJECT_DIR$/PullToRefreshViewPager/PullToRefreshViewPager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SwipeBackActivityLib/SwipeBackActivityLib.iml" filepath="$PROJECT_DIR$/SwipeBackActivityLib/SwipeBackActivityLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/ToggleButtonLib/ToggleButtonLib.iml" filepath="$PROJECT_DIR$/ToggleButtonLib/ToggleButtonLib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
     </modules>
   </component>
 </project>
