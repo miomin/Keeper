@@ -349,7 +349,6 @@ public class MainKeeperForPatient extends Activity {
         lvRemenDoctor = (PullToRefreshListView) view2.findViewById(R.id.lvRemenDoctor);
         // 初始化热门医生列表的适配器
         initRemenDoctorAdapter();
-
     }
 
     // 初始化热门医生列表的适配器
@@ -370,6 +369,14 @@ public class MainKeeperForPatient extends Activity {
         remendoctorArray.add(doctorBean);
 
         doctorBean = (DoctorBean) UserResource.getUserByID("2013141463001");
+        remenDoctorAdapter.add(doctorBean);
+        remendoctorArray.add(doctorBean);
+
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463003");
+        remenDoctorAdapter.add(doctorBean);
+        remendoctorArray.add(doctorBean);
+
+        doctorBean = (DoctorBean) UserResource.getUserByID("2013141463003");
         remenDoctorAdapter.add(doctorBean);
         remendoctorArray.add(doctorBean);
 

@@ -48,6 +48,30 @@ public class FileUploadUtil {
         }
 
         uploadString(filename, ecgData, requestUrl);
+
+//        String path = "";
+//        File file = new File(path);
+//        if (file.exists() && file.length() > 0) {
+//            AsyncHttpClient client = new AsyncHttpClient();
+//            RequestParams params = new RequestParams();
+//            params.put("profile_picture", file);
+//            client.post("http://192.168.1.100:8080/web/UploadFile", params, new AsyncHttpResponseHandler() {
+//
+//                @Override
+//                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+//
+////                    Toast.makeText(context, "成功", Toast.LENGTH_LONG).show();
+//                }
+//
+//                @Override
+//                public void onFailure(int statusCode, Header[] headers,
+//                                      byte[] responseBody, Throwable error) {
+//                    Toast.makeText(MainActivity.this, "失败", Toast.LENGTH_LONG).show();
+//                }
+//            });
+//        } else {
+//            Toast.makeText(this, "文件不存在", 1).show();
+//        }
     }
 
     public static void uploadString(String filename, String ecgdata, String requestUrl) {

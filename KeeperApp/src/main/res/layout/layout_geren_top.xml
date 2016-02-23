@@ -86,8 +86,8 @@
             android:layout_weight="1"
             android:background="@drawable/btn_write_to_grey"
             android:clickable="true"
-            android:onClick="openECGRecordActivity"
             android:gravity="center_vertical"
+            android:onClick="openECGRecordActivity"
             android:orientation="horizontal">
 
             <ImageView
