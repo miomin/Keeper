@@ -31,7 +31,6 @@ import scu.miomin.com.keeper.resource.MyLoader;
 
 public class MyBanner extends FrameLayout {
 
-
     //自定义轮播图的资源ID
     private int[] imagesResIds;
 
@@ -139,7 +138,7 @@ public class MyBanner extends FrameLayout {
             imageViewsList.add(view);
 
             View dot = new View(context);
-            dot.setBackgroundResource(R.drawable.bg_dots);
+            dot.setBackgroundResource(R.drawable.bg_banner_dots);
             LinearLayout.LayoutParams layoutParams =
                     new LinearLayout.LayoutParams(20, 20);
             if (imageID == 0) {

@@ -353,6 +353,7 @@ public class MainKeeperForPatient extends Activity {
 
     // 初始化热门医生列表的适配器
     private void initRemenDoctorAdapter() {
+        lvRemenDoctor.setMode(PullToRefreshBase.Mode.BOTH);
         // 创建适配器对象
         RemenDoctorAdapter remenDoctorAdapter = new RemenDoctorAdapter(new ArrayList<DoctorBean>(), this);
         // 将ListView与适配器关联
